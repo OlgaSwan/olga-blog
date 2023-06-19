@@ -21,6 +21,8 @@ import { LinkCustom } from "../utils/link-custom";
 
 import * as Icons from "grommet-icons";
 
+import avatar from '../img/sassy-sexy-girl.jpg'
+
 export const Template: FunctionComponent<PropsWithChildren> = (props) => {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   return (
@@ -31,7 +33,7 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
           background={{ color: "#000", opacity: "medium" }}
         >
           <Box direction="row" gap="small" align="center">
-            <Avatar src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />
+            <Avatar src={avatar} />
             <LinkCustom size="large" label="Olga Swan" href="/" />
           </Box>
           <Nav direction="row">
