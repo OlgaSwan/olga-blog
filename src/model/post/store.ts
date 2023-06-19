@@ -20,3 +20,5 @@ allPostsStore.set(
         likes: random(10, 1000, false),
     }))
 )
+
+export const devTerms: string[] = ['JS', 'TS', 'SCSS', 'react', 'redux', 'vue']

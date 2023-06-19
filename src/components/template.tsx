@@ -21,36 +21,37 @@ import { LinkCustom } from "../utils/link-custom";
 
 import * as Icons from "grommet-icons";
 
-import avatar from '../img/sassy-sexy-girl.jpg'
+import avatar from "../img/sassy-sexy-girl.jpg";
 
 export const Template: FunctionComponent<PropsWithChildren> = (props) => {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   return (
     <Grommet theme={dark}>
+      <Header
+        sticky="scrollup"
+        height="xsmall"
+        pad="medium"
+        background={{ color: "#000", opacity: "medium" }}
+      >
+        <Box direction="row" gap="small" align="center">
+          <Avatar src={avatar} size="medium" />
+          <LinkCustom size="large" label="Olga Swan" href="/" />
+        </Box>
+        <Nav direction="row">
+          <LinkCustom label="About" href="/about" />
+          <LinkCustom label="Uses" href="/uses" />
+          {isAuth ? (
+            <LinkCustom
+              label="Sign out"
+              href="/login"
+              onClick={() => signOutCustom(setIsAuth)}
+            />
+          ) : (
+            <LinkCustom label="Sign in" href="/login" />
+          )}
+        </Nav>
+      </Header>
       <Box pad="medium">
-        <Header
-          sticky="scrollup"
-          background={{ color: "#000", opacity: "medium" }}
-        >
-          <Box direction="row" gap="small" align="center">
-            <Avatar src={avatar} />
-            <LinkCustom size="large" label="Olga Swan" href="/" />
-          </Box>
-          <Nav direction="row">
-            <LinkCustom label="About" href="/about" />
-            <LinkCustom label="Uses" href="/uses" />
-            {isAuth ? (
-              <LinkCustom
-                label="Sign out"
-                href="/login"
-                onClick={() => signOutCustom(setIsAuth)}
-              />
-            ) : (
-              <LinkCustom label="Sign in" href="/login" />
-            )}
-          </Nav>
-        </Header>
-
         <Page kind="narrow">
           <PageContent>{props.children}</PageContent>
         </Page>
