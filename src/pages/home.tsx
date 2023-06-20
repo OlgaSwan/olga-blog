@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
-import { Template } from '../components/template'
+import { Template } from '../shared/template'
 import { PostList } from '../model/post/post-list'
 
 export const Home: FunctionComponent = () => (

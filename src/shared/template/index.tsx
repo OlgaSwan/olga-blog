@@ -1,13 +1,12 @@
 import React, { FunctionComponent, PropsWithChildren, useContext } from 'react'
 import { Avatar, Box, dark, Footer, Grommet, Header, Nav, Page, PageContent, Text } from 'grommet'
-
-import { AuthContext } from '../model/context/auth-context'
-import { signOutCustom } from '../utils/sign-service'
-import { LinkCustom } from '../utils/link-custom'
-
 import * as Icons from 'grommet-icons'
 
-import avatar from '../img/sassy-sexy-girl.jpg'
+import { AuthContext } from '../../model/auth'
+import { LinkCustom } from '../link-custom'
+import { signOutCustom } from '../sign-service'
+
+import avatar from './avatar.jpg'
 
 export const Template: FunctionComponent<PropsWithChildren> = (props) => {
   const { isAuth, setIsAuth } = useContext(AuthContext)

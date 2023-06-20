@@ -4,8 +4,7 @@ import { Box, Button, Form, FormField, Text, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
 import { useNavigate } from 'react-router-dom'
 
-import { auth } from '../model/auth'
-import { AuthContext } from '../model/context/auth-context'
+import { AuthContext, auth } from '../../model/auth'
 
 interface FormCreateAccountData {
   login: string

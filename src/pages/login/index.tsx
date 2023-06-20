@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
-import { Template } from '../components/template'
-import { FormLogin } from '../components/form-login'
+import { Template } from '../../shared/template'
+
+import { FormLogin } from './form'
 
 export const Login: FunctionComponent = () => {
   return (

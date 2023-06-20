@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { AuthContext } from '../model/context/auth-context'
-
+import { AuthContext } from '../model/auth'
 import { Home } from '../pages/home'
 import { Diary } from '../pages/diary'
 import { Login } from '../pages/login'
