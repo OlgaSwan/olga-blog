@@ -1,26 +1,16 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
 import { atom } from 'nanostores'
 
 import { firebaseApp } from '../shared/firebase-app'
 
 const firebaseAuth = getAuth(firebaseApp)
 
-const store = atom<{} | null>(localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth') as string) : null)
-
-store.subscribe((storeValue) => {
-  if (localStorage.getItem('auth') !== storeValue) {
-    if (storeValue) localStorage.setItem('auth', JSON.stringify(storeValue))
-    else localStorage.removeItem('auth')
-  }
-})
-
-// TODO подписать store на изменение localStorage
-// window.addEventListener("storage", (event) => {})
+const store = atom<User | null>(firebaseAuth.currentUser)
 
 const login = (loginData: { login: string; password: string }) => {
   signInWithEmailAndPassword(firebaseAuth, loginData.login, loginData.password)
     .then((userCredential) => {
-      store.set(userCredential.user.toJSON())
+      store.set(userCredential.user)
     })
     .catch((error) => {
       store.set(null)
@@ -41,7 +31,7 @@ const logout = () => {
 const register = (loginData: { login: string; password: string }) => {
   createUserWithEmailAndPassword(firebaseAuth, loginData.login, loginData.password)
     .then((userCredential) => {
-      store.set(userCredential.user.toJSON())
+      store.set(userCredential.user)
     })
     .catch((error) => {
       store.set(null)

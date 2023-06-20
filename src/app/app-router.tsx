@@ -23,7 +23,7 @@ export const AppRouter: FunctionComponent = () => {
         <Route path='/' Component={Home} />
         <Route path='/diary/:id' Component={Diary} />
         <Route path='/login' Component={Login} />
-        <Route path='/createaccount' Component={CreateAccount} />
+        <Route path='/create-account' Component={CreateAccount} />
         <Route path='/about' Component={About} />
         <Route path='/uses' Component={Uses} />
       </Routes>
