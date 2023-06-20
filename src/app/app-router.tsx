@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { AuthContext } from '../model/auth'
 import { Home } from '../pages/home'
 import { Diary } from '../pages/diary'
 import { Login } from '../pages/login'
@@ -19,22 +18,15 @@ export const AppRouter: FunctionComponent = () => {
   }, [])
 
   return (
-    <AuthContext.Provider
-      value={{
-        isAuth,
-        setIsAuth,
-      }}
-    >
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' Component={Home} />
-          <Route path='/diary/:id' Component={Diary} />
-          <Route path='/login' Component={Login} />
-          <Route path='/createaccount' Component={CreateAccount} />
-          <Route path='/about' Component={About} />
-          <Route path='/uses' Component={Uses} />
-        </Routes>
-      </BrowserRouter>
-    </AuthContext.Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' Component={Home} />
+        <Route path='/diary/:id' Component={Diary} />
+        <Route path='/login' Component={Login} />
+        <Route path='/createaccount' Component={CreateAccount} />
+        <Route path='/about' Component={About} />
+        <Route path='/uses' Component={Uses} />
+      </Routes>
+    </BrowserRouter>
   )
 }
