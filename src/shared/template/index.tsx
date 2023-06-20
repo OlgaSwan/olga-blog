@@ -12,13 +12,13 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
   const authStoreValue = useStore(auth.store)
 
   return (
-    <Grommet theme={dark}>
-      <Header 
-      sticky='scrollup' 
-      height='xsmall' 
-      pad='medium' 
-      background={{ color: '#000', opacity: 'medium' }}
-      style={{ backdropFilter: 'blur(4px)' }}
+    <Grommet theme={dark} style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+      <Header
+        sticky='scrollup'
+        height='xsmall'
+        pad='medium'
+        background={{ color: '#000', opacity: 'medium' }}
+        style={{ backdropFilter: 'blur(6px)' }}
       >
         <Box direction='row' gap='small' align='center'>
           <Avatar src={avatar} size='medium' />
@@ -34,8 +34,8 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
           )}
         </Nav>
       </Header>
-      <Box pad='medium'>
-        <Page kind='narrow'>
+      <Box pad='medium' flex='grow'>
+        <Page kind='narrow' flex='grow'>
           <PageContent>{props.children}</PageContent>
         </Page>
 

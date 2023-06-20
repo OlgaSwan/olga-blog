@@ -1,7 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Box, Button, Form, FormField, Text, TextInput } from 'grommet'
-import * as Icons from 'grommet-icons'
-import { useNavigate } from 'react-router-dom'
 
 import { auth } from '../../model/auth'
 
@@ -12,13 +10,9 @@ interface FormData {
 
 export const FormLogin: FunctionComponent = () => {
   const [value, setValue] = useState<FormData>({ login: '', password: '' })
-  const navigate = useNavigate()
 
   return (
     <Box gap='medium'>
-      <Box onClick={() => navigate('/login')}>
-        <Icons.FormPrevious size='large' opacity='0%' />
-      </Box>
       <Form
         value={value}
         onChange={(newValue) => setValue(newValue)}
@@ -37,7 +31,7 @@ export const FormLogin: FunctionComponent = () => {
             <Button type='reset' label={<Text weight='normal'>Reset</Text>} />
           </Box>
           <Box>
-            <Button primary label={<Text weight='bold'>Create an account</Text>} href='/createaccount' />
+            <Button label={<Text weight='bold'>Create an account</Text>} href='/create-account' />
           </Box>
         </Box>
       </Form>
