@@ -1,26 +1,57 @@
-import { createContext } from 'react'
-import { initializeApp } from 'firebase/app'
-import { getAnalytics } from 'firebase/analytics'
-import { getAuth } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { atom } from 'nanostores'
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyC1UklvQvrU3uAKTXHZwsrBt5-sil26YxU',
-  authDomain: 'olya-blog-4bfdb.firebaseapp.com',
-  projectId: 'olya-blog-4bfdb',
-  storageBucket: 'olya-blog-4bfdb.appspot.com',
-  messagingSenderId: '197459135971',
-  appId: '1:197459135971:web:650c42f9af6423e107a4d6',
-  measurementId: 'G-N3WY450503',
+import { firebaseApp } from '../shared/firebase-app'
+
+const firebaseAuth = getAuth(firebaseApp)
+
+const store = atom<{} | null>(localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth') as string) : null)
+
+store.subscribe((storeValue) => {
+  if (localStorage.getItem('auth') !== storeValue) {
+    if (storeValue) localStorage.setItem('auth', JSON.stringify(storeValue))
+    else localStorage.removeItem('auth')
+  }
+})
+
+// TODO подписать store на изменение localStorage
+// window.addEventListener("storage", (event) => {})
+
+const login = (loginData: { login: string; password: string }) => {
+  signInWithEmailAndPassword(firebaseAuth, loginData.login, loginData.password)
+    .then((userCredential) => {
+      store.set(userCredential.user.toJSON())
+    })
+    .catch((error) => {
+      store.set(null)
+      console.error(error)
+    })
 }
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-export const auth = getAuth(app)
-const analytics = getAnalytics(app)
-
-interface AuthContextProps {
-  isAuth: boolean
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+const logout = () => {
+  signOut(firebaseAuth)
+    .then(() => {
+      store.set(null)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
 }
 
-export const AuthContext = createContext<AuthContextProps>({ isAuth: false, setIsAuth: () => {} })
+const register = (loginData: { login: string; password: string }) => {
+  createUserWithEmailAndPassword(firebaseAuth, loginData.login, loginData.password)
+    .then((userCredential) => {
+      store.set(userCredential.user.toJSON())
+    })
+    .catch((error) => {
+      store.set(null)
+      console.error(error)
+    })
+}
+
+export const auth = {
+  store,
+  login,
+  logout,
+  register,
+}

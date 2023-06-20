@@ -1,15 +1,16 @@
-import React, { FunctionComponent, PropsWithChildren, useContext } from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { Avatar, Box, dark, Footer, Grommet, Header, Nav, Page, PageContent, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
+import { useStore } from '@nanostores/react'
 
-import { AuthContext } from '../../model/auth'
+import { auth } from '../../model/auth'
 import { LinkCustom } from '../link-custom'
-import { signOutCustom } from '../sign-service'
 
 import avatar from './avatar.jpg'
 
 export const Template: FunctionComponent<PropsWithChildren> = (props) => {
-  const { isAuth, setIsAuth } = useContext(AuthContext)
+  const authStoreValue = useStore(auth.store)
+
   return (
     <Grommet theme={dark}>
       <Header sticky='scrollup' height='xsmall' pad='medium' background={{ color: '#000', opacity: 'medium' }}>
@@ -20,8 +21,8 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
         <Nav direction='row'>
           <LinkCustom label='About' href='/about' />
           <LinkCustom label='Uses' href='/uses' />
-          {isAuth ? (
-            <LinkCustom label='Sign out' href='/login' onClick={() => signOutCustom(setIsAuth)} />
+          {authStoreValue ? (
+            <LinkCustom label='Sign out' href='/login' onClick={() => auth.logout()} />
           ) : (
             <LinkCustom label='Sign in' href='/login' />
           )}
