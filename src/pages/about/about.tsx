@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { Box, PageHeader, Text, Heading, Image } from 'grommet'
+import { lorem } from 'faker'
 
 import { Template } from '../../shared/template'
 
@@ -11,12 +12,10 @@ export const About: FunctionComponent = () => (
     <Box direction='row' align='center' gap='medium'>
       <Box gap='medium' width='large'>
         <Heading level='3' margin='none'>
-          Lorem ipsum dolor sit amet consectetur.
+          {lorem.sentence()}
         </Heading>
         <Text>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut reprehenderit nam repudiandae illum aperiam
-          libero eum consequuntur ratione, quibusdam numquam quam ad. Pariatur deleniti enim officiis dolor, ipsam
-          tenetur ab.
+          {lorem.paragraph(5)}
         </Text>
       </Box>
       <Box height='medium' width='medium'>
