@@ -13,7 +13,13 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
 
   return (
     <Grommet theme={dark}>
-      <Header sticky='scrollup' height='xsmall' pad='medium' background={{ color: '#000', opacity: 'medium' }}>
+      <Header 
+      sticky='scrollup' 
+      height='xsmall' 
+      pad='medium' 
+      background={{ color: '#000', opacity: 'medium' }}
+      style={{ backdropFilter: 'blur(4px)' }}
+      >
         <Box direction='row' gap='small' align='center'>
           <Avatar src={avatar} size='medium' />
           <LinkCustom size='large' label='Olga Swan' href='/' />
