@@ -8,7 +8,7 @@ import { FormLogin } from './form'
 export const Login: FunctionComponent = () => {
   return (
     <Template>
-      <PageHeader size='small' title='Login' margin={{ bottom: 'large' }} />
+      <PageHeader size='small' title='Login' margin={{ bottom: 'medium', top: 'medium' }} />
       <FormLogin />
     </Template>
   )

@@ -5,7 +5,7 @@ import { Home } from '../pages/home'
 import { Diary } from '../pages/diary'
 import { Login } from '../pages/login'
 import { CreateAccount } from '../pages/create-account'
-import { About } from '../pages/about/about'
+import { About } from '../pages/about'
 import { Uses } from '../pages/uses'
 
 export const AppRouter: FunctionComponent = () => {

@@ -8,7 +8,7 @@ import { FormCreateAccount } from './form'
 export const CreateAccount: FunctionComponent = () => {
   return (
     <Template>
-      <PageHeader size='small' title='Create an account' margin={{ bottom: 'large' }} />
+      <PageHeader size='small' title='Create an account' margin={{ bottom: 'medium', top: 'medium' }} />
       <FormCreateAccount />
     </Template>
   )
