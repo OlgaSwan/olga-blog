@@ -1,7 +1,8 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
-import { Avatar, Box, dark, Footer, Grommet, Header, Nav, Page, PageContent, Text } from 'grommet'
+import { Avatar, Box, Button, Footer, grommet, Grommet, Header, Nav, Page, PageContent, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 import { useStore } from '@nanostores/react'
+import { useDarkMode } from 'color-scheme-hook'
 
 import { auth } from '../../model/auth'
 import { LinkCustom } from '../link-custom'
@@ -10,10 +11,11 @@ import avatar from './avatar.jpg'
 
 export const Template: FunctionComponent<PropsWithChildren> = (props) => {
   const authStoreValue = useStore(auth.store)
+  const [isDarkMode, toggleColorScheme, resetPreference] = useDarkMode()
 
   return (
     <Grommet
-      theme={dark}
+      theme={grommet}
       full='min'
       options={{
         box: { cssGap: true },
@@ -22,6 +24,7 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
         display: 'flex',
         flexDirection: 'column',
       }}
+      themeMode={isDarkMode ? 'dark' : 'light'}
     >
       <Header
         sticky='scrollup'
@@ -34,7 +37,7 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
           <Avatar src={avatar} size='medium' />
           <LinkCustom size='large' label='Olga Swan' href='/' />
         </Box>
-        <Nav direction='row'>
+        <Nav direction='row' align='center'>
           <LinkCustom label='About' href='/about' />
           <LinkCustom label='Uses' href='/uses' />
           {authStoreValue ? (
@@ -42,12 +45,13 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
           ) : (
             <LinkCustom label='Sign in' href='/login' />
           )}
+          <Button onClick={() => toggleColorScheme()} icon={isDarkMode ? <Icons.Moon /> : <Icons.Sun />} />
         </Nav>
       </Header>
       <Page kind='narrow' flex='grow' direction='column'>
         <PageContent flex='grow'>{props.children}</PageContent>
       </Page>
-      <Footer pad='small'>
+      <Footer pad='medium'>
         <Text>Copyright</Text>
         <Box direction='row' gap='small' justify='center'>
           <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
