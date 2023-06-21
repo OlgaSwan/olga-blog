@@ -25,7 +25,7 @@ export const FormLogin: FunctionComponent = () => {
         <FormField label='Password' margin={{ top: 'small' }}>
           <TextInput type='password' name='password' size='small' placeholder='password' />
         </FormField>
-        <Box direction='row' justify='between' margin={{ top: 'large' }}>
+        <Box direction='row' justify='between' gap='small' margin={{ top: 'large' }} wrap>
           <Box direction='row' gap='medium'>
             <Button type='submit' primary label={<Text weight='bold'>Sign in</Text>} />
             <Button type='reset' label={<Text weight='normal'>Reset</Text>} />
