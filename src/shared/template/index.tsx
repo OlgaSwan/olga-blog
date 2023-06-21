@@ -12,7 +12,17 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
   const authStoreValue = useStore(auth.store)
 
   return (
-    <Grommet theme={dark} style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+    <Grommet
+      theme={dark}
+      full='min'
+      options={{
+        box: { cssGap: true },
+      }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <Header
         sticky='scrollup'
         height='xsmall'
@@ -34,20 +44,17 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
           )}
         </Nav>
       </Header>
-      <Box pad='medium' flex='grow'>
-        <Page kind='narrow' flex='grow'>
-          <PageContent>{props.children}</PageContent>
-        </Page>
-
-        <Footer pad='small'>
-          <Text>Copyright</Text>
-          <Box direction='row' gap='small' justify='center'>
-            <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
-            <LinkCustom target='_blank' href='https://www.behance.net/olyasswan' icon={<Icons.Paint />} />
-            <LinkCustom target='_blank' href='https://rus.bongacams.com/' icon={<Icons.Webcam />} />
-          </Box>
-        </Footer>
-      </Box>
+      <Page kind='narrow' flex='grow' direction='column'>
+        <PageContent flex='grow'>{props.children}</PageContent>
+      </Page>
+      <Footer pad='small'>
+        <Text>Copyright</Text>
+        <Box direction='row' gap='small' justify='center'>
+          <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
+          <LinkCustom target='_blank' href='https://www.behance.net/olyasswan' icon={<Icons.Paint />} />
+          <LinkCustom target='_blank' href='https://rus.bongacams.com/' icon={<Icons.Webcam />} />
+        </Box>
+      </Footer>
     </Grommet>
   )
 }

@@ -14,9 +14,7 @@ export const About: FunctionComponent = () => (
         <Heading level='3' margin='none'>
           {lorem.sentence()}
         </Heading>
-        <Text>
-          {lorem.paragraph(5)}
-        </Text>
+        <Text>{lorem.paragraph(5)}</Text>
       </Box>
       <Box height='medium' width='medium'>
         <Image fit='cover' src={img1} />

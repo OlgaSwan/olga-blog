@@ -19,7 +19,7 @@ export const FormCreateAccount: FunctionComponent = () => {
         onReset={() => setValue({ login: '', password: '' })}
         onSubmit={(event) => auth.register(event.value)}
       >
-        <FormField label='Login'>
+        <FormField label='Email'>
           <TextInput type='email' name='login' size='small' placeholder='example@gmail.com' />
         </FormField>
         <FormField label='Password' margin={{ top: 'small' }}>
