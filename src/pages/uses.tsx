@@ -5,6 +5,6 @@ import { Template } from '../shared/template'
 
 export const Uses: FunctionComponent = () => (
   <Template>
-    <PageHeader size='small' title='Uses' margin={{ bottom: 'large' }} />
+    <PageHeader size='small' title='Uses' margin={{ bottom: 'medium', top: 'medium' }} />
   </Template>
 )
