@@ -19,7 +19,7 @@ export const FormLogin: FunctionComponent = () => {
         onReset={() => setValue({ login: '', password: '' })}
         onSubmit={(event) => auth.login(event.value)}
       >
-        <FormField label='Login'>
+        <FormField label='Email'>
           <TextInput type='email' name='login' size='small' placeholder='email@example.com' />
         </FormField>
         <FormField label='Password' margin={{ top: 'small' }}>
