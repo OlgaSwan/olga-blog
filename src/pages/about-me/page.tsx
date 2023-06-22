@@ -6,9 +6,9 @@ import { Template } from '../../shared/template'
 
 import selfie from './selfie.jpg'
 
-export const About: FunctionComponent = () => (
+const AboutMe: FunctionComponent = () => (
   <Template>
-    <PageHeader size='small' title='About' margin={{ bottom: 'medium', top: 'medium' }} />
+    <PageHeader size='small' title='About me' margin={{ bottom: 'medium', top: 'medium' }} />
     <Box direction='row' align='center' gap='medium'>
       <Box gap='medium' width='large'>
         <Heading level='3' margin='none'>
@@ -22,3 +22,5 @@ export const About: FunctionComponent = () => (
     </Box>
   </Template>
 )
+
+export default AboutMe

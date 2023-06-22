@@ -3,12 +3,14 @@ import { Box, Button, Form, FormField, Text, TextInput } from 'grommet'
 
 import { auth } from '../../model/auth'
 
+import { routeMap } from '../index'
+
 interface FormData {
   login: string
   password: string
 }
 
-export const FormCreateAccount: FunctionComponent = () => {
+export const FormLogin: FunctionComponent = () => {
   const [value, setValue] = useState<FormData>({ login: '', password: '' })
 
   return (
@@ -17,7 +19,7 @@ export const FormCreateAccount: FunctionComponent = () => {
         value={value}
         onChange={(newValue) => setValue(newValue)}
         onReset={() => setValue({ login: '', password: '' })}
-        onSubmit={(event) => auth.register(event.value)}
+        onSubmit={(event) => auth.login(event.value)}
       >
         <FormField label='Email'>
           <TextInput type='email' name='login' size='small' placeholder='email@example.com' />
@@ -27,11 +29,11 @@ export const FormCreateAccount: FunctionComponent = () => {
         </FormField>
         <Box direction='row' justify='between' gap='small' margin={{ top: 'large' }} wrap>
           <Box direction='row' gap='medium'>
-            <Button type='submit' primary label={<Text weight='bold'>Create an account</Text>} />
+            <Button type='submit' primary label={<Text weight='bold'>Sign in</Text>} />
             <Button type='reset' label={<Text weight='normal'>Reset</Text>} />
           </Box>
           <Box>
-            <Button label={<Text weight='bold'>Sign in</Text>} href='/login' />
+            <Button label={<Text weight='bold'>Create an account</Text>} href={routeMap.authRegister.path} />
           </Box>
         </Box>
       </Form>
