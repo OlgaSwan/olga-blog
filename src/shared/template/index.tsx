@@ -5,6 +5,7 @@ import { useStore } from '@nanostores/react'
 import { useDarkMode } from 'color-scheme-hook'
 
 import { auth } from '../../model/auth'
+import { routeMap } from '../../pages'
 import { LinkCustom } from '../link-custom'
 
 import avatar from './avatar.jpg'
@@ -30,20 +31,29 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
         sticky='scrollup'
         height='xsmall'
         pad='medium'
-        background={{ color: '#000', opacity: 'medium' }}
+        background={{ color: 'background', opacity: 'weak' }}
         style={{ backdropFilter: 'blur(6px)' }}
       >
         <Box direction='row' gap='small' align='center'>
           <Avatar src={avatar} size='medium' />
-          <LinkCustom size='large' label='Olga Swan' href='/' />
+          <LinkCustom size='large' label='Olga Swan' href={routeMap.home.path} />
         </Box>
         <Nav direction='row' align='center'>
-          <LinkCustom label='About' href='/about' />
-          <LinkCustom label='Uses' href='/uses' />
+          <LinkCustom label='Blog' href={routeMap.blogHome.path} />
+          <LinkCustom label='About' href={routeMap.aboutMe.path} />
+          <LinkCustom label='Uses' href={routeMap.aboutUses.path} />
+          <LinkCustom label='Hire me' href={routeMap.aboutHire.path} />
           {authStoreValue ? (
-            <LinkCustom label='Sign out' href='/login' onClick={() => auth.logout()} />
+            <LinkCustom
+              label='Sign out'
+              href='#'
+              onClick={event => {
+                event.preventDefault()
+                auth.logout()
+              }}
+            />
           ) : (
-            <LinkCustom label='Sign in' href='/login' />
+            <LinkCustom label='Sign in' href={routeMap.authLogin.path} />
           )}
           <Button onClick={() => toggleColorScheme()} icon={isDarkMode ? <Icons.Moon /> : <Icons.Sun />} />
         </Nav>

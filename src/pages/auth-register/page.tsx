@@ -5,7 +5,7 @@ import { Template } from '../../shared/template'
 
 import { FormCreateAccount } from './form'
 
-export const CreateAccount: FunctionComponent = () => {
+const AuthRegister: FunctionComponent = () => {
   return (
     <Template>
       <PageHeader size='small' title='Create an account' margin={{ bottom: 'medium', top: 'medium' }} />
@@ -13,3 +13,5 @@ export const CreateAccount: FunctionComponent = () => {
     </Template>
   )
 }
+
+export default AuthRegister

@@ -5,7 +5,7 @@ import { Template } from '../../shared/template'
 
 import { FormLogin } from './form'
 
-export const Login: FunctionComponent = () => {
+const AuthLogin: FunctionComponent = () => {
   return (
     <Template>
       <PageHeader size='small' title='Login' margin={{ bottom: 'medium', top: 'medium' }} />
@@ -13,3 +13,5 @@ export const Login: FunctionComponent = () => {
     </Template>
   )
 }
+
+export default AuthLogin
