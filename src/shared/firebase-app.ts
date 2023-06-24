@@ -8,6 +8,7 @@ const firebaseConfig = {
   messagingSenderId: '197459135971',
   appId: '1:197459135971:web:650c42f9af6423e107a4d6',
   measurementId: 'G-N3WY450503',
+  databaseURL: "https://olya-blog-4bfdb-default-rtdb.firebaseio.com/",
 }
 
 export const firebaseApp = initializeApp(firebaseConfig)

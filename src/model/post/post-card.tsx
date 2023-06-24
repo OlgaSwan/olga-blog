@@ -1,18 +1,16 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
-import { useStore } from '@nanostores/react'
-import { allPostsStore, devTerms } from './store'
-import { random, sampleSize } from 'lodash-es'
+import { Post } from './store'
 import { Card, CardHeader, CardBody, CardFooter, Box, Button, Text, Tag } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 export interface PostCardProps {
   id: string
+  posts: Array<Post>
 }
 
-export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ id }) => {
-  const allPosts = useStore(allPostsStore)
+export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ id, posts }) => {
+  const allPosts = posts
   const foundPost = allPosts.find((p) => p.id === id)
-  const randomTags = sampleSize(devTerms, random(1, 3))
 
   return (
     <Card height='medium' width='large' background='light-1'>
@@ -22,9 +20,7 @@ export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ 
         </Text>
         {foundPost && (
           <Box direction='row' flex='grow' gap='small'>
-            {randomTags.map((tag) => (
-              <Tag size='small' value={tag} />
-            ))}
+            {foundPost.tags ? foundPost.tags.map((tag) => <Tag size='small' value={tag} />) : <></>}
           </Box>
         )}
       </CardHeader>
