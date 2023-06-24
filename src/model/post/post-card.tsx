@@ -33,7 +33,12 @@ export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ 
       )}
       {foundPost && (
         <CardFooter pad={{ horizontal: 'small' }} background='light-2'>
-          <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
+          <Box direction='row' align='center'>
+            <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
+            <Text size='small' weight='normal'>
+              {foundPost.likes}
+            </Text>
+          </Box>
           <Button icon={<Icons.ShareOption color='plain' />} hoverIndicator />
         </CardFooter>
       )}
