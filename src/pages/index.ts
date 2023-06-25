@@ -8,6 +8,12 @@ import { BlogTagId } from './blog-tag-id'
 import { AuthLogin } from './auth-login'
 import { AuthRegister } from './auth-register'
 import { AuthRecover } from './auth-recover'
+import { AdminHome } from './admin-home'
+import { AdminDiaryList } from './admin-diary-list'
+import { AdminDiaryId } from './admin-diary-id'
+import { AdminTagList } from './admin-tag-list'
+import { AdminTagId } from './admin-tag-id'
+import { AdminUserList } from './admin-user-list'
 import { ErrorNotFound } from './error-not-found'
 import { ErrorForbidden } from './error-forbidden'
 
@@ -51,6 +57,30 @@ export const routeMap = {
   authRecover: {
     path: '/auth/recover',
     Component: AuthRecover,
+  },
+  adminHome: {
+    path: '/admin/home',
+    Component: AdminHome,
+  },
+  adminDiaryList: {
+    path: '/admin/diary',
+    Component: AdminDiaryList,
+  },
+  adminDiaryId: {
+    path: '/admin/diary/:id',
+    Component: AdminDiaryId,
+  },
+  adminTagList: {
+    path: '/admin/tag',
+    Component: AdminTagList,
+  },
+  adminTagId: {
+    path: '/admin/tag/:id',
+    Component: AdminTagId,
+  },
+  adminUserList: {
+    path: '/admin/user',
+    Component: AdminUserList,
   },
   errorForbidden: {
     path: '/403',
