@@ -1,15 +1,15 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
-import { Post } from './store'
-import { Card, CardHeader, CardBody, CardFooter, Box, Button, Text, Tag } from 'grommet'
+import { allPostsStore } from './store'
+import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
+import { useStore } from '@nanostores/react'
 
 export interface PostCardProps {
   id: string
-  posts: Array<Post>
 }
 
-export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ id, posts }) => {
-  const allPosts = posts
+export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ id }) => {
+  const allPosts = useStore(allPostsStore)
   const foundPost = allPosts.find((p) => p.id === id)
 
   return (

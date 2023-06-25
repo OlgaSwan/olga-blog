@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@loadable/component": "^5.15.3",
+    "@mdi/js": "^7.2.96",
+    "@mdi/react": "^1.6.1",
     "@nanostores/react": "^0.7.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
