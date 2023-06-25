@@ -1,14 +1,13 @@
 import { initializeApp } from 'firebase/app'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyC1UklvQvrU3uAKTXHZwsrBt5-sil26YxU',
-  authDomain: 'olya-blog-4bfdb.firebaseapp.com',
-  projectId: 'olya-blog-4bfdb',
-  storageBucket: 'olya-blog-4bfdb.appspot.com',
-  messagingSenderId: '197459135971',
-  appId: '1:197459135971:web:650c42f9af6423e107a4d6',
-  measurementId: 'G-N3WY450503',
-  databaseURL: 'https://olya-blog-4bfdb-default-rtdb.firebaseio.com/',
+  apiKey: 'AIzaSyAF4SYW1AGBbPUDFqM49pX3dR5esdn5hTY',
+  authDomain: 'olya-blog-23a06.firebaseapp.com',
+  projectId: 'olya-blog-23a06',
+  storageBucket: 'olya-blog-23a06.appspot.com',
+  messagingSenderId: '691086364086',
+  appId: '1:691086364086:web:4ed1bb53acb4d658558517',
+  measurementId: 'G-X0Z3SHYFML',
 }
 
 export const firebaseApp = initializeApp(firebaseConfig)
