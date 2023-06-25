@@ -14,7 +14,7 @@ export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ 
 
   return (
     <Card height='medium' width='large' background='light-1'>
-      <CardHeader pad='medium' alignSelf="end">        
+      <CardHeader pad='medium' alignSelf='end'>
         {foundPost && (
           <Box direction='row' flex='grow' gap='small'>
             {foundPost.tags ? foundPost.tags.map((tag) => <Tag size='small' value={tag} />) : <></>}
@@ -22,10 +22,10 @@ export const PostCard: FunctionComponent<PropsWithChildren<PostCardProps>> = ({ 
         )}
       </CardHeader>
       {foundPost && (
-        <CardBody pad='medium' gap="medium">
+        <CardBody pad='medium' gap='medium'>
           <Text size='3xl' weight='bold'>
-          {foundPost ? foundPost.title : 'Post not found'}
-        </Text>
+            {foundPost ? foundPost.title : 'Post not found'}
+          </Text>
           <Text size='medium' weight='normal'>
             {foundPost.desc}
           </Text>
