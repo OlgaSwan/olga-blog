@@ -21,7 +21,7 @@ allPostsStore.set(
     title: company.catchPhrase(),
     desc: lorem.paragraph(2),
     likes: random(10, 1000, false),
-    tags: sampleSize(devTerms, random(1, 3))
+    tags: sampleSize(devTerms, random(1, 3)),
   }))
 )
 
