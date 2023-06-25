@@ -24,7 +24,3 @@ allPostsStore.set(
     tags: sampleSize(devTerms, random(1, 3)),
   }))
 )
-
-
-
-
