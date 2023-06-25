@@ -1,7 +1,10 @@
-import { atom } from 'nanostores'
 import { company, lorem } from 'faker'
 import { v4 as uuid } from 'uuid'
 import { random, sampleSize } from 'lodash-es'
+import { atom } from 'nanostores'
+import { getDatabase, onValue, ref } from 'firebase/database'
+
+import { firebaseApp } from '../../shared/firebase-app'
 
 export interface Post {
   id: string
@@ -13,14 +16,29 @@ export interface Post {
 
 export const allPostsStore = atom<Array<Post>>([])
 
-export const devTerms: string[] = ['JS', 'TS', 'SCSS', 'react', 'redux', 'vue']
+const database = getDatabase(firebaseApp)
+const postsRef = ref(database, 'posts')
 
-allPostsStore.set(
-  new Array(random(10, 20, false)).fill('').map(() => ({
-    id: uuid(),
-    title: company.catchPhrase(),
-    desc: lorem.paragraph(2),
-    likes: random(10, 1000, false),
-    tags: sampleSize(devTerms, random(1, 3)),
-  }))
-)
+onValue(postsRef, (snapshot) => {
+  const posts: Array<Post> = []
+  snapshot.forEach((childSnapshot) => {
+    const childKey = childSnapshot.key
+    const childData = childSnapshot.val()
+    posts.push(childData)
+  })
+  allPostsStore.set(posts)
+})
+
+const generateRandomPosts = () => {
+  const devTerms: string[] = ['JS', 'TS', 'SCSS', 'react', 'redux', 'vue']
+
+  allPostsStore.set(
+    new Array(random(10, 20, false)).fill('').map(() => ({
+      id: uuid(),
+      title: company.catchPhrase(),
+      desc: lorem.paragraph(2),
+      likes: random(10, 1000, false),
+      tags: sampleSize(devTerms, random(1, 3)),
+    }))
+  )
+}
