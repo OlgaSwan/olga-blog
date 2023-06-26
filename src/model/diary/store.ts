@@ -22,14 +22,21 @@ export const diaryStore = {
       tags: sampleSize(['JS', 'TS', 'SCSS', 'react', 'redux', 'vue'], random(1, 3)),
     }
     addDoc(diaryCollection, data).then((docRef) => {
-      store.set([...store.get(), data])
+      // prettier-ignore
+      store.set([
+        ...store.get(),
+        { ...data, id: docRef.id }
+      ])
     })
   },
   edit: () => {},
   remove: () => {},
   fetchAll: () => {
     getDocs(diaryCollection).then((querySnapshot) => {
-      store.set(querySnapshot.docs.map((doc) => doc.data() as Diary))
+      // prettier-ignore
+      store.set(querySnapshot.docs.map(doc =>
+        ({ id: doc.id, ...doc.data() } as Diary)
+      ))
     })
   },
   clearAll: () => {},
