@@ -2,6 +2,7 @@ import { collection, getDocs, getFirestore, addDoc } from 'firebase/firestore'
 import { atom } from 'nanostores'
 import { company, lorem } from 'faker'
 import { random, sampleSize } from 'lodash-es'
+import { v4 as uuid } from 'uuid'
 
 import { firebaseApp } from '../../shared/firebase-app'
 
@@ -17,9 +18,30 @@ export const diaryStore = {
   add: () => {},
   addRandom: () => {
     const data = {
+      id: uuid(),
       title: company.catchPhrase(),
       content: lorem.paragraph(2),
-      tags: sampleSize(['JS', 'TS', 'SCSS', 'react', 'redux', 'vue'], random(1, 3)),
+      tags: sampleSize(
+        [
+          'JS',
+          'TS',
+          'Semantic HTML',
+          'CSS Property',
+          'SCSS',
+          'react',
+          'redux',
+          'vue',
+          'Git',
+          'GitHub',
+          'SAAS',
+          'Vite',
+          'Responsive Design',
+          'MVP',
+          'UX/UI',
+        ],
+        random(2, 6)
+      ),
+      likes: random(10, 1000, false),
     }
     addDoc(diaryCollection, data).then((docRef) => {
       store.set([...store.get(), data])
