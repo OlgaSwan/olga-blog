@@ -6,11 +6,11 @@ import { diaryStore } from './store'
 import { DiaryCard } from './diary-card'
 
 export const DiaryList: FunctionComponent = () => {
-  const allPosts = useStore(diaryStore.store)
+  const allDiaries = useStore(diaryStore.list)
 
   return (
     <Box gap='medium'>
-      {allPosts.map((p) => (
+      {allDiaries.map((p) => (
         <DiaryCard key={p.id} id={p.id} />
       ))}
     </Box>
