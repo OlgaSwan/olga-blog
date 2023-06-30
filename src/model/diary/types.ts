@@ -10,7 +10,7 @@ export const diaryInternalSchema = z.object({
 export type DiaryInternal = z.infer<typeof diaryInternalSchema>
 
 export const diaryExternalSchema = diaryInternalSchema.extend({
-  id: z.string()
+  id: z.string(),
 })
 
 export type DiaryExternal = z.infer<typeof diaryExternalSchema>
