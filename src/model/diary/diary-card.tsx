@@ -13,36 +13,36 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   const allDiaries = useStore(diaryStore.list)
   const foundDiary = allDiaries.find((p) => p.id === id)
 
+  if (!foundDiary) return (
+    <Card height='medium' width='large' background='light-1'>
+      <CardBody>Post not found</CardBody>
+    </Card>
+  )
+
   return (
     <Card height='medium' width='large' background='light-1'>
       <CardHeader pad='medium' alignSelf='end'>
-        {foundDiary && (
-          <Box direction='row' flex='grow' gap='small'>
-            {foundDiary.tags ? foundDiary.tags.map((tag) => <Tag size='small' value={tag} />) : <></>}
-          </Box>
-        )}
+        <Box direction='row' flex='grow' gap='small'>
+          {foundDiary.tags.map((tag) => <Tag key={tag} size='small' value={tag} />)}
+        </Box>
       </CardHeader>
-      {foundDiary && (
-        <CardBody pad='medium' gap='medium'>
-          <Text size='3xl' weight='bold'>
-            {foundDiary ? foundDiary.title : 'Post not found'}
+      <CardBody pad='medium' gap='medium'>
+        <Text size='3xl' weight='bold'>
+          {foundDiary.title}
+        </Text>
+        <Text size='medium' weight='normal'>
+          {foundDiary.content}
+        </Text>
+      </CardBody>
+      <CardFooter pad={{ horizontal: 'small' }} background='background-back'>
+        <Box direction='row' align='center'>
+          <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
+          <Text size='small' weight='normal'>
+            {foundDiary.likes}
           </Text>
-          <Text size='medium' weight='normal'>
-            {foundDiary.content}
-          </Text>
-        </CardBody>
-      )}
-      {foundDiary && (
-        <CardFooter pad={{ horizontal: 'small' }} background='background-back'>
-          <Box direction='row' align='center'>
-            <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
-            <Text size='small' weight='normal'>
-              {foundDiary.likes}
-            </Text>
-          </Box>
-          <Button icon={<Icons.ShareOption color='plain' />} hoverIndicator />
-        </CardFooter>
-      )}
+        </Box>
+        <Button icon={<Icons.ShareOption color='plain' />} hoverIndicator />
+      </CardFooter>
     </Card>
   )
 }
