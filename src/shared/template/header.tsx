@@ -4,7 +4,7 @@ import * as Icons from 'grommet-icons'
 import { useStore } from '@nanostores/react'
 
 import { routeMap } from '../../pages'
-import { auth } from '../../model/auth'
+import { authStore } from '../../model/auth'
 import { colorScheme } from '../../model/color-scheme'
 import { LinkCustom } from '../link-custom'
 
@@ -12,7 +12,7 @@ import avatar from './avatar.jpg'
 
 const TemplateHeaderMobile: FunctionComponent = () => {
   const colorSchemeValue = useStore(colorScheme)
-  const authStoreValue = useStore(auth.store)
+  const authStoreValue = useStore(authStore.store)
   const [isMenuOpened, setMenuOpened] = useState<boolean>(false)
 
   return (
@@ -57,7 +57,7 @@ const TemplateHeaderMobile: FunctionComponent = () => {
                 href='#'
                 onClick={(event) => {
                   event.preventDefault()
-                  auth.logout()
+                  authStore.logout()
                 }}
               />
             ) : (
@@ -80,7 +80,7 @@ const TemplateHeaderMobile: FunctionComponent = () => {
 }
 
 const TemplateHeaderDesktop: FunctionComponent = () => {
-  const authStoreValue = useStore(auth.store)
+  const authStoreValue = useStore(authStore.store)
   const colorSchemeValue = useStore(colorScheme)
 
   return (
@@ -106,7 +106,7 @@ const TemplateHeaderDesktop: FunctionComponent = () => {
             href='#'
             onClick={(event) => {
               event.preventDefault()
-              auth.logout()
+              authStore.logout()
             }}
           />
         ) : (

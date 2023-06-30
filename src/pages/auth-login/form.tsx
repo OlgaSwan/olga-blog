@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Box, Button, Form, FormField, Text, TextInput } from 'grommet'
 
-import { auth } from '../../model/auth'
+import { authStore } from '../../model/auth'
 
 import { routeMap } from '../index'
 
@@ -19,7 +19,7 @@ export const FormLogin: FunctionComponent = () => {
         value={value}
         onChange={(newValue) => setValue(newValue)}
         onReset={() => setValue({ login: '', password: '' })}
-        onSubmit={(event) => auth.login(event.value)}
+        onSubmit={(event) => authStore.login(event.value)}
       >
         <FormField label='Email'>
           <TextInput type='email' name='login' size='small' placeholder='email@example.com' />

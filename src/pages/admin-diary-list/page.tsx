@@ -5,9 +5,12 @@ import * as Icons from 'grommet-icons'
 
 import { Template } from '../../shared/template'
 import { diaryStore } from '../../model/diary'
+import { useAuthRedirect } from '../../model/auth'
+import { routeMap } from '../index'
 
 const AdminDiaryList: FunctionComponent = () => {
   const diaryList = useStore(diaryStore.list)
+  useAuthRedirect(true, routeMap.errorForbidden.path)
 
   return (
     <Template>
