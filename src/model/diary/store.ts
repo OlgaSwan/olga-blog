@@ -1,24 +1,31 @@
-import { collection, getDocs, getFirestore, addDoc } from 'firebase/firestore'
+import { collection, getFirestore, addDoc, updateDoc, doc, onSnapshot, deleteDoc, getDocs } from 'firebase/firestore'
 import { atom } from 'nanostores'
 import { company, lorem } from 'faker'
 import { random, sampleSize } from 'lodash-es'
-import { v4 as uuid } from 'uuid'
+import { eachLimit } from 'async'
 
 import { firebaseApp } from '../../shared/firebase-app'
 
-import { Diary } from './types'
+import { DiaryExternal, diaryInternalSchema, DiaryInternal } from './types'
 
 const firestore = getFirestore(firebaseApp)
 const diaryCollection = collection(firestore, 'diary')
 
-const store = atom<Array<Diary>>([])
+const list = atom<Array<DiaryExternal>>([])
+
+onSnapshot(diaryCollection, (snapshot) => {
+  list.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as DiaryExternal)))
+})
 
 export const diaryStore = {
-  store,
-  add: () => {},
-  addRandom: () => {
+  list,
+  add: async (diary: DiaryInternal) => {
+    diaryInternalSchema.parse(diary)
+    await addDoc(diaryCollection, diary)
+  },
+  // TODO addBatch
+  addRandom: async () => {
     const data = {
-      id: uuid(),
       title: company.catchPhrase(),
       content: lorem.paragraph(2),
       tags: sampleSize(
@@ -43,27 +50,18 @@ export const diaryStore = {
       ),
       likes: random(10, 1000, false),
     }
-    addDoc(diaryCollection, data).then((docRef) => {
-      // prettier-ignore
-      store.set([
-        ...store.get(),
-        { ...data, id: docRef.id }
-      ])
-    })
+    await addDoc(diaryCollection, data)
   },
-  edit: () => {},
-  remove: () => {},
-  fetchAll: () => {
-    getDocs(diaryCollection).then((querySnapshot) => {
-      // prettier-ignore
-      store.set(querySnapshot.docs.map(doc =>
-        ({ id: doc.id, ...doc.data() } as Diary)
-      ))
-    })
+  // TODO addRandomBatch
+  edit: async ({ id, ...diary }: DiaryExternal) => {
+    await updateDoc(doc(diaryCollection, id), diary)
   },
-  clearAll: () => {},
+  remove: async (id: string) => {
+    await deleteDoc(doc(diaryCollection, id))
+  },
+  // TODO removeBatch
+  removeAll: async () => {
+    const docsQuerySnapshot = await getDocs(diaryCollection)
+    await eachLimit(docsQuerySnapshot.docs, 5, async (d) => await deleteDoc(d.ref))
+  },
 }
-
-diaryStore.fetchAll()
-
-store.subscribe((value) => console.log(value))

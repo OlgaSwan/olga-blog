@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
 import { Template } from '../../shared/template'
-import { DiaryList } from '../../model/diary/diary-list'
+import { DiaryList } from '../../model/diary'
 
 const Home: FunctionComponent = () => (
   <Template>
