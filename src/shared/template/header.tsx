@@ -52,6 +52,7 @@ const TemplateHeaderMobile: FunctionComponent = () => {
             <LinkCustom size='xlarge' label='Hire me' href={routeMap.aboutHire.path} />
             {authStoreValue && (
               <LinkCustom
+                size='xlarge'
                 label='Sign out'
                 href='#'
                 onClick={(event) => {
