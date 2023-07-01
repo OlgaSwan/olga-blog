@@ -11,7 +11,7 @@ import { LinkCustom } from '../link-custom'
 import avatar from './avatar.jpg'
 
 const TemplateHeaderMobile: FunctionComponent = () => {
-  const colorSchemeValue = useStore(colorScheme)
+  const colorSchemeValue = useStore(colorScheme.store)
   const authStoreValue = useStore(authStore.store)
   const [isMenuOpened, setMenuOpened] = useState<boolean>(false)
 
@@ -69,7 +69,7 @@ const TemplateHeaderMobile: FunctionComponent = () => {
               href='#'
               onClick={(event) => {
                 event.preventDefault()
-                colorScheme.set(colorSchemeValue === 'dark' ? 'light' : 'dark')
+                colorScheme.toggle()
               }}
             />
           </Nav>
@@ -81,7 +81,7 @@ const TemplateHeaderMobile: FunctionComponent = () => {
 
 const TemplateHeaderDesktop: FunctionComponent = () => {
   const authStoreValue = useStore(authStore.store)
-  const colorSchemeValue = useStore(colorScheme)
+  const colorSchemeValue = useStore(colorScheme.store)
 
   return (
     <Header
@@ -117,7 +117,7 @@ const TemplateHeaderDesktop: FunctionComponent = () => {
           href='#'
           onClick={(event) => {
             event.preventDefault()
-            colorScheme.set(colorSchemeValue === 'dark' ? 'light' : 'dark')
+            colorScheme.toggle()
           }}
           style={{ lineHeight: 0 }}
         />
