@@ -22,7 +22,6 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
     )
 
   return (
-<<<<<<< Updated upstream
     <Card width='large' background='light-1'>
       <CardHeader direction='column' pad='medium'>
         {screenSize !== 'small' && (
@@ -31,18 +30,6 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           </Box>
         )}
         <Text size='3xl' weight='bold' alignSelf='start'>
-=======
-    <Card height='medium' width='large' background='light-1'>
-      <CardHeader pad='medium' alignSelf='end'>
-        <Box direction='row' flex='grow' gap='small'>
-          {foundDiary.tags.map((tag) => (
-            <Tag key={tag} size='small' value={tag} />
-          ))}
-        </Box>
-      </CardHeader>
-      <CardBody pad='medium' gap='medium'>
-        <Text size='3xl' weight='bold'>
->>>>>>> Stashed changes
           {foundDiary.title}
         </Text>
       </CardHeader>
