@@ -6,7 +6,6 @@ import { BlogHome } from './blog-home'
 import { BlogDiaryId } from './blog-diary-id'
 import { BlogTagId } from './blog-tag-id'
 import { AuthLogin } from './auth-login'
-import { AuthRegister } from './auth-register'
 import { AuthRecover } from './auth-recover'
 import { AdminHome } from './admin-home'
 import { AdminDiaryList } from './admin-diary-list'
@@ -49,10 +48,6 @@ export const routeMap = {
   authLogin: {
     path: '/auth/login',
     Component: AuthLogin,
-  },
-  authRegister: {
-    path: '/auth/register',
-    Component: AuthRegister,
   },
   authRecover: {
     path: '/auth/recover',
