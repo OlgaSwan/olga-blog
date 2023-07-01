@@ -26,7 +26,9 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
       <CardHeader direction='column' pad='medium'>
         {screenSize !== 'small' && (
           <Box direction='row' flex='grow' gap='small' alignSelf='end'>
-            {foundDiary.tags.map((tag) => <Tag key={tag} size='small' value={tag} />)}
+            {foundDiary.tags.map((tag) => (
+              <Tag key={tag} size='small' value={tag} />
+            ))}
           </Box>
         )}
         <Text size='3xl' weight='bold' alignSelf='start'>
