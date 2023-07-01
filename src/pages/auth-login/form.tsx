@@ -32,9 +32,6 @@ export const FormLogin: FunctionComponent = () => {
             <Button type='submit' primary label={<Text weight='bold'>Sign in</Text>} />
             <Button type='reset' label={<Text weight='normal'>Reset</Text>} />
           </Box>
-          <Box>
-            <Button label={<Text weight='bold'>Create an account</Text>} href={routeMap.authRegister.path} />
-          </Box>
         </Box>
       </Form>
     </Box>

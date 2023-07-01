@@ -50,9 +50,8 @@ const TemplateHeaderMobile: FunctionComponent = () => {
             <LinkCustom size='xlarge' label='About' href={routeMap.aboutMe.path} />
             <LinkCustom size='xlarge' label='Uses' href={routeMap.aboutUses.path} />
             <LinkCustom size='xlarge' label='Hire me' href={routeMap.aboutHire.path} />
-            {authStoreValue ? (
+            {authStoreValue && (
               <LinkCustom
-                size='xlarge'
                 label='Sign out'
                 href='#'
                 onClick={(event) => {
@@ -60,8 +59,6 @@ const TemplateHeaderMobile: FunctionComponent = () => {
                   authStore.logout()
                 }}
               />
-            ) : (
-              <LinkCustom size='xlarge' label='Sign in' href={routeMap.authLogin.path} />
             )}
             <LinkCustom
               label='Color scheme'
@@ -100,7 +97,7 @@ const TemplateHeaderDesktop: FunctionComponent = () => {
         <LinkCustom label='About' href={routeMap.aboutMe.path} />
         <LinkCustom label='Uses' href={routeMap.aboutUses.path} />
         <LinkCustom label='Hire me' href={routeMap.aboutHire.path} />
-        {authStoreValue ? (
+        {authStoreValue && (
           <LinkCustom
             label='Sign out'
             href='#'
@@ -109,8 +106,6 @@ const TemplateHeaderDesktop: FunctionComponent = () => {
               authStore.logout()
             }}
           />
-        ) : (
-          <LinkCustom label='Sign in' href={routeMap.authLogin.path} />
         )}
         <LinkCustom
           icon={colorSchemeValue === 'dark' ? <Icons.Moon /> : <Icons.Sun />}

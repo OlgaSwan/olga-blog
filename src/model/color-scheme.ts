@@ -20,6 +20,6 @@ store.subscribe((value) => {
 export const colorScheme = {
   store,
   toggle: () => {
-    store.set(store.get() === 'light' ? 'dark': 'light')
-  }
+    store.set(store.get() === 'light' ? 'dark' : 'light')
+  },
 }
