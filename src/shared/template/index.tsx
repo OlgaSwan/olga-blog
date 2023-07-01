@@ -26,28 +26,29 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
       themeMode={colorSchemeValue}
     >
       <TemplateHeader />
-      <Box style={{ position: 'relative' }} align='start' margin='medium'>
-        <Nav
-          style={{ position: 'sticky', top: '50%', translate: '0 -50%' }}
-          pad='medium'
-          align='center'
-          background='brand'
-          round='small'
-        >
-          <Box pad='small' hoverIndicator>
-            <LinkCustom icon={<Icons.Projects />} label='Posts' href='#' />
-          </Box>
-          <Box pad='small' hoverIndicator>
-            <LinkCustom icon={<Icons.Tag />} label='Tags' href='#' />
-          </Box>
-        </Nav>
-
-        <Page kind='narrow' flex='grow' direction='column'>
-          <PageContent flex='grow' pad='medium'>
-            {props.children}
-          </PageContent>
-        </Page>
-      </Box>
+      <Page direction='row' pad='medium' gap='medium'>
+        <Box flex='grow' style={{ position: 'relative' }}>
+          <Nav
+            style={{ position: 'sticky', top: '50%', translate: '0 -50%' }}
+            pad='medium'
+            align='center'
+            background='brand'
+            round='small'
+            width='small'
+          >
+            <Box pad='small' hoverIndicator>
+              <LinkCustom icon={<Icons.Projects />} label='Posts' href='#' />
+            </Box>
+            <Box pad='small' hoverIndicator>
+              <LinkCustom icon={<Icons.Tag />} label='Tags' href='#' />
+            </Box>
+          </Nav>
+        </Box>
+        <Box flex='grow'>
+          {props.children}
+        </Box>
+        <Box flex='grow' />
+      </Page>
       <TemplateFooter />
     </Grommet>
   )
