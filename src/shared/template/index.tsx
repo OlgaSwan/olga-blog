@@ -8,7 +8,7 @@ import { TemplateHeader } from './header'
 import { TemplateFooter } from './footer'
 
 export const Template: FunctionComponent<PropsWithChildren> = (props) => {
-  const colorSchemeValue = useStore(colorScheme)
+  const colorSchemeValue = useStore(colorScheme.store)
 
   return (
     <Grommet
