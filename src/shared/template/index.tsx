@@ -26,7 +26,7 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
       themeMode={colorSchemeValue}
     >
       <TemplateHeader />
-      <Page direction='row' pad='medium' gap='medium'>
+      <Page direction='row' pad='medium' gap='medium' alignSelf='center'>
         <Box flex='grow' style={{ position: 'relative' }}>
           <Nav
             style={{ position: 'sticky', top: '50%', translate: '0 -50%' }}
@@ -44,9 +44,7 @@ export const Template: FunctionComponent<PropsWithChildren> = (props) => {
             </Box>
           </Nav>
         </Box>
-        <Box flex='grow'>
-          {props.children}
-        </Box>
+        <Box flex='grow'>{props.children}</Box>
         <Box flex='grow' />
       </Page>
       <TemplateFooter />
