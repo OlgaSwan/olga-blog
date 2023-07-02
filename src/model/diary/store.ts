@@ -6,15 +6,29 @@ import { eachLimit } from 'async'
 
 import { firebaseApp } from '../../shared/firebase-app'
 
-import { DiaryExternal, diaryInternalSchema, DiaryInternal } from './types'
+import {
+  DiaryExternal,
+  diaryInternalSchema,
+  DiaryInternal,
+  tagInternalSchema,
+  TagInternal,
+  TagExternalSchema,
+  TagExternal,
+} from './types'
 
 const firestore = getFirestore(firebaseApp)
 const diaryCollection = collection(firestore, 'diary')
+const tagsCollection = collection(firestore, 'tags')
 
 const list = atom<Array<DiaryExternal>>([])
+export const tagList = atom<Array<TagExternal>>([])
 
 onSnapshot(diaryCollection, (snapshot) => {
   list.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as DiaryExternal)))
+})
+
+onSnapshot(tagsCollection, (snapshot) => {
+  tagList.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as TagExternal)))
 })
 
 export const diaryStore = {
@@ -29,23 +43,7 @@ export const diaryStore = {
       title: company.catchPhrase(),
       content: lorem.paragraph(2),
       tags: sampleSize(
-        [
-          'JS',
-          'TS',
-          'Semantic HTML',
-          'CSS Property',
-          'SCSS',
-          'react',
-          'redux',
-          'vue',
-          'Git',
-          'GitHub',
-          'SAAS',
-          'Vite',
-          'Responsive Design',
-          'MVP',
-          'UX/UI',
-        ],
+        tagList.get().map((e) => e.title),
         random(2, 6)
       ),
       likes: random(10, 1000, false),

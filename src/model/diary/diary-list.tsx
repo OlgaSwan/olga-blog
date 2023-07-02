@@ -5,14 +5,18 @@ import { Box } from 'grommet'
 import { diaryStore } from './store'
 import { DiaryCard } from './diary-card'
 
-export const DiaryList: FunctionComponent = () => {
+export interface DiaryListProps {
+  isSliced?: boolean
+}
+
+export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true }) => {
   const allDiaries = useStore(diaryStore.list)
 
   return (
     <Box gap='medium'>
-      {allDiaries.map((p) => (
-        <DiaryCard key={p.id} id={p.id} />
-      ))}
+      {isSliced
+        ? allDiaries.slice(0, 3).map((p) => <DiaryCard key={p.id} id={p.id} />)
+        : allDiaries.map((p) => <DiaryCard key={p.id} id={p.id} />)}
     </Box>
   )
 }
