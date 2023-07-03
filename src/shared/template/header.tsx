@@ -48,7 +48,6 @@ const TemplateHeaderMobile: FunctionComponent = () => {
           <Nav pad='large' gap='large'>
             <LinkCustom size='xlarge' label='Blog' href={routeMap.blogHome.path} />
             <LinkCustom size='xlarge' label='About' href={routeMap.aboutMe.path} />
-            <LinkCustom size='xlarge' label='Uses' href={routeMap.aboutUses.path} />
             <LinkCustom size='xlarge' label='Hire me' href={routeMap.aboutHire.path} />
             {authStoreValue && (
               <LinkCustom
@@ -96,7 +95,6 @@ const TemplateHeaderDesktop: FunctionComponent = () => {
       <Nav direction='row' align='center'>
         <LinkCustom label='Blog' href={routeMap.blogHome.path} />
         <LinkCustom label='About' href={routeMap.aboutMe.path} />
-        <LinkCustom label='Uses' href={routeMap.aboutUses.path} />
         <LinkCustom label='Hire me' href={routeMap.aboutHire.path} />
         {authStoreValue && (
           <LinkCustom
