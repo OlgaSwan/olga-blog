@@ -1,7 +1,6 @@
 import { Home } from './home'
 import { AboutHire } from './about-hire'
 import { AboutMe } from './about-me'
-import { AboutUses } from './about-uses'
 import { BlogHome } from './blog-home'
 import { BlogDiaryId } from './blog-diary-id'
 import { BlogTagId } from './blog-tag-id'
@@ -28,10 +27,6 @@ export const routeMap = {
   aboutMe: {
     path: '/about/me',
     Component: AboutMe,
-  },
-  aboutUses: {
-    path: '/about/uses',
-    Component: AboutUses,
   },
   blogHome: {
     path: '/blog',
