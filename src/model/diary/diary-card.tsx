@@ -1,4 +1,6 @@
 import React, { FunctionComponent, PropsWithChildren, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext } from 'grommet'
 import * as Icons from 'grommet-icons'
 import { useStore } from '@nanostores/react'
@@ -12,6 +14,7 @@ export interface DiaryCardProps {
 export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
   const allDiaries = useStore(diaryStore.list)
   const foundDiary = allDiaries.find((p) => p.id === id)
+  const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
 
   if (!foundDiary)
@@ -23,7 +26,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
 
   return (
     <Card width='large' background='light-1'>
-      <CardHeader direction='column' pad='medium'>
+      <CardHeader direction='column' pad='medium' focusIndicator={false} onClick={() => navigate(`/blog/diary/${id}`)}>
         {screenSize !== 'small' && (
           <Box direction='row' flex='grow' gap='small' alignSelf='end'>
             {foundDiary.tags.map((tag) => (
@@ -35,7 +38,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           {foundDiary.title}
         </Text>
       </CardHeader>
-      <CardBody pad='medium' gap='medium'>
+      <CardBody pad='medium' gap='medium' focusIndicator={false} onClick={() => navigate(`/blog/diary/${id}`)}>
         <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
           {foundDiary.content}
         </Text>
