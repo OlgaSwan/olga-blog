@@ -13,6 +13,7 @@ export interface DiaryCardProps {
 
 export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
   const allDiaries = useStore(diaryStore.list)
+  const allTags = useStore(diaryStore.tagList)
   const foundDiary = allDiaries.find((p) => p.id === id)
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
@@ -30,7 +31,16 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         {screenSize !== 'small' && (
           <Box direction='row' flex='grow' gap='small' alignSelf='end'>
             {foundDiary.tags.map((tag) => (
-              <Tag key={tag} size='small' value={tag} />
+              <Tag
+                key={tag}
+                size='small'
+                value={tag}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  const foundTag = allTags.find((t) => t.title === tag)
+                  navigate(`/blog/${foundTag!.id}`)
+                }}
+              />
             ))}
           </Box>
         )}

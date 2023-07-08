@@ -32,6 +32,10 @@ export const routeMap = {
     path: '/blog',
     Component: BlogHome,
   },
+  blogHomeTag: {
+    path: '/blog/:tag?',
+    Component: BlogHome,
+  },
   blogDiaryId: {
     path: '/blog/diary/:id',
     Component: BlogDiaryId,

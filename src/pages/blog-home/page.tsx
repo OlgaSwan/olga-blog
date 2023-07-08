@@ -1,15 +1,25 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { PageHeader, Box, CheckBoxGroup, Text } from 'grommet'
 
-import { tagList } from '../../model/diary/store'
+import { diaryStore } from '../../model/diary/store'
 
 import { Template } from '../../shared/template'
 import { DiaryList } from '../../model/diary'
 
 const BlogHome: FunctionComponent = () => {
-  const tags = useStore(tagList)
+  const tags = useStore(diaryStore.tagList)
   const [chosenTags, setChosenTags] = useState<string[]>([])
+  const params = useParams()
+
+  useEffect(() => {
+    if (params.tag) {
+      const foundTag = tags.find((t) => t.id === params.tag)
+      if (foundTag) setChosenTags([...chosenTags, foundTag.title])
+    }
+  }, [params])
+
   return (
     <Template>
       <PageHeader size='small' title='Blog' margin={{ bottom: 'medium', top: 'medium' }} />
@@ -26,6 +36,7 @@ const BlogHome: FunctionComponent = () => {
         options={tags.sort((a, b) => a.sortOrder - b.sortOrder)}
         labelKey='title'
         valueKey='title'
+        value={chosenTags}
         onChange={({ value, option }: any) => {
           setChosenTags(value)
         }}

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useContext } from 'react'
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, useNavigate, Navigate } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, PageHeader, ResponsiveContext } from 'grommet'
 import * as Icons from 'grommet-icons'
@@ -10,8 +10,10 @@ import { routeMap } from '..'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
+  const allTags = useStore(diaryStore.tagList)
   const params = useParams()
-  const foundDiary = allDiaries.find((p) => p.id === params.id) 
+  const navigate = useNavigate()
+  const foundDiary = allDiaries.find((p) => p.id === params.id)
   const screenSize = useContext(ResponsiveContext)
 
   return (
@@ -38,7 +40,16 @@ const BlogDiaryId: FunctionComponent = () => {
               {screenSize !== 'small' && (
                 <Box direction='row' flex='grow' gap='small' alignSelf='start'>
                   {foundDiary!.tags.map((tag) => (
-                    <Tag key={tag} size='small' value={tag} />
+                    <Tag
+                      key={tag}
+                      size='small'
+                      value={tag}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        const foundTag = allTags.find((t) => t.title === tag)
+                        navigate(`/blog/${foundTag!.id}`)
+                      }}
+                    />
                   ))}
                 </Box>
               )}
