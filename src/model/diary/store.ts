@@ -21,7 +21,7 @@ const diaryCollection = collection(firestore, 'diary')
 const tagsCollection = collection(firestore, 'tags')
 
 const list = atom<Array<DiaryExternal>>([])
-export const tagList = atom<Array<TagExternal>>([])
+const tagList = atom<Array<TagExternal>>([])
 
 onSnapshot(diaryCollection, (snapshot) => {
   list.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as DiaryExternal)))
@@ -33,6 +33,7 @@ onSnapshot(tagsCollection, (snapshot) => {
 
 export const diaryStore = {
   list,
+  tagList,
   add: async (diary: DiaryInternal) => {
     diaryInternalSchema.parse(diary)
     await addDoc(diaryCollection, diary)
