@@ -1,11 +1,13 @@
 import React, { FunctionComponent } from 'react'
-import { PageHeader } from 'grommet'
+import { Heading } from 'grommet'
 
 import { TemplateContent } from '../../shared/template'
 
 const AboutHire: FunctionComponent = () => (
   <TemplateContent>
-    <PageHeader size='small' title='Hire me' margin={{ bottom: 'medium', top: 'medium' }} />
+    <Heading level='1' margin={{ bottom: 'medium' }}>
+      Hire me
+    </Heading>
   </TemplateContent>
 )
 

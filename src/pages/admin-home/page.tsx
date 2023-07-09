@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { PageHeader } from 'grommet'
+import { Heading } from 'grommet'
 
 import { TemplateAdmin } from '../../shared/template'
 import { useAuthRedirect } from '../../model/auth'
@@ -10,7 +10,9 @@ const AdminHome: FunctionComponent = () => {
 
   return (
     <TemplateAdmin>
-      <PageHeader size='small' title='AdminHome' margin={{ bottom: 'medium', top: 'medium' }} />
+      <Heading level='1' margin={{ bottom: 'medium' }}>
+        Admin panel
+      </Heading>
     </TemplateAdmin>
   )
 }

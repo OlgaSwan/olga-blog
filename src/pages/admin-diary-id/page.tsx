@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import { PageHeader } from 'grommet'
+import { Heading } from 'grommet'
 
-import { TemplateContent } from '../../shared/template'
+import { TemplateAdmin } from '../../shared/template'
 import { useAuthRedirect } from '../../model/auth'
 import { routeMap } from '../index'
 
@@ -9,9 +9,11 @@ const AdminDiaryId: FunctionComponent = () => {
   useAuthRedirect(true, routeMap.errorForbidden.path)
 
   return (
-    <TemplateContent>
-      <PageHeader size='small' title='AdminDiaryId' margin={{ bottom: 'medium', top: 'medium' }} />
-    </TemplateContent>
+    <TemplateAdmin>
+      <Heading level='1' margin={{ bottom: 'medium' }}>
+        Diary editor
+      </Heading>
+    </TemplateAdmin>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { PageHeader } from 'grommet'
+import { Heading } from 'grommet'
 
 import { TemplateContent } from '../../shared/template'
 
@@ -12,7 +12,9 @@ const AuthLogin: FunctionComponent = () => {
 
   return (
     <TemplateContent>
-      <PageHeader size='small' title='Login' margin={{ bottom: 'medium', top: 'medium' }} />
+      <Heading level='1' margin={{ bottom: 'medium' }}>
+        Login
+      </Heading>
       <FormLogin />
     </TemplateContent>
   )
