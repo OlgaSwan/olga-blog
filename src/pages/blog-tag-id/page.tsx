@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
-import { TemplateCommon } from '../../shared/template-common'
+import { TemplateContent } from '../../shared/template'
 
 const BlogTagId: FunctionComponent = () => (
-  <TemplateCommon>
+  <TemplateContent>
     <PageHeader size='small' title='Tag' margin={{ bottom: 'large', top: 'large' }} />
-  </TemplateCommon>
+  </TemplateContent>
 )
 
 export default BlogTagId

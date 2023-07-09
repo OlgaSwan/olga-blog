@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
-import { TemplateCommon } from '../../shared/template-common'
+import { TemplateAdmin } from '../../shared/template'
 import { useAuthRedirect } from '../../model/auth'
 import { routeMap } from '../index'
 
@@ -9,9 +9,9 @@ const AdminTagList: FunctionComponent = () => {
   useAuthRedirect(true, routeMap.errorForbidden.path)
 
   return (
-    <TemplateCommon>
+    <TemplateAdmin>
       <PageHeader size='small' title='AdminTagList' margin={{ bottom: 'medium', top: 'medium' }} />
-    </TemplateCommon>
+    </TemplateAdmin>
   )
 }
 

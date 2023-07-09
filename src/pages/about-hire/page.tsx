@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
-import { TemplateCommon } from '../../shared/template-common'
+import { TemplateContent } from '../../shared/template'
 
 const AboutHire: FunctionComponent = () => (
-  <TemplateCommon>
+  <TemplateContent>
     <PageHeader size='small' title='Hire me' margin={{ bottom: 'medium', top: 'medium' }} />
-  </TemplateCommon>
+  </TemplateContent>
 )
 
 export default AboutHire

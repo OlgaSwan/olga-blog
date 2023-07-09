@@ -2,12 +2,12 @@ import React, { FunctionComponent } from 'react'
 import { Box, Text, Heading, Image, PageHeader } from 'grommet'
 import { lorem } from 'faker'
 
-import { TemplateCommon } from '../../shared/template-common'
+import { TemplateContent } from '../../shared/template'
 
 import selfie from './selfie.jpg'
 
 const AboutMe: FunctionComponent = () => (
-  <TemplateCommon>
+  <TemplateContent>
     <PageHeader size='small' title='About me' margin={{ bottom: 'medium', top: 'medium' }} />
     <Box direction='row' align='center' gap='medium'>
       <Box gap='medium' width='large'>
@@ -20,7 +20,7 @@ const AboutMe: FunctionComponent = () => (
         <Image fit='cover' src={selfie} />
       </Box>
     </Box>
-  </TemplateCommon>
+  </TemplateContent>
 )
 
 export default AboutMe

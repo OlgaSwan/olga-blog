@@ -3,7 +3,7 @@ import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, PageHeade
 import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 
-import { TemplateCommon } from '../../shared/template-common'
+import { TemplateAdmin } from '../../shared/template'
 import { diaryStore } from '../../model/diary'
 import { useAuthRedirect } from '../../model/auth'
 import { routeMap } from '../index'
@@ -13,7 +13,7 @@ const AdminDiaryList: FunctionComponent = () => {
   useAuthRedirect(true, routeMap.errorForbidden.path)
 
   return (
-    <TemplateCommon>
+    <TemplateAdmin>
       <PageHeader size='small' title='Diary list' margin={{ bottom: 'medium', top: 'medium' }} />
       <Box direction='column' gap='medium'>
         <Box direction='row' justify='start' gap='small' wrap>
@@ -54,7 +54,7 @@ const AdminDiaryList: FunctionComponent = () => {
           ))}
         </Box>
       </Box>
-    </TemplateCommon>
+    </TemplateAdmin>
   )
 }
 

@@ -3,7 +3,7 @@ import { useStore } from '@nanostores/react'
 import { grommet, Grommet, ResponsiveContext } from 'grommet'
 import { deepMerge } from 'grommet/utils'
 
-import { colorScheme } from '../../model/color-scheme'
+import { colorScheme } from '../../../model/color-scheme'
 
 import { TemplateDesktop } from './desktop'
 import { TemplateProps } from './props'
@@ -24,7 +24,7 @@ const theme = deepMerge(grommet, {
   }
 })
 
-export const Template: FunctionComponent<TemplateProps> = (props) => {
+export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
   const colorSchemeValue = useStore(colorScheme.store)
 
   return (
