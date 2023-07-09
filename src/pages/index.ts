@@ -47,7 +47,7 @@ export const routeMap = {
     Component: AuthLogin,
   },
   adminHome: {
-    path: '/admin/home',
+    path: '/admin',
     Component: AdminHome,
   },
   adminDiaryList: {

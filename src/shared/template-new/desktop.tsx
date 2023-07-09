@@ -9,7 +9,7 @@ import { colorScheme } from '../../model/color-scheme'
 import { LinkCustom } from '../link-custom'
 
 import { TemplateProps } from './props'
-import avatar from '../template/avatar.jpg'
+import avatar from './avatar.jpg'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({
   sidebarLeft,
