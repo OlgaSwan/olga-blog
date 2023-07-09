@@ -1,8 +1,8 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
-import { Template } from './template-new'
+import { TemplateAbstract } from './abstract'
 
 export const TemplateAdmin: FunctionComponent<PropsWithChildren> = ({
   children,
 }) => (
-  <Template main={children} />
+  <TemplateAbstract main={children} />
 )

@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { PageHeader, Box, CheckBoxGroup, Text } from 'grommet'
 
-import { diaryStore } from '../../model/diary/store'
+import { diaryStore } from '../../model/diary'
 
 import { DiaryList } from '../../model/diary'
-import { TemplateCommon } from '../../shared/template-common'
+import { TemplateContent } from '../../shared/template'
 
 const BlogHome: FunctionComponent = () => {
   const tags = useStore(diaryStore.tagList)
@@ -21,7 +21,7 @@ const BlogHome: FunctionComponent = () => {
   }, [params])
 
   return (
-    <TemplateCommon>
+    <TemplateContent>
       <PageHeader size='small' title='Blog' margin={{ bottom: 'medium', top: 'medium' }} />
       <Text size='large'>Filter by tags</Text>
 
@@ -43,7 +43,7 @@ const BlogHome: FunctionComponent = () => {
       />
 
       <DiaryList isSliced={false} chosenTags={chosenTags} />
-    </TemplateCommon>
+    </TemplateContent>
   )
 }
 
