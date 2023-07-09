@@ -5,11 +5,11 @@ import * as Icons from 'grommet-icons'
 import { routeMap } from '..'
 import { LinkCustom } from '../../shared/link-custom'
 
-import { Template } from '../../shared/template'
+import { TemplateCommon } from '../../shared/template-common'
 import { DiaryList } from '../../model/diary'
 
 const Home: FunctionComponent = () => (
-  <Template>
+  <TemplateCommon>
     <Heading level='1' margin={{ bottom: 'medium' }}>
       Howdy, I'm Olga!
     </Heading>
@@ -71,7 +71,7 @@ const Home: FunctionComponent = () => (
         <li>Communication and conflict resolution</li>
       </ul>
     </Paragraph>
-  </Template>
+  </TemplateCommon>
 )
 
 export default Home

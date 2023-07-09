@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
-import { Template } from '../../shared/template'
+import { TemplateCommon } from '../../shared/template-common'
 
 import { FormLogin } from './form'
 import { useAuthRedirect } from '../../model/auth'
@@ -11,10 +11,10 @@ const AuthLogin: FunctionComponent = () => {
   useAuthRedirect(false, routeMap.home.path)
 
   return (
-    <Template>
+    <TemplateCommon>
       <PageHeader size='small' title='Login' margin={{ bottom: 'medium', top: 'medium' }} />
       <FormLogin />
-    </Template>
+    </TemplateCommon>
   )
 }
 

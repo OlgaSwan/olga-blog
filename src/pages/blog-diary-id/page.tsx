@@ -4,7 +4,7 @@ import { useStore } from '@nanostores/react'
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, PageHeader, ResponsiveContext } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { Template } from '../../shared/template'
+import { TemplateCommon } from '../../shared/template-common'
 import { diaryStore } from '../../model/diary'
 import { routeMap } from '..'
 
@@ -17,7 +17,7 @@ const BlogDiaryId: FunctionComponent = () => {
   const screenSize = useContext(ResponsiveContext)
 
   return (
-    <Template>
+    <TemplateCommon>
       {foundDiary ? (
         <>
           <PageHeader size='small' title='Diary' margin={{ bottom: 'large', top: 'large' }} />
@@ -68,7 +68,7 @@ const BlogDiaryId: FunctionComponent = () => {
       ) : (
         <Navigate to={routeMap.errorNotFound.path} />
       )}
-    </Template>
+    </TemplateCommon>
   )
 }
 

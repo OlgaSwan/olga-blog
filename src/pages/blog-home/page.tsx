@@ -5,8 +5,8 @@ import { PageHeader, Box, CheckBoxGroup, Text } from 'grommet'
 
 import { diaryStore } from '../../model/diary/store'
 
-import { Template } from '../../shared/template'
 import { DiaryList } from '../../model/diary'
+import { TemplateCommon } from '../../shared/template-common'
 
 const BlogHome: FunctionComponent = () => {
   const tags = useStore(diaryStore.tagList)
@@ -21,7 +21,7 @@ const BlogHome: FunctionComponent = () => {
   }, [params])
 
   return (
-    <Template>
+    <TemplateCommon>
       <PageHeader size='small' title='Blog' margin={{ bottom: 'medium', top: 'medium' }} />
       <Text size='large'>Filter by tags</Text>
 
@@ -43,7 +43,7 @@ const BlogHome: FunctionComponent = () => {
       />
 
       <DiaryList isSliced={false} chosenTags={chosenTags} />
-    </Template>
+    </TemplateCommon>
   )
 }
 
