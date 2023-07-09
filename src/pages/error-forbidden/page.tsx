@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import { PageHeader } from 'grommet'
 
-import { Template } from '../../shared/template'
+import { TemplateCommon } from '../../shared/template-common'
 
 const ErrorForbidden: FunctionComponent = () => (
-  <Template>
+  <TemplateCommon>
     <PageHeader size='small' title='Error: forbidden' margin={{ bottom: 'medium', top: 'medium' }} />
-  </Template>
+  </TemplateCommon>
 )
 
 export default ErrorForbidden

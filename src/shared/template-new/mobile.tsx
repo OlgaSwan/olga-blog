@@ -53,7 +53,7 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({
         />
       </Box>
     </Box>
-    <Box basis='0' flex='grow' as='main' pad='medium'>
+    <Box as='main' flex='grow' pad='medium'>
       {main}
     </Box>
     <Box as='footer' direction='column' pad='medium' align='center' gap='small'>
