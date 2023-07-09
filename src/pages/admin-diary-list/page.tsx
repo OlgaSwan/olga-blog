@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, PageHeader, Tag } from 'grommet'
+import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, Tag } from 'grommet'
 import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 
@@ -14,7 +14,9 @@ const AdminDiaryList: FunctionComponent = () => {
 
   return (
     <TemplateAdmin>
-      <PageHeader size='small' title='Diary list' margin={{ bottom: 'medium', top: 'medium' }} />
+      <Heading level='1' margin={{ bottom: 'medium' }}>
+        Diary list
+      </Heading>
       <Box direction='column' gap='medium'>
         <Box direction='row' justify='start' gap='small' wrap>
           <Button label='Create post' primary icon={<Icons.Edit />} />

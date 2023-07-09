@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
-import { PageHeader, Box, CheckBoxGroup, Text } from 'grommet'
+import { CheckBoxGroup, Text, Heading } from 'grommet'
 
 import { diaryStore } from '../../model/diary'
 
@@ -22,7 +22,9 @@ const BlogHome: FunctionComponent = () => {
 
   return (
     <TemplateContent>
-      <PageHeader size='small' title='Blog' margin={{ bottom: 'medium', top: 'medium' }} />
+      <Heading level='1' margin={{ bottom: 'medium' }}>
+        Blog
+      </Heading>
       <Text size='large'>Filter by tags</Text>
 
       <CheckBoxGroup

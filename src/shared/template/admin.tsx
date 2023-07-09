@@ -7,7 +7,7 @@ import { routeMap } from '../../pages'
 
 const Sidebar: FunctionComponent = () => (
   <>
-    <Heading level='2'>Admin console</Heading>
+    <Heading level='2'>Admin panel</Heading>
     <LinkCustom href={routeMap.adminHome.path} size='xlarge'>Home</LinkCustom>
     <LinkCustom href={routeMap.adminDiaryList.path} size='xlarge'>Diaries</LinkCustom>
     <LinkCustom href={routeMap.adminTagList.path} size='xlarge'>Tags</LinkCustom>

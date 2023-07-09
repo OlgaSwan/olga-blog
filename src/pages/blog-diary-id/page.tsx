@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext } from 'react'
 import { useParams, useNavigate, Navigate } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
-import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, PageHeader, ResponsiveContext } from 'grommet'
+import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext, Heading } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { TemplateContent } from '../../shared/template'
@@ -20,7 +20,9 @@ const BlogDiaryId: FunctionComponent = () => {
     <TemplateContent>
       {foundDiary ? (
         <>
-          <PageHeader size='small' title='Diary' margin={{ bottom: 'large', top: 'large' }} />
+          <Heading level='1' margin={{ bottom: 'medium' }}>
+            Diary
+          </Heading>
           <Card width='large' background='light-1'>
             <CardHeader direction='column' pad='medium' focusIndicator={false}>
               <Text size='3xl' weight='bold' alignSelf='start'>
