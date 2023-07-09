@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
-import { PageHeader, Paragraph, Button, Heading } from 'grommet'
+import { PageHeader, Paragraph, Button, Heading, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { routeMap } from '..'
-import { LinkCustom } from '../../shared/link-custom'
+import { LinkCustom } from 'src/shared/link-custom'
 
-import { TemplateContent } from '../../shared/template'
-import { DiaryList } from '../../model/diary'
+import { TemplateContent } from 'src/shared/template'
+import { DiaryList } from 'src/model/diary'
 
 const Home: FunctionComponent = () => (
   <TemplateContent>
@@ -38,7 +38,7 @@ const Home: FunctionComponent = () => (
     <Heading level='3' margin={{ bottom: 'small' }}>
       Hard-skills
     </Heading>
-    <Paragraph margin={{ bottom: 'small' }}>
+    <Text margin={{ bottom: 'small' }}>
       I've worked with a lot of technologies on petprojects and in production
       <ul>
         <li>Vanilla JS, TypeScript</li>
@@ -47,11 +47,11 @@ const Home: FunctionComponent = () => (
         <li>React ecosystem: UI kits and frameworks, SPA and SSR frameworks</li>
         <li>State management libraries: Effector, RXjs, Redux</li>
       </ul>
-    </Paragraph>
+    </Text>
     <Heading level='3' margin={{ bottom: 'small' }}>
       T-shaped skills
     </Heading>
-    <Paragraph margin={{ bottom: 'medium' }}>
+    <Text margin={{ bottom: 'medium' }}>
       I am mainly engaged in development, but I've learnt some similar areas
       <ul>
         <li>UI design</li>
@@ -59,18 +59,18 @@ const Home: FunctionComponent = () => (
         <li>Design systems and UI kits</li>
         <li>Product analytics</li>
       </ul>
-    </Paragraph>
+    </Text>
     <Heading level='3' margin={{ bottom: 'small' }}>
       Soft-skills
     </Heading>
-    <Paragraph margin={{ bottom: 'medium' }}>
+    <Text margin={{ bottom: 'medium' }}>
       ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some technologies)
       <ul>
         <li>Solution research and presentation</li>
         <li>Management and delegation</li>
         <li>Communication and conflict resolution</li>
       </ul>
-    </Paragraph>
+    </Text>
   </TemplateContent>
 )
 

@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Olya's blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Business card, CV, personal blog, petproject playground
 
-## Available Scripts
+[![Feature-Sliced Design][shields-fsd-image]](https://feature-sliced.design/)
+![Tests: no](https://img.shields.io/badge/tests-no-red?style=flat-square)
+![Coverage: 146%](https://img.shields.io/badge/coverage-146%25-green?style=flat-square)
+![Build: sometimes](https://img.shields.io/badge/build-sometimes-yellow?style=flat-square)
 
-In the project directory, you can run:
+# Getting started
 
-### `npm start`
+Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js 18
+- Yarn v1
+- Patience
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Commands
 
-### `npm test`
+| Command        | Action                                          |
+|----------------|-------------------------------------------------|
+| `yarn install` | Install dependencies and link monorepo packages |
+| `yarn develop` | Start local dev server                          |
+| `yarn format`  | Reformat code                                   |
+| `yarn lint`    | Lint code                                       |
+| `yarn test`    | Run test cases                                  |
+| `yarn build`   | Build project                                   |
+| `yarn serve`   | Preview build locally                           |
+| `yarn clean`   | Cleanup cache and build directories             |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Boring technical details
 
-### `npm run build`
+- [node.js v18](https://nodejs.org/en/)
+- package management [yarn v1](https://classic.yarnpkg.com/)
+- monorepo management: [nx](https://nx.dev/) and [lerna](https://lerna.js.org/)
+- structured and organized with [Feature-Sliced Design](https://feature-sliced.design/)
+- rendered by [react](https://reactjs.org/)
+- controlled by [effector](https://effector.dev/)
+- styled with [stitches](https://stitches.dev/)
+- built via [vite](https://vitejs.dev/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Development
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you have any suggestions, feel free to open discussion, create pull request or call me in the middle of the night. No
+rules, no linters, no cry.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[shields-fsd-image]: https://img.shields.io/badge/Feature--Sliced-Design-FFF?logoWidth=20&style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA/SURBVHgB7dKxCgAgCIThs/d/51JoNQIdDrxvqMXlR4FmFs92KDIX/wI7JSdDN+eHtkxIycnQvMNW8hN/crsDc5QgGX9NvT0AAAAASUVORK5CYII=

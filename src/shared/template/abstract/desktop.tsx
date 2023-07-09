@@ -3,9 +3,9 @@ import { Avatar, Box, Nav, Text } from 'grommet'
 import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 
-import { routeMap } from '../../../pages'
-import { authStore } from '../../../model/auth'
-import { colorScheme } from '../../../model/color-scheme'
+import { routeMap } from 'src/pages'
+import { authStore } from 'src/model/auth'
+import { colorScheme } from 'src/model/color-scheme'
 import { LinkCustom } from '../../link-custom'
 
 import { TemplateProps } from './props'

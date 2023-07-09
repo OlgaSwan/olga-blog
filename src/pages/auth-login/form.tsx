@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Box, Button, Form, FormField, Text, TextInput } from 'grommet'
 
-import { authStore } from '../../model/auth'
+import { authStore } from 'src/model/auth'
 
 import { routeMap } from '../index'
 

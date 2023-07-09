@@ -3,7 +3,7 @@ import { Heading } from 'grommet'
 
 import { TemplateAbstract } from './abstract'
 import { LinkCustom } from '../link-custom'
-import { routeMap } from '../../pages'
+import { routeMap } from 'src/pages'
 
 const Sidebar: FunctionComponent = () => (
   <>

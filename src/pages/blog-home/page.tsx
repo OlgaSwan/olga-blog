@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { CheckBoxGroup, Text, Heading } from 'grommet'
 
-import { diaryStore } from '../../model/diary'
+import { diaryStore } from 'src/model/diary'
 
-import { DiaryList } from '../../model/diary'
-import { TemplateContent } from '../../shared/template'
+import { DiaryList } from 'src/model/diary'
+import { TemplateContent } from 'src/shared/template'
 
 const BlogHome: FunctionComponent = () => {
   const tags = useStore(diaryStore.tagList)

@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth'
 import { atom } from 'nanostores'
 
-import { firebaseApp } from '../../shared/firebase-app'
+import { firebaseApp } from 'src/shared/firebase-app'
 
 const firebaseAuth = getAuth(firebaseApp)
 
