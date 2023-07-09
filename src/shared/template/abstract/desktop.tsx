@@ -33,6 +33,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({
           position: 'sticky',
           top: 0,
           backdropFilter: 'blur(6px)',
+          zIndex: 1
         }}
       >
         <Box direction='row' align='center' gap='medium'>
@@ -64,7 +65,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({
           />
         </Nav>
       </Box>
-      <Box flex='grow' direction='row' pad={{ horizontal: 'medium' }} gap='medium' justify='between'>
+      <Box direction='row' flex='grow' pad={{ horizontal: 'medium' }} gap='medium' justify='between'>
         <Box basis='240px' flex='shrink'>
           {sidebarLeft}
         </Box>
