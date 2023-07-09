@@ -4,8 +4,8 @@ import { useStore } from '@nanostores/react'
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext, Heading } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { TemplateContent } from '../../shared/template'
-import { diaryStore } from '../../model/diary'
+import { TemplateContent } from 'src/shared/template'
+import { diaryStore } from 'src/model/diary'
 import { routeMap } from '..'
 
 const BlogDiaryId: FunctionComponent = () => {

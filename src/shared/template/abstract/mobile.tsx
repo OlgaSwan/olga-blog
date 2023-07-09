@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Avatar, Box, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { routeMap } from '../../../pages'
+import { routeMap } from 'src/pages'
 import { LinkCustom } from '../../link-custom'
 
 import { TemplateProps } from './props'

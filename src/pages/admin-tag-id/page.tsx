@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { Heading } from 'grommet'
 
-import { TemplateAdmin } from '../../shared/template'
-import { useAuthRedirect } from '../../model/auth'
+import { TemplateAdmin } from 'src/shared/template'
+import { useAuthRedirect } from 'src/model/auth'
 import { routeMap } from '../index'
 
 const AdminTagId: FunctionComponent = () => {

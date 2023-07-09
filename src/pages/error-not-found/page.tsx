@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Heading } from 'grommet'
 
-import { TemplateContent } from '../../shared/template'
+import { TemplateContent } from 'src/shared/template'
 
 const ErrorNotFound: FunctionComponent = () => (
   <TemplateContent>

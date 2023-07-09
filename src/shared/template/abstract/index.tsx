@@ -3,7 +3,7 @@ import { useStore } from '@nanostores/react'
 import { grommet, Grommet, ResponsiveContext } from 'grommet'
 import { deepMerge } from 'grommet/utils'
 
-import { colorScheme } from '../../../model/color-scheme'
+import { colorScheme } from 'src/model/color-scheme'
 
 import { TemplateDesktop } from './desktop'
 import { TemplateProps } from './props'
@@ -40,12 +40,6 @@ export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
         position: 'relative',
       }}
       themeMode={colorSchemeValue}>
-      <ResponsiveContext.Consumer>
-        {(screenSize) => {
-          console.log(screenSize)
-          return null
-        }}
-      </ResponsiveContext.Consumer>
       <ResponsiveContext.Consumer>
         {(screenSize => (
           <>

@@ -3,9 +3,9 @@ import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, Tag } fro
 import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 
-import { TemplateAdmin } from '../../shared/template'
-import { diaryStore } from '../../model/diary'
-import { useAuthRedirect } from '../../model/auth'
+import { TemplateAdmin } from 'src/shared/template'
+import { diaryStore } from 'src/model/diary'
+import { useAuthRedirect } from 'src/model/auth'
 import { routeMap } from '../index'
 
 const AdminDiaryList: FunctionComponent = () => {

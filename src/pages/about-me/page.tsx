@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Box, Text, Heading, Image } from 'grommet'
 import { lorem } from 'faker'
 
-import { TemplateContent } from '../../shared/template'
+import { TemplateContent } from 'src/shared/template'
 
 import selfie from './selfie.jpg'
 

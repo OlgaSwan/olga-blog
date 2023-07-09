@@ -4,7 +4,7 @@ import { company, lorem } from 'faker'
 import { random, sampleSize } from 'lodash-es'
 import { eachLimit } from 'async'
 
-import { firebaseApp } from '../../shared/firebase-app'
+import { firebaseApp } from 'src/shared/firebase-app'
 
 import {
   DiaryExternal,
