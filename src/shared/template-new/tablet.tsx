@@ -6,7 +6,7 @@ import { routeMap } from '../../pages'
 import { LinkCustom } from '../link-custom'
 
 import { TemplateProps } from './props'
-import avatar from '../template/avatar.jpg'
+import avatar from './avatar.jpg'
 
 export const TemplateTablet: FunctionComponent<TemplateProps> = ({
   sidebarLeft,
