@@ -64,7 +64,8 @@ const Home: FunctionComponent = () => (
       Soft-skills
     </Heading>
     <Text margin={{ bottom: 'medium' }}>
-      ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some technologies)
+      ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some
+      technologies)
       <ul>
         <li>Solution research and presentation</li>
         <li>Management and delegation</li>
