@@ -1,6 +1,6 @@
 import { collection, getFirestore, addDoc, updateDoc, doc, onSnapshot, deleteDoc, getDocs } from 'firebase/firestore'
 import { atom } from 'nanostores'
-import { company, lorem } from 'faker'
+import { faker } from '@faker-js/faker/locale/en'
 import { random, sampleSize } from 'lodash-es'
 import { eachLimit } from 'async'
 
@@ -24,11 +24,11 @@ const list = atom<Array<DiaryExternal>>([])
 const tagList = atom<Array<TagExternal>>([])
 
 onSnapshot(diaryCollection, (snapshot) => {
-  list.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as DiaryExternal)))
+  list.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }) as DiaryExternal))
 })
 
 onSnapshot(tagsCollection, (snapshot) => {
-  tagList.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as TagExternal)))
+  tagList.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }) as TagExternal))
 })
 
 export const diaryStore = {
@@ -41,11 +41,11 @@ export const diaryStore = {
   // TODO addBatch
   addRandom: async () => {
     const data = {
-      title: company.catchPhrase(),
-      content: lorem.paragraph(2),
+      title: faker.company.catchPhrase(),
+      content: faker.helpers.multiple(faker.hacker.phrase, { count: random(8, 30, false) }).join(' '),
       tags: sampleSize(
         tagList.get().map((e) => e.title),
-        random(2, 6)
+        random(2, 6),
       ),
       likes: random(10, 1000, false),
     }

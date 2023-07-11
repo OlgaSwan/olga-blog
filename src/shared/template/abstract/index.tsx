@@ -19,9 +19,9 @@ const theme = deepMerge(grommet, {
       medium: {
         value: 1024,
       },
-      large: {}
-    }
-  }
+      large: {},
+    },
+  },
 })
 
 export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
@@ -39,15 +39,16 @@ export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
         flexDirection: 'column',
         position: 'relative',
       }}
-      themeMode={colorSchemeValue}>
+      themeMode={colorSchemeValue}
+    >
       <ResponsiveContext.Consumer>
-        {(screenSize => (
+        {(screenSize) => (
           <>
             {screenSize === 'large' && <TemplateDesktop {...props} />}
             {screenSize === 'medium' && <TemplateTablet {...props} />}
             {screenSize === 'small' && <TemplateMobile {...props} />}
           </>
-        ))}
+        )}
       </ResponsiveContext.Consumer>
     </Grommet>
   )

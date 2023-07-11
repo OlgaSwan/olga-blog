@@ -50,7 +50,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
       </CardHeader>
       <CardBody pad='medium' gap='medium' focusIndicator={false} onClick={() => navigate(`/blog/diary/${id}`)}>
         <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-          {foundDiary.content}
+          {foundDiary.content.slice(0, 240) + '...'}
         </Text>
       </CardBody>
       <CardFooter pad={{ horizontal: 'small' }} background='background-back'>
