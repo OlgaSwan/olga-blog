@@ -27,7 +27,7 @@ const Home: FunctionComponent = () => (
     <Button
       hoverIndicator
       alignSelf='start'
-      size='large'
+      size='medium'
       margin={{ bottom: 'large', top: 'large' }}
       label='Show more'
       href={routeMap.blogHome.path}
