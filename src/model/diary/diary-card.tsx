@@ -33,8 +33,10 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
             {foundDiary.tags.map((tag) => (
               <Tag
                 key={tag}
-                size='small'
                 value={tag}
+                size='small'
+                // @ts-ignore
+                style={{borderWidth: '2px'}}
                 onClick={(e) => {
                   e.stopPropagation()
                   const foundTag = allTags.find((t) => t.title === tag)
@@ -64,7 +66,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           </Text>
           <Text size='small'>{foundDiary.minRead + ' min read'}</Text>
         </Box>
-        <Button icon={<Icons.ShareRounded color='plain' />} hoverIndicator />
+        <Button icon={<Icons.ShareRounded color='text' />} hoverIndicator />
       </CardFooter>
     </Card>
   )
