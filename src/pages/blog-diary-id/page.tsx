@@ -20,11 +20,7 @@ const BlogDiaryId: FunctionComponent = () => {
     <TemplateContent>
       {foundDiary ? (
         <>
-          <Heading level='2' margin={{ bottom: 'medium' }}>
-            Diary
-          </Heading>
-
-          <Text size='3xl' weight='bold' alignSelf='start' margin={{ top: 'large', bottom: 'medium' }}>
+          <Text size='3xl' weight='bold' alignSelf='start' margin={{ top: 'xlarge', bottom: 'medium' }}>
             {foundDiary!.title}
           </Text>
           <Box gap='small' margin={{ top: 'small', bottom: 'small' }}>
@@ -32,8 +28,10 @@ const BlogDiaryId: FunctionComponent = () => {
               {foundDiary!.tags.map((tag) => (
                 <Tag
                   key={tag}
-                  size='small'
                   value={tag}
+                  size='small'
+                  // @ts-ignore
+                  style={{borderWidth: '2px'}}
                   onClick={(e) => {
                     e.stopPropagation()
                     const foundTag = allTags.find((t) => t.title === tag)
@@ -56,10 +54,11 @@ const BlogDiaryId: FunctionComponent = () => {
                   ·
                 </Text>
               </Box>
-              <Button icon={<Icons.ShareRounded color='plain' />} hoverIndicator />
+              <Button icon={<Icons.ShareRounded color='text' />} hoverIndicator />
             </Box>
           </Box>
 
+          <Box margin={{ bottom: 'large' }}>
           <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
             {foundDiary!.content}
           </Text>
@@ -69,22 +68,7 @@ const BlogDiaryId: FunctionComponent = () => {
           <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
             {foundDiary!.content}
           </Text>
-          {screenSize !== 'small' && (
-            <Box direction='row' flex='grow' gap='small' alignSelf='start'>
-              {foundDiary!.tags.map((tag) => (
-                <Tag
-                  key={tag}
-                  size='small'
-                  value={tag}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    const foundTag = allTags.find((t) => t.title === tag)
-                    navigate(`/blog/${foundTag!.id}`)
-                  }}
-                />
-              ))}
-            </Box>
-          )}
+          </Box>
         </>
       ) : (
         <Navigate to={routeMap.errorNotFound.path} />
