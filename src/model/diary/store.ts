@@ -42,11 +42,12 @@ export const diaryStore = {
   addRandom: async () => {
     const data = {
       title: faker.company.catchPhrase(),
-      content: faker.helpers.multiple(faker.hacker.phrase, { count: random(8, 30, false) }).join(' '),
+      content: faker.helpers.multiple(faker.hacker.phrase, { count: random(8, 25, false) }).join(' '),
       tags: sampleSize(
         tagList.get().map((e) => e.title),
         random(2, 6),
       ),
+      minRead: random(3, 15, false),
       likes: random(10, 1000, false),
     }
     await addDoc(diaryCollection, data)

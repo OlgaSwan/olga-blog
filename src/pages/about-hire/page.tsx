@@ -5,7 +5,7 @@ import { TemplateContent } from 'src/shared/template'
 
 const AboutHire: FunctionComponent = () => (
   <TemplateContent>
-    <Heading level='1' margin={{ bottom: 'medium' }}>
+    <Heading level='2' margin={{ bottom: 'medium' }}>
       Hire me
     </Heading>
   </TemplateContent>

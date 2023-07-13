@@ -1,7 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext } from 'grommet'
+import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext, Heading } from 'grommet'
 import * as Icons from 'grommet-icons'
 import { useStore } from '@nanostores/react'
 
@@ -44,23 +44,27 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
             ))}
           </Box>
         )}
-        <Text size='3xl' weight='bold' alignSelf='start'>
+        <Heading level='2' alignSelf='start' margin='none'>
           {foundDiary.title}
-        </Text>
+        </Heading>
       </CardHeader>
-      <CardBody pad='medium' gap='medium' focusIndicator={false} onClick={() => navigate(`/blog/diary/${id}`)}>
-        <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
+      <CardBody style={{paddingTop: 'none', paddingLeft: '24px', paddingBottom: '24px', paddingRight: '24px'  }} gap='medium' focusIndicator={false} onClick={() => navigate(`/blog/diary/${id}`)}>
+        <Text size='medium' weight='normal' margin='none'>
           {foundDiary.content.slice(0, 240) + '...'}
         </Text>
       </CardBody>
       <CardFooter pad={{ horizontal: 'small' }} background='background-back'>
-        <Box direction='row' align='center'>
-          <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
-          <Text size='small' weight='normal'>
-            {foundDiary.likes}
+        <Box direction='row' align='center' justify='between' gap='small'>
+          <Box direction='row' align='center'>
+            <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
+            <Text size='small'>{foundDiary.likes}</Text>
+          </Box>
+          <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
+            ·
           </Text>
+          <Text size='small'>{foundDiary.minRead + ' min read'}</Text>
         </Box>
-        <Button icon={<Icons.ShareOption color='plain' />} hoverIndicator />
+        <Button icon={<Icons.ShareRounded color='plain' />} hoverIndicator />
       </CardFooter>
     </Card>
   )

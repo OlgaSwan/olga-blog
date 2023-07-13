@@ -41,6 +41,7 @@ const AdminDiaryList: FunctionComponent = () => {
                     <Tag key={tag} value={tag} />
                   ))}
                   <Tag value={`${diary.likes} likes`} />
+                  <Tag value={`${diary.minRead} min read`} />
                 </Box>
                 <Box direction='row' justify='start' gap='xsmall' wrap>
                   <Button label='Edit' icon={<Icons.Edit />} />
