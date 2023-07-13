@@ -20,52 +20,71 @@ const BlogDiaryId: FunctionComponent = () => {
     <TemplateContent>
       {foundDiary ? (
         <>
-          <Heading level='1' margin={{ bottom: 'medium' }}>
+          <Heading level='2' margin={{ bottom: 'medium' }}>
             Diary
           </Heading>
-          <Card width='large' background='light-1'>
-            <CardHeader direction='column' pad='medium' focusIndicator={false}>
-              <Text size='3xl' weight='bold' alignSelf='start'>
-                {foundDiary!.title}
-              </Text>
-            </CardHeader>
-            <CardBody pad='medium' gap='medium' focusIndicator={false}>
-              <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-                {foundDiary!.content}
-              </Text>
-              <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-                {foundDiary!.content} {foundDiary!.content}
-              </Text>
-              <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-                {foundDiary!.content} {foundDiary!.content}
-              </Text>
-              {screenSize !== 'small' && (
-                <Box direction='row' flex='grow' gap='small' alignSelf='start'>
-                  {foundDiary!.tags.map((tag) => (
-                    <Tag
-                      key={tag}
-                      size='small'
-                      value={tag}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        const foundTag = allTags.find((t) => t.title === tag)
-                        navigate(`/blog/${foundTag!.id}`)
-                      }}
-                    />
-                  ))}
+
+          <Text size='3xl' weight='bold' alignSelf='start' margin={{ top: 'large', bottom: 'medium' }}>
+            {foundDiary!.title}
+          </Text>
+          <Box gap='small' margin={{ top: 'small', bottom: 'small' }}>
+            <Box direction='row' flex='grow' gap='small' alignSelf='start'>
+              {foundDiary!.tags.map((tag) => (
+                <Tag
+                  key={tag}
+                  size='small'
+                  value={tag}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    const foundTag = allTags.find((t) => t.title === tag)
+                    navigate(`/blog/${foundTag!.id}`)
+                  }}
+                />
+              ))}
+            </Box>
+            <Box direction='row' align='center' alignSelf='start'>
+              <Box direction='row' align='center' justify='between' gap='small'>
+                <Box direction='row' align='center'>
+                  <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
+                  <Text size='small'>{foundDiary.likes}</Text>
                 </Box>
-              )}
-            </CardBody>
-            <CardFooter pad={{ horizontal: 'small' }} background='background-back'>
-              <Box direction='row' align='center'>
-                <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
-                <Text size='small' weight='normal'>
-                  {foundDiary!.likes}
+                <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
+                  ·
+                </Text>
+                <Text size='small'>{foundDiary.minRead + ' min read'}</Text>
+                <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
+                  ·
                 </Text>
               </Box>
-              <Button icon={<Icons.ShareOption color='plain' />} hoverIndicator />
-            </CardFooter>
-          </Card>
+              <Button icon={<Icons.ShareRounded color='plain' />} hoverIndicator />
+            </Box>
+          </Box>
+
+          <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
+            {foundDiary!.content}
+          </Text>
+          <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
+            {foundDiary!.content}
+          </Text>
+          <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
+            {foundDiary!.content}
+          </Text>
+          {screenSize !== 'small' && (
+            <Box direction='row' flex='grow' gap='small' alignSelf='start'>
+              {foundDiary!.tags.map((tag) => (
+                <Tag
+                  key={tag}
+                  size='small'
+                  value={tag}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    const foundTag = allTags.find((t) => t.title === tag)
+                    navigate(`/blog/${foundTag!.id}`)
+                  }}
+                />
+              ))}
+            </Box>
+          )}
         </>
       ) : (
         <Navigate to={routeMap.errorNotFound.path} />

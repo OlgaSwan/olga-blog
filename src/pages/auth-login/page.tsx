@@ -12,7 +12,7 @@ const AuthLogin: FunctionComponent = () => {
 
   return (
     <TemplateContent>
-      <Heading level='1' margin={{ bottom: 'medium' }}>
+      <Heading level='2' margin={{ bottom: 'medium' }}>
         Login
       </Heading>
       <FormLogin />

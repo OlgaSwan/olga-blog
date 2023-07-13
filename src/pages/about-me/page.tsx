@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { Box, Text, Heading, Image } from 'grommet'
-import { lorem } from 'faker'
+import { faker } from '@faker-js/faker'
 
 import { TemplateContent } from 'src/shared/template'
 
@@ -8,15 +8,15 @@ import selfie from './selfie.jpg'
 
 const AboutMe: FunctionComponent = () => (
   <TemplateContent>
-    <Heading level='1' margin={{ bottom: 'medium' }}>
+    <Heading level='2' margin={{ bottom: 'medium' }}>
       About me
     </Heading>
     <Box direction='row' align='center' gap='medium'>
       <Box gap='medium' width='large'>
         <Heading level='3' margin='none'>
-          {lorem.sentence()}
+          {faker.lorem.sentence()}
         </Heading>
-        <Text>{lorem.paragraph(5)}</Text>
+        <Text>{faker.lorem.paragraph(5)}</Text>
       </Box>
       <Box height='medium' width='medium'>
         <Image fit='cover' src={selfie} />

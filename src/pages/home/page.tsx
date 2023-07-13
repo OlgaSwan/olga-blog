@@ -10,7 +10,7 @@ import { DiaryList } from 'src/model/diary'
 
 const Home: FunctionComponent = () => (
   <TemplateContent>
-    <Heading level='1' margin={{ bottom: 'medium' }}>
+    <Heading level='1' margin={{ top: 'large', bottom: 'medium' }}>
       Howdy, I'm Olga!
     </Heading>
     <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
@@ -32,7 +32,7 @@ const Home: FunctionComponent = () => (
       label='Show more'
       href={routeMap.blogHome.path}
     />
-    <Heading level='2' margin={{ bottom: 'small' }}>
+    <Heading level='2' margin={{ top: 'medium', bottom: 'medium' }}>
       My skillset
     </Heading>
     <Heading level='3' margin={{ bottom: 'small' }}>
@@ -51,7 +51,7 @@ const Home: FunctionComponent = () => (
     <Heading level='3' margin={{ bottom: 'small' }}>
       T-shaped skills
     </Heading>
-    <Text margin={{ bottom: 'medium' }}>
+    <Text margin={{ bottom: 'small' }}>
       I am mainly engaged in development, but I've learnt some similar areas
       <ul>
         <li>UI design</li>
