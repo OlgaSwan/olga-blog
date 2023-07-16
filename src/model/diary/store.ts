@@ -20,7 +20,7 @@ const firestore = getFirestore(firebaseApp)
 const diaryCollection = collection(firestore, 'diary')
 const tagsCollection = collection(firestore, 'tags')
 
-const list = atom<Array<DiaryExternal>>([])
+const list = atom<Array<DiaryExternal> | null>(null)
 const tagList = atom<Array<TagExternal>>([])
 
 onSnapshot(diaryCollection, (snapshot) => {
