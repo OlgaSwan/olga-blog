@@ -5,7 +5,7 @@ import { Box } from 'grommet'
 import { diaryStore } from './store'
 import { DiaryCard } from './diary-card'
 
-import { filterDiaries } from 'src/shared/filterDiaries'
+import { filterDiaries } from 'src/shared/filter-diaries'
 
 export interface DiaryListProps {
   isSliced?: boolean
