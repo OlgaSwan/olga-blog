@@ -14,7 +14,7 @@ export interface DiaryCardProps {
 export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
   const allDiaries = useStore(diaryStore.list)
   const allTags = useStore(diaryStore.tagList)
-  const foundDiary = allDiaries.find((p) => p.id === id)
+  const foundDiary = allDiaries?.find((p) => p.id === id)
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
 
