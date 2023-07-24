@@ -3,13 +3,11 @@ import { AboutHire } from './about-hire'
 import { AboutMe } from './about-me'
 import { BlogHome } from './blog-home'
 import { BlogDiaryId } from './blog-diary-id'
-import { BlogTagId } from './blog-tag-id'
 import { AuthLogin } from './auth-login'
 import { AdminHome } from './admin-home'
 import { AdminDiaryList } from './admin-diary-list'
 import { AdminDiaryId } from './admin-diary-id'
 import { AdminTagList } from './admin-tag-list'
-import { AdminTagId } from './admin-tag-id'
 import { ErrorNotFound } from './error-not-found'
 import { ErrorForbidden } from './error-forbidden'
 
@@ -38,10 +36,6 @@ export const routeMap = {
     path: '/blog/diary/:id',
     Component: BlogDiaryId,
   },
-  blogTagId: {
-    path: '/blog/tag/:id',
-    Component: BlogTagId,
-  },
   authLogin: {
     path: '/auth/login',
     Component: AuthLogin,
@@ -61,10 +55,6 @@ export const routeMap = {
   adminTagList: {
     path: '/admin/tag',
     Component: AdminTagList,
-  },
-  adminTagId: {
-    path: '/admin/tag/:id',
-    Component: AdminTagId,
   },
   errorForbidden: {
     path: '/403',
