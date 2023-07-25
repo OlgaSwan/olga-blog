@@ -1,16 +1,18 @@
 import React, { FunctionComponent, useContext } from 'react'
-import { useParams, useNavigate, Navigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { Box, Button, Tag, Text, ResponsiveContext, Heading } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { TemplateContent } from 'src/shared/template'
 import { diaryStore } from 'src/model/diary'
+import { authStore } from 'src/model/auth'
 import { routeMap } from '..'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
   const allTags = useStore(diaryStore.tagList)
+  const auth = useStore(authStore.store)
   const params = useParams()
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
@@ -84,6 +86,17 @@ const BlogDiaryId: FunctionComponent = () => {
           />
         ))}
       </Box>
+      {auth && (
+        <Button
+          primary
+          label='Edit'
+          alignSelf='end'
+          size='small'
+          style={{ width: '200px' }}
+          margin={{ bottom: 'large' }}
+          onClick={() => navigate(`/admin/diary/${foundDiary.id}`)}
+        />
+      )}
     </TemplateContent>
   )
 }
