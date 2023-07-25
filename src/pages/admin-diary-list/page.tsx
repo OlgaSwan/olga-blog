@@ -12,6 +12,8 @@ const AdminDiaryList: FunctionComponent = () => {
   const diaryList = useStore(diaryStore.list)
   useAuthRedirect(true, routeMap.errorForbidden.path)
 
+  if (diaryList === null) return <TemplateAdmin />
+  
   return (
     <TemplateAdmin>
       <Heading level='1' margin={{ bottom: 'medium' }}>
