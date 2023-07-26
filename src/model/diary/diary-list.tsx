@@ -5,22 +5,43 @@ import { Box } from 'grommet'
 import { diaryStore } from './store'
 import { DiaryCard } from './diary-card'
 
-import { filterDiaries } from 'src/shared/filter-diaries'
-
 export interface DiaryListProps {
   isSliced?: boolean
   chosenTags?: string[]
 }
 
-export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true, chosenTags = [] }) => {
+export const DiaryList: FunctionComponent<DiaryListProps> = ({
+  isSliced = true,
+  chosenTags = []
+}) => {
   const allDiaries = useStore(diaryStore.list)
 
+  // this filter looks awful, but it used only in one component, so
+  // it must be written there, directly and precisely
   let allDiariesMemo = useMemo(
-    () => filterDiaries(allDiaries, isSliced, chosenTags),
+    () => {
+      if (!allDiaries) return []
+
+      let diariesTransformed = allDiaries
+
+      if (chosenTags.length > 0) {
+        diariesTransformed = diariesTransformed.filter(diary => {
+          for (let tag of diary.tags) {
+            let foundTag = chosenTags.includes(tag)
+            if (foundTag) return true
+          }
+          return false
+        })
+      }
+
+      if (isSliced) {
+        diariesTransformed = diariesTransformed.slice(0, 3)
+      }
+
+      return diariesTransformed
+    },
     [allDiaries, isSliced, chosenTags],
   )
-
-  if (allDiariesMemo === null) return null
 
   return (
     <Box gap='medium'>
