@@ -4,9 +4,11 @@ import { useStore } from '@nanostores/react'
 import { CheckBoxGroup, Text, Heading } from 'grommet'
 
 import { diaryStore } from 'src/model/diary'
+import { metadata } from 'src/shared/head-meta/metadata'
 
 import { DiaryList } from 'src/model/diary'
 import { TemplateContent } from 'src/shared/template'
+import { Head } from 'src/shared/head-meta/head'
 
 const BlogHome: FunctionComponent = () => {
   const tags = useStore(diaryStore.tagList)
@@ -22,6 +24,7 @@ const BlogHome: FunctionComponent = () => {
 
   return (
     <TemplateContent>
+      <Head title={metadata.blogHome.title} description={metadata.blogHome.description} />
       <Heading level='2' margin={{ bottom: 'medium' }}>
         Blog
       </Heading>

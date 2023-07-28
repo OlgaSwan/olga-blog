@@ -4,10 +4,12 @@ import { useStore } from '@nanostores/react'
 import { Box, Button, Tag, Text, ResponsiveContext, Heading } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { TemplateContent } from 'src/shared/template'
+import { routeMap } from '..'
 import { diaryStore } from 'src/model/diary'
 import { authStore } from 'src/model/auth'
-import { routeMap } from '..'
+
+import { TemplateContent } from 'src/shared/template'
+import { Head } from 'src/shared/head-meta/head'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
@@ -28,6 +30,7 @@ const BlogDiaryId: FunctionComponent = () => {
 
   return (
     <TemplateContent>
+      <Head title={foundDiary.title} description={foundDiary.content.slice(0, 240) + '...'} />
       <Heading size='medium' alignSelf='start' margin={{ top: 'xlarge', bottom: 'medium' }}>
         {foundDiary.title}
       </Heading>

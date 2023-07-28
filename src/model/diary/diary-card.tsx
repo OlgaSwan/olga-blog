@@ -36,7 +36,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
                 value={tag}
                 size='small'
                 // @ts-ignore
-                style={{borderWidth: '2px'}}
+                style={{ borderWidth: '2px' }}
                 onClick={(e) => {
                   e.stopPropagation()
                   const foundTag = allTags.find((t) => t.title === tag)
@@ -50,7 +50,12 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           {foundDiary.title}
         </Heading>
       </CardHeader>
-      <CardBody style={{paddingTop: 'none', paddingLeft: '24px', paddingBottom: '24px', paddingRight: '24px'  }} gap='medium' focusIndicator={false} onClick={() => navigate(`/blog/diary/${id}`)}>
+      <CardBody
+        style={{ paddingTop: 'none', paddingLeft: '24px', paddingBottom: '24px', paddingRight: '24px' }}
+        gap='medium'
+        focusIndicator={false}
+        onClick={() => navigate(`/blog/diary/${id}`)}
+      >
         <Text size='medium' weight='normal' margin='none'>
           {foundDiary.content.slice(0, 240) + '...'}
         </Text>

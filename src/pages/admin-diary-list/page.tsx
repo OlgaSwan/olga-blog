@@ -4,18 +4,22 @@ import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 
 import { TemplateAdmin } from 'src/shared/template'
-import { diaryStore } from 'src/model/diary'
 import { useAuthRedirect } from 'src/model/auth'
+import { Head } from 'src/shared/head-meta/head'
+
 import { routeMap } from '../index'
+import { metadata } from 'src/shared/head-meta/metadata'
+import { diaryStore } from 'src/model/diary'
 
 const AdminDiaryList: FunctionComponent = () => {
   const diaryList = useStore(diaryStore.list)
   useAuthRedirect(true, routeMap.errorForbidden.path)
 
   if (diaryList === null) return <TemplateAdmin />
-  
+
   return (
     <TemplateAdmin>
+      <Head title={metadata.adminDiaryList.title} description={metadata.adminDiaryList.description} />
       <Heading level='1' margin={{ bottom: 'medium' }}>
         Diary list
       </Heading>

@@ -3,11 +3,15 @@ import { Box, Text, Heading, Image } from 'grommet'
 import { faker } from '@faker-js/faker'
 
 import { TemplateContent } from 'src/shared/template'
+import { Head } from 'src/shared/head-meta/head'
+
+import { metadata } from 'src/shared/head-meta/metadata'
 
 import selfie from './selfie.jpg'
 
 const AboutMe: FunctionComponent = () => (
   <TemplateContent>
+    <Head title={metadata.aboutMe.title} description={metadata.aboutMe.description} />
     <Heading level='2' margin={{ bottom: 'medium' }}>
       About me
     </Heading>

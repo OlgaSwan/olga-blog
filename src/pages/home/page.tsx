@@ -3,13 +3,16 @@ import { PageHeader, Paragraph, Button, Heading, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { routeMap } from '..'
-import { LinkCustom } from 'src/shared/link-custom'
+import { metadata } from 'src/shared/head-meta/metadata'
 
+import { LinkCustom } from 'src/shared/link-custom'
 import { TemplateContent } from 'src/shared/template'
+import { Head } from 'src/shared/head-meta/head'
 import { DiaryList } from 'src/model/diary'
 
 const Home: FunctionComponent = () => (
   <TemplateContent>
+    <Head title={metadata.home.title} description={metadata.home.description} />
     <Heading level='1' margin={{ top: 'large', bottom: 'medium' }}>
       Howdy, I'm Olga!
     </Heading>
