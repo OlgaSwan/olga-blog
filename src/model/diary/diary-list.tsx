@@ -10,38 +10,24 @@ export interface DiaryListProps {
   chosenTags?: string[]
 }
 
-export const DiaryList: FunctionComponent<DiaryListProps> = ({
-  isSliced = true,
-  chosenTags = []
-}) => {
+export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true, chosenTags = [] }) => {
   const allDiaries = useStore(diaryStore.list)
 
-  // this filter looks awful, but it used only in one component, so
-  // it must be written there, directly and precisely
-  let allDiariesMemo = useMemo(
-    () => {
-      if (!allDiaries) return []
+  let allDiariesMemo = useMemo(() => {
+    if (!allDiaries) return []
 
-      let diariesTransformed = allDiaries
+    let diariesTransformed = allDiaries
 
-      if (chosenTags.length > 0) {
-        diariesTransformed = diariesTransformed.filter(diary => {
-          for (let tag of diary.tags) {
-            let foundTag = chosenTags.includes(tag)
-            if (foundTag) return true
-          }
-          return false
-        })
-      }
+    if (chosenTags.length > 0) {
+      diariesTransformed = diariesTransformed.filter((diary) => diary.tags.some((tag) => chosenTags.includes(tag)))
+    }
 
-      if (isSliced) {
-        diariesTransformed = diariesTransformed.slice(0, 3)
-      }
+    if (isSliced) {
+      diariesTransformed = diariesTransformed.slice(0, 3)
+    }
 
-      return diariesTransformed
-    },
-    [allDiaries, isSliced, chosenTags],
-  )
+    return diariesTransformed
+  }, [allDiaries, isSliced, chosenTags])
 
   return (
     <Box gap='medium'>

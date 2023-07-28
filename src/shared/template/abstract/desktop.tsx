@@ -33,7 +33,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({
           position: 'sticky',
           top: 0,
           backdropFilter: 'blur(6px)',
-          zIndex: 1
+          zIndex: 1,
         }}
       >
         <Box direction='row' align='center' gap='medium'>

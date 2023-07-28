@@ -7,7 +7,10 @@ import * as Icons from 'grommet-icons'
 import { TemplateAdmin } from 'src/shared/template'
 import { diaryStore } from 'src/model/diary'
 import { useAuthRedirect } from 'src/model/auth'
+import { Head } from 'src/shared/head-meta/head'
+
 import { routeMap } from '../index'
+import { metadata } from 'src/shared/head-meta/metadata'
 
 const AdminDiaryId: FunctionComponent = () => {
   useAuthRedirect(true, routeMap.errorForbidden.path)
@@ -40,6 +43,7 @@ const AdminDiaryId: FunctionComponent = () => {
 
   return (
     <TemplateAdmin>
+      <Head title={metadata.adminDiaryId.title} description={metadata.adminDiaryId.description} />
       <Heading level='2' margin={{ bottom: 'medium' }}>
         Diary editor
       </Heading>
