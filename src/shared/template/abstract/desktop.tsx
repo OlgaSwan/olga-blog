@@ -3,13 +3,13 @@ import { Avatar, Box, Nav, Text } from 'grommet'
 import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 
-import { routeMap } from 'src/pages'
 import { authStore } from 'src/model/auth'
 import { colorScheme } from 'src/model/color-scheme'
 import { LinkCustom } from '../../link-custom'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
+import { routeMap } from 'src/shared/route-map'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({
   sidebarLeft,
@@ -37,13 +37,13 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({
         }}
       >
         <Box direction='row' align='center' gap='medium'>
-          <LinkCustom size='large' label={<Avatar src={avatar} size='medium' />} href={routeMap.home.path} />
-          <LinkCustom size='large' label='Olga Swan' href={routeMap.home.path} />
+          <LinkCustom size='large' label={<Avatar src={avatar} size='medium' />} href={routeMap.home} />
+          <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
         </Box>
         <Nav direction='row' align='center' gap='medium'>
-          <LinkCustom label='Blog' href={routeMap.blogHome.path} />
-          <LinkCustom label='About' href={routeMap.aboutMe.path} />
-          <LinkCustom label='Hire me' href={routeMap.aboutHire.path} />
+          <LinkCustom label='Blog' href={routeMap.blogHome} />
+          <LinkCustom label='About' href={routeMap.aboutMe} />
+          <LinkCustom label='Hire me' href={routeMap.aboutHire} />
           {authStoreValue && (
             <LinkCustom
               label='Sign out'

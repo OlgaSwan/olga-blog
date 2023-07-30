@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react'
 import { Avatar, Box, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { routeMap } from 'src/pages'
 import { LinkCustom } from '../../link-custom'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
+import { routeMap } from 'src/shared/route-map'
 
 export const TemplateMobile: FunctionComponent<TemplateProps> = ({
   sidebarLeft,
@@ -39,8 +39,8 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({
         />
       </Box>
       <Box direction='row' gap='medium' align='center'>
-        <LinkCustom size='large' label={<Avatar src={avatar} size='medium' />} href={routeMap.home.path} />
-        <LinkCustom size='large' label='Olga Swan' href={routeMap.home.path} />
+        <LinkCustom size='large' label={<Avatar src={avatar} size='medium' />} href={routeMap.home} />
+        <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
       </Box>
       <Box direction='row' align='center' gap='medium'>
         <LinkCustom

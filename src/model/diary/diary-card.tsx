@@ -1,11 +1,12 @@
 import React, { FunctionComponent, PropsWithChildren, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
 
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext, Heading } from 'grommet'
 import * as Icons from 'grommet-icons'
 import { useStore } from '@nanostores/react'
 
 import { diaryStore } from './store'
+import { routeMap } from 'src/shared/route-map'
 
 export interface DiaryCardProps {
   id: string
@@ -13,7 +14,6 @@ export interface DiaryCardProps {
 
 export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
   const allDiaries = useStore(diaryStore.list)
-  const allTags = useStore(diaryStore.tagList)
   const foundDiary = allDiaries?.find((p) => p.id === id)
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
@@ -39,8 +39,10 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
                 style={{ borderWidth: '2px' }}
                 onClick={(e) => {
                   e.stopPropagation()
-                  const foundTag = allTags.find((t) => t.title === tag)
-                  navigate(`/blog/${foundTag!.id}`)
+                  navigate(createPath({
+                    pathname: routeMap.blogHome,
+                    search: createSearchParams({ tags: [tag] }).toString()
+                  }))
                 }}
               />
             ))}
@@ -54,7 +56,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         style={{ paddingTop: 'none', paddingLeft: '24px', paddingBottom: '24px', paddingRight: '24px' }}
         gap='medium'
         focusIndicator={false}
-        onClick={() => navigate(`/blog/diary/${id}`)}
+        onClick={() => navigate(routeMap.blogDiaryId(id))}
       >
         <Text size='medium' weight='normal' margin='none'>
           {foundDiary.content.slice(0, 240) + '...'}

@@ -2,13 +2,12 @@ import React, { FunctionComponent } from 'react'
 import { PageHeader, Paragraph, Button, Heading, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { routeMap } from '..'
-import { metadata } from 'src/shared/head-meta/metadata'
-
 import { LinkCustom } from 'src/shared/link-custom'
 import { TemplateContent } from 'src/shared/template'
 import { Head } from 'src/shared/head-meta/head'
 import { DiaryList } from 'src/model/diary'
+import { routeMap } from 'src/shared/route-map'
+import { metadata } from 'src/shared/head-meta/metadata'
 
 const Home: FunctionComponent = () => (
   <TemplateContent>
@@ -21,7 +20,7 @@ const Home: FunctionComponent = () => (
       <Icons.Diamond size='medium' color='brand' />
     </Paragraph>
     <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
-      I'm a frontend developer from Moscow. I <LinkCustom label='write' href={routeMap.blogHome.path} /> about code,
+      I'm a frontend developer from Moscow. I <LinkCustom label='write' href={routeMap.blogHome} /> about code,
       ux/ui and art. <br />
       Passionate about traditional and digital drawing, gaming and paleontology.
     </Paragraph>
@@ -33,7 +32,7 @@ const Home: FunctionComponent = () => (
       size='medium'
       margin={{ bottom: 'large', top: 'large' }}
       label='Show more'
-      href={routeMap.blogHome.path}
+      href={routeMap.blogHome}
     />
     <Heading level='2' margin={{ top: 'medium', bottom: 'medium' }}>
       My skillset

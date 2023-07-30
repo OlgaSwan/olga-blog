@@ -4,13 +4,14 @@ import { Heading } from 'grommet'
 import { TemplateContent } from 'src/shared/template'
 import { FormLogin } from './form'
 import { useAuthRedirect } from 'src/model/auth'
+
 import { Head } from 'src/shared/head-meta/head'
 
 import { metadata } from 'src/shared/head-meta/metadata'
-import { routeMap } from '../index'
+import { routeMap } from 'src/shared/route-map'
 
 const AuthLogin: FunctionComponent = () => {
-  useAuthRedirect(false, routeMap.home.path)
+  useAuthRedirect(false, routeMap.home)
 
   return (
     <TemplateContent>
