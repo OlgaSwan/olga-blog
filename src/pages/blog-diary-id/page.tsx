@@ -1,30 +1,27 @@
-import React, { FunctionComponent, useContext } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import React, { FunctionComponent } from 'react'
+import { useParams, useNavigate, createPath, createSearchParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
-import { Box, Button, Tag, Text, ResponsiveContext, Heading } from 'grommet'
+import { Box, Button, Tag, Text, Heading } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { routeMap } from '..'
 import { diaryStore } from 'src/model/diary'
 import { authStore } from 'src/model/auth'
-
 import { TemplateContent } from 'src/shared/template'
+import { routeMap } from 'src/shared/route-map'
 import { Head } from 'src/shared/head-meta/head'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
-  const allTags = useStore(diaryStore.tagList)
   const auth = useStore(authStore.store)
   const params = useParams()
   const navigate = useNavigate()
-  const screenSize = useContext(ResponsiveContext)
 
   if (allDiaries === null) return <TemplateContent />
 
   const foundDiary = allDiaries.find((p) => p.id === params.id)
 
   if (!foundDiary) {
-    navigate(routeMap.errorNotFound.path)
+    navigate(routeMap.errorNotFound)
     return <TemplateContent />
   }
 
@@ -64,17 +61,17 @@ const BlogDiaryId: FunctionComponent = () => {
       </Box>
       <Box margin={{ bottom: 'medium' }}>
         <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-          {foundDiary!.content}
+          {foundDiary.content}
         </Text>
         <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-          {foundDiary!.content}
+          {foundDiary.content}
         </Text>
         <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-          {foundDiary!.content}
+          {foundDiary.content}
         </Text>
       </Box>
       <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ bottom: 'large' }}>
-        {foundDiary!.tags.map((tag) => (
+        {foundDiary.tags.map((tag) => (
           <Tag
             key={tag}
             value={tag}
@@ -83,8 +80,10 @@ const BlogDiaryId: FunctionComponent = () => {
             style={{ borderWidth: '2px' }}
             onClick={(e) => {
               e.stopPropagation()
-              const foundTag = allTags.find((t) => t.title === tag)
-              navigate(`/blog/${foundTag!.id}`)
+              navigate(createPath({
+                pathname: routeMap.blogHome,
+                search: createSearchParams({ tags: [tag] }).toString()
+              }))
             }}
           />
         ))}
@@ -97,7 +96,7 @@ const BlogDiaryId: FunctionComponent = () => {
           size='small'
           style={{ width: '200px' }}
           margin={{ bottom: 'large' }}
-          onClick={() => navigate(`/admin/diary/${foundDiary.id}`)}
+          onClick={() => navigate(routeMap.adminDiaryId(foundDiary.id))}
         />
       )}
     </TemplateContent>

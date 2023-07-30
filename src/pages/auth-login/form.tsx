@@ -3,8 +3,6 @@ import { Box, Button, Form, FormField, Text, TextInput } from 'grommet'
 
 import { authStore } from 'src/model/auth'
 
-import { routeMap } from '../index'
-
 interface FormData {
   login: string
   password: string

@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { FunctionComponent } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { CheckBoxGroup, Text, Heading } from 'grommet'
 
@@ -11,16 +11,12 @@ import { TemplateContent } from 'src/shared/template'
 import { Head } from 'src/shared/head-meta/head'
 
 const BlogHome: FunctionComponent = () => {
-  const tags = useStore(diaryStore.tagList)
-  const [chosenTags, setChosenTags] = useState<string[]>([])
-  const params = useParams()
+  const tagList = useStore(diaryStore.tagList)
 
-  useEffect(() => {
-    if (params.tag) {
-      const foundTag = tags.find((t) => t.id === params.tag)
-      if (foundTag) setChosenTags([...chosenTags, foundTag.title])
-    }
-  }, [params])
+  const [params, setParams] = useSearchParams({ tags: [] })
+
+  const tags = (params.get('tags') as string)?.split(',').filter(p => Boolean(p)) ?? []
+  const setTags = (tags: Array<string>) => setParams({ tags: tags.join(',') })
 
   return (
     <TemplateContent>
@@ -31,23 +27,30 @@ const BlogHome: FunctionComponent = () => {
       <Text size='large'>Filter by tags</Text>
 
       <CheckBoxGroup
-        style={{ maxWidth: '768px' }}
         direction='row'
         wrap={true}
         responsive={true}
         gap='medium'
         justify='start'
         margin={{ bottom: 'large', top: 'medium' }}
-        options={tags.sort((a, b) => a.sortOrder - b.sortOrder)}
+        options={tagList.sort((a, b) => a.sortOrder - b.sortOrder)}
         labelKey='title'
         valueKey='title'
-        value={chosenTags}
-        onChange={({ value, option }: any) => {
-          setChosenTags(value)
+        value={tags}
+        onChange={event => {
+          if (!event) return null
+          // grommet types are broken,
+          // value of checkbox group is string, but must be array of strings
+          // @ts-ignore
+          const eventValue = event.value as Array<string>
+          setTags(eventValue)
         }}
       />
 
-      <DiaryList isSliced={false} chosenTags={chosenTags} />
+      <DiaryList
+        isSliced={false}
+        chosenTags={tags}
+      />
     </TemplateContent>
   )
 }
