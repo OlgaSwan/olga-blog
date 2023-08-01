@@ -15,7 +15,7 @@ const BlogHome: FunctionComponent = () => {
 
   const [params, setParams] = useSearchParams({ tags: [] })
 
-  const tags = (params.get('tags') as string)?.split(',').filter(p => Boolean(p)) ?? []
+  const tags = (params.get('tags') as string)?.split(',').filter((p) => Boolean(p)) ?? []
   const setTags = (tags: Array<string>) => setParams({ tags: tags.join(',') })
 
   return (
@@ -37,7 +37,7 @@ const BlogHome: FunctionComponent = () => {
         labelKey='title'
         valueKey='title'
         value={tags}
-        onChange={event => {
+        onChange={(event) => {
           if (!event) return null
           // grommet types are broken,
           // value of checkbox group is string, but must be array of strings
@@ -47,10 +47,7 @@ const BlogHome: FunctionComponent = () => {
         }}
       />
 
-      <DiaryList
-        isSliced={false}
-        chosenTags={tags}
-      />
+      <DiaryList isSliced={false} chosenTags={tags} />
     </TemplateContent>
   )
 }

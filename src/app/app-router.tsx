@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   { path: routeMap.adminTagList, Component: AdminTagList },
   { path: routeMap.errorForbidden, Component: ErrorForbidden },
   { path: routeMap.errorNotFound, Component: ErrorNotFound },
-  { path: '*', element: <Navigate to='/404' /> }
+  { path: '*', element: <Navigate to='/404' /> },
 ])
 
 export const AppRouter: FunctionComponent = () => <RouterProvider router={router} />

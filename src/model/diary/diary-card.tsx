@@ -39,10 +39,12 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
                 style={{ borderWidth: '2px' }}
                 onClick={(e) => {
                   e.stopPropagation()
-                  navigate(createPath({
-                    pathname: routeMap.blogHome,
-                    search: createSearchParams({ tags: [tag] }).toString()
-                  }))
+                  navigate(
+                    createPath({
+                      pathname: routeMap.blogHome,
+                      search: createSearchParams({ tags: [tag] }).toString(),
+                    }),
+                  )
                 }}
               />
             ))}
