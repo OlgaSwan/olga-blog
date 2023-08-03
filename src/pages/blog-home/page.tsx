@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { Heading, Box, Button, Keyboard, Text, TextInput } from 'grommet'
@@ -18,13 +18,19 @@ const BlogHome: FunctionComponent = () => {
 
   const [params, setParams] = useSearchParams({ tags: [] })
   const tags = (params.get('tags') as string)?.split(',').filter((p) => Boolean(p)) ?? []
-  const setTags = (tags: Array<string>) => setParams({ tags: tags.join(',') })
-  const awdw = tags.length > 0 ? allSuggestions.filter((suggestion) => !tags.includes(suggestion)) : allSuggestions
-  console.log(awdw)
-  const [suggestions, setSuggestions] = useState(awdw)
+  const setTags = (tags: string[]) => setParams({ tags: tags.join(',') })
+  const [suggestions, setSuggestions] = useState<string[]>([])
+
+  const updateSuggestions = () => {
+    setSuggestions(allSuggestions.filter((suggestion) => !tags.includes(suggestion)))
+  }
+
+  useEffect(() => {
+    updateSuggestions()
+  }, [allDiaries])
 
   if (allDiaries === null) return <TemplateContent />
- 
+
   const onRemoveTag = (tag: string) => {
     const removeIndex = tags.indexOf(tag)
     const newTags = [...tags]
@@ -35,9 +41,10 @@ const BlogHome: FunctionComponent = () => {
   }
 
   const onAddTag = (tag: string) => {
-    if (!tags.includes(tag)) {
+    if (!tags.includes(tag) && suggestions.includes(tag)) {
       setTags([...tags, tag])
     }
+    updateSuggestions()
   }
 
   const onFilterSuggestion = (value: string) =>
@@ -60,8 +67,9 @@ const BlogHome: FunctionComponent = () => {
         onRemove={onRemoveTag}
         onAdd={onAddTag}
         onChange={(value) => onFilterSuggestion(value)}
+        dropProps={{ round: 'small' }}
+        onSuggestionsOpen={updateSuggestions}
       />
-
       <DiaryList isSliced={false} chosenTags={tags} />
     </TemplateContent>
   )

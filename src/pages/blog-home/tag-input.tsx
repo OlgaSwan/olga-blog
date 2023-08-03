@@ -52,7 +52,6 @@ const TagInput: FunctionComponent<TagInputProps> = ({ value = [], onAdd, onChang
         <Box flex style={{ minWidth: '120px' }}>
           <TextInput
             type='search'
-            dropProps={{ round: 'small' }}
             plain
             // grommet types r rly broken
             // @ts-ignore
