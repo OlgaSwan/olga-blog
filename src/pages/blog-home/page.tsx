@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
-import { Heading, Box, Button, Keyboard, Text, TextInput } from 'grommet'
+import { Heading } from 'grommet'
 
 import { diaryStore } from 'src/model/diary'
 import { metadata } from 'src/shared/head-meta/metadata'
@@ -13,20 +13,24 @@ import TagInput from './tag-input'
 
 const BlogHome: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
-  const allTags = allDiaries?.flatMap((d) => d.tags) || []
-  const allSuggestions = [...new Set(allTags)]
+
+  let allSuggestions = useMemo(() => {
+    const allTags = allDiaries?.flatMap((d) => d.tags) || []
+    return [...new Set(allTags)]
+  }, [allDiaries])
 
   const [params, setParams] = useSearchParams({ tags: [] })
   const tags = (params.get('tags') as string)?.split(',').filter((p) => Boolean(p)) ?? []
   const setTags = (tags: string[]) => setParams({ tags: tags.join(',') })
+
   const [suggestions, setSuggestions] = useState<string[]>([])
 
-  const updateSuggestions = () => {
-    setSuggestions(allSuggestions.filter((suggestion) => !tags.includes(suggestion)))
+  const updateSuggestions = (selectedTags: string[]) => {
+    setSuggestions(allSuggestions.filter((suggestion) => !selectedTags.includes(suggestion)))
   }
 
   useEffect(() => {
-    updateSuggestions()
+    updateSuggestions(tags)
   }, [allDiaries])
 
   if (allDiaries === null) return <TemplateContent />
@@ -38,13 +42,15 @@ const BlogHome: FunctionComponent = () => {
       newTags.splice(removeIndex, 1)
     }
     setTags(newTags)
+    updateSuggestions(newTags)
   }
 
   const onAddTag = (tag: string) => {
     if (!tags.includes(tag) && suggestions.includes(tag)) {
-      setTags([...tags, tag])
+      const newTags = [...tags, tag]
+      setTags(newTags)
+      updateSuggestions(newTags)
     }
-    updateSuggestions()
   }
 
   const onFilterSuggestion = (value: string) =>
@@ -68,7 +74,6 @@ const BlogHome: FunctionComponent = () => {
         onAdd={onAddTag}
         onChange={(value) => onFilterSuggestion(value)}
         dropProps={{ round: 'small' }}
-        onSuggestionsOpen={updateSuggestions}
       />
       <DiaryList isSliced={false} chosenTags={tags} />
     </TemplateContent>
