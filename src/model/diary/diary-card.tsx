@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren, useContext } from 'react'
+import React, { FunctionComponent, PropsWithChildren, useContext, useState } from 'react'
 import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
 
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext, Heading } from 'grommet'
@@ -15,6 +15,11 @@ export interface DiaryCardProps {
 export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
   const allDiaries = useStore(diaryStore.list)
   const foundDiary = allDiaries?.find((p) => p.id === id)
+  const getLikedIds = (): string[] => JSON.parse(localStorage.getItem('isLiked') || '[]')
+  const [isLiked, setIsLiked] = useState<boolean>(() => {
+    const likedIds = getLikedIds()
+    return likedIds.includes(id)
+  })
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
 
@@ -24,6 +29,15 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         <CardBody>Post not found</CardBody>
       </Card>
     )
+
+  const likeToggle = () => {
+    const likedIds = getLikedIds()
+    const updatedLikedIds = likedIds.includes(id) ? likedIds.filter((likedId) => likedId !== id) : [...likedIds, id]
+
+    if (updatedLikedIds.length > 0) localStorage.setItem('isLiked', JSON.stringify(updatedLikedIds))
+    else localStorage.removeItem('isLiked')
+    setIsLiked(!isLiked)
+  }
 
   return (
     <Card width='large' background='light-1'>
@@ -65,15 +79,18 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         </Text>
       </CardBody>
       <CardFooter pad={{ horizontal: 'small' }} background='background-back'>
-        <Box direction='row' align='center' justify='between' gap='small'>
-          <Box direction='row' align='center'>
-            <Button icon={<Icons.Favorite color='red' />} hoverIndicator />
-            <Text size='small'>{foundDiary.likes}</Text>
+        <Box direction='row' align='center' justify='between'>
+          <Button
+            icon={isLiked ? <Icons.LikeFill color='brand' /> : <Icons.Like color='text' />}
+            hoverIndicator
+            onClick={likeToggle}
+          />
+          <Box direction='row' gap='small'>
+            <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
+              ·
+            </Text>
+            <Text size='small'>{foundDiary.minRead + ' min read'}</Text>
           </Box>
-          <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
-            ·
-          </Text>
-          <Text size='small'>{foundDiary.minRead + ' min read'}</Text>
         </Box>
         <Button icon={<Icons.ShareRounded color='text' />} hoverIndicator />
       </CardFooter>

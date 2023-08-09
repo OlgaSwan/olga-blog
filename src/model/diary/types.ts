@@ -6,7 +6,6 @@ export const diaryInternalSchema = z.object({
   content: z.string(),
   tags: z.array(z.string()),
   minRead: z.number().int().gte(0),
-  likes: z.number().int().gte(0),
 })
 
 export type DiaryInternal = z.infer<typeof diaryInternalSchema>

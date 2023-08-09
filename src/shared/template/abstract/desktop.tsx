@@ -11,11 +11,7 @@ import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
 import { routeMap } from 'src/shared/route-map'
 
-export const TemplateDesktop: FunctionComponent<TemplateProps> = ({
-  sidebarLeft,
-  main,
-  sidebarRight,
-}) => {
+export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
   const authStoreValue = useStore(authStore.store)
   const colorSchemeValue = useStore(colorScheme.store)
 
