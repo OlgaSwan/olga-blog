@@ -1,43 +1,31 @@
-import React, { FunctionComponent, useState, useRef, ChangeEvent } from 'react'
+import React, { FunctionComponent, useState, useRef, useEffect, useMemo } from 'react'
 import Tag from './tag'
-import { Box, Keyboard, TextInput, TextInputProps } from 'grommet'
+import { Box, TextInput } from 'grommet'
 
-interface TagInputProps extends Omit<TextInputProps, 'value' | 'onChange'> {
-  value: string[]
-  onAdd: (tag: string) => void
-  onChange: (value: string) => void
-  onRemove: (tag: string) => void
+interface TagInputProps {
+  initialValue?: string[]
+  suggestions?: string[]
+  onChange?: (value: string[]) => void
 }
 
-const TagInput: FunctionComponent<TagInputProps> = ({ value = [], onAdd, onChange, onRemove, ...rest }) => {
-  const [currentTag, setCurrentTag] = useState('')
+const TagInput: FunctionComponent<TagInputProps> = ({
+  initialValue = [],
+  suggestions,
+  onChange,
+}) => {
+  const [inputValue, setInputValue] = useState<string>('')
+  const [chosenTags, setChosenTags] = useState<Array<string>>(initialValue)
+  const leftSuggestions = useMemo(() => (
+    suggestions?.filter(s => !chosenTags.includes(s))
+  ), [chosenTags, suggestions])
   const boxRef = useRef(null)
 
-  const updateCurrentInputValueBlyat = (event: ChangeEvent<HTMLInputElement>) => {
-    setCurrentTag(event.target.value)
-    onChange(event.target.value)
-  }
-
-  const onAddTag = (tag: string) => {
-    onAdd(tag)
-  }
-
-  const onEnter = () => {
-    if (currentTag.length) {
-      onAddTag(currentTag)
-      setCurrentTag('')
-    }
-  }
-
-  const renderValue = () =>
-    value.map((v, index) => (
-      <Tag margin='xxsmall' key={`${v}${index + 0}`} onRemove={() => onRemove(v)}>
-        {v}
-      </Tag>
-    ))
+  useEffect(() => {
+    onChange?.(chosenTags)
+  }, [chosenTags])
 
   return (
-    <Keyboard onEnter={onEnter}>
+    <>
       <Box
         direction='row'
         align='center'
@@ -48,22 +36,35 @@ const TagInput: FunctionComponent<TagInputProps> = ({ value = [], onAdd, onChang
         ref={boxRef}
         wrap
       >
-        {value.length > 0 && renderValue()}
+        {chosenTags.map(tag => (
+          <Tag
+            key={tag}
+            margin='xxsmall'
+            onRemove={() => {
+              setChosenTags(chosenTags.filter(t => t !== tag))
+            }}>
+            {tag}
+          </Tag>
+        ))}
         <Box flex style={{ minWidth: '120px' }}>
           <TextInput
             type='search'
             plain
-            // grommet types r rly broken
+            placeholder='Filter by tags'
+            value={inputValue}
+            onChange={event => setInputValue(event.currentTarget.value)}
+            suggestions={leftSuggestions}
+            onSuggestionSelect={event => {
+              setInputValue('')
+              setChosenTags([...chosenTags, event.suggestion])
+            }}
             // @ts-ignore
             dropTarget={boxRef.current}
-            {...rest}
-            onChange={updateCurrentInputValueBlyat}
-            value={currentTag}
-            onSuggestionSelect={(event) => onAddTag(event.suggestion)}
+            dropProps={{ round: 'small' }}
           />
         </Box>
       </Box>
-    </Keyboard>
+    </>
   )
 }
 
