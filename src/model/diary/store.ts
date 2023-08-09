@@ -48,7 +48,6 @@ export const diaryStore = {
         random(2, 6),
       ),
       minRead: random(3, 15, false),
-      likes: random(100, 1000, false),
     }
     await addDoc(diaryCollection, data)
   },

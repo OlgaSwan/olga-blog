@@ -8,11 +8,7 @@ import { LinkCustom } from 'src/shared/link-custom'
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
 
-export const TemplateTablet: FunctionComponent<TemplateProps> = ({
-  sidebarLeft,
-  main,
-  sidebarRight,
-}) => (
+export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (
   <>
     <Box
       as='header'

@@ -8,11 +8,7 @@ import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
 import { routeMap } from 'src/shared/route-map'
 
-export const TemplateMobile: FunctionComponent<TemplateProps> = ({
-  sidebarLeft,
-  main,
-  sidebarRight,
-}) => (
+export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (
   <>
     <Box
       as='header'
