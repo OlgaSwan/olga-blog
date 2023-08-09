@@ -1,5 +1,4 @@
 export { DiaryList } from './diary-list'
 export { DiaryCard } from './diary-card'
 export { diaryStore } from './store'
-export { diaryInternalSchema, diaryExternalSchema } from './types'
 export type { DiaryInternal, DiaryExternal } from './types'

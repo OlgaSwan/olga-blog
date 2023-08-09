@@ -14,14 +14,8 @@ import { routeMap } from 'src/shared/route-map'
 import { metadata } from 'src/shared/head-meta/metadata'
 import { AdminDiaryIdEditor } from 'src/model/diary/diary-editor'
 
-const AdminDiaryId: FunctionComponent = () => {
+const AdminDiaryNew: FunctionComponent = () => {
   useAuthRedirect(true, routeMap.errorForbidden)
-  const allDiaries = useStore(diaryStore.list)
-  const params = useParams()
-  const foundDiary = allDiaries?.find((p) => p.id === params.id)
-
-  if (!allDiaries) return <TemplateAdmin />
-  if (!foundDiary) return <TemplateAdmin />
 
   return (
     <TemplateAdmin>
@@ -31,7 +25,14 @@ const AdminDiaryId: FunctionComponent = () => {
       </Heading>
       <Box gap='small' margin={{ top: 'medium' }}>
         <AdminDiaryIdEditor
-          initialValue={foundDiary}
+          initialValue={{
+            title: '',
+            content: [{
+              kind: 'paragraph',
+              text: ''
+            }],
+            tags: [],
+          }}
           onChange={value => console.log(value)}
         />
         <Button
@@ -47,4 +48,4 @@ const AdminDiaryId: FunctionComponent = () => {
   )
 }
 
-export default AdminDiaryId
+export default AdminDiaryNew

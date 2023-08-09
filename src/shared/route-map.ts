@@ -7,6 +7,7 @@ export const routeMap = {
   authLogin: '/auth/login',
   adminHome: '/admin',
   adminDiaryList: '/admin/diary',
+  adminDiaryNew: '/admin/diary/new',
   adminDiaryId: (id: string) => `/admin/diary/${id}`,
   adminTagList: '/admin/tag',
   errorForbidden: '/403',

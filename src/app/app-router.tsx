@@ -11,6 +11,7 @@ import { BlogDiaryId } from 'src/pages/blog-diary-id'
 import { AuthLogin } from 'src/pages/auth-login'
 import { AdminHome } from 'src/pages/admin-home'
 import { AdminDiaryList } from 'src/pages/admin-diary-list'
+import { AdminDiaryNew } from 'src/pages/admin-diary-new'
 import { AdminDiaryId } from 'src/pages/admin-diary-id'
 import { AdminTagList } from 'src/pages/admin-tag-list'
 import { ErrorForbidden } from 'src/pages/error-forbidden'
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
   { path: routeMap.authLogin, Component: AuthLogin },
   { path: routeMap.adminHome, Component: AdminHome },
   { path: routeMap.adminDiaryList, Component: AdminDiaryList },
+  { path: routeMap.adminDiaryNew, Component: AdminDiaryNew },
   { path: routeMap.adminDiaryId(':id'), Component: AdminDiaryId },
   { path: routeMap.adminTagList, Component: AdminTagList },
   { path: routeMap.errorForbidden, Component: ErrorForbidden },

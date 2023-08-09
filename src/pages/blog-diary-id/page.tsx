@@ -66,7 +66,7 @@ const BlogDiaryId: FunctionComponent = () => {
             <Box direction='row' align='center' justify='between' gap='small'>
               <Box direction='row' align='center'>
                 <Button icon={<Icons.Clock color='text' />} hoverIndicator />
-                <Text size='small'>{foundDiary.minRead + ' min read'}</Text>
+                <Text size='small'>69 min read</Text>
               </Box>
               <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
                 ·
@@ -82,15 +82,7 @@ const BlogDiaryId: FunctionComponent = () => {
         </Box>
       </Box>
       <Box margin={{ bottom: 'medium' }}>
-        <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-          {foundDiary.content}
-        </Text>
-        <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-          {foundDiary.content}
-        </Text>
-        <Text size='medium' weight='normal' margin={{ bottom: 'medium' }}>
-          {foundDiary.content}
-        </Text>
+        Your content may be here
       </Box>
       <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ bottom: 'large' }}>
         {foundDiary.tags.map((tag) => (

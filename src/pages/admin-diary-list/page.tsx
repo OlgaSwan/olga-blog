@@ -11,10 +11,12 @@ import { Head } from 'src/shared/head-meta/head'
 import { routeMap } from 'src/shared/route-map'
 import { metadata } from 'src/shared/head-meta/metadata'
 import { diaryStore } from 'src/model/diary'
+import { useNavigate } from 'react-router-dom'
 
 const AdminDiaryList: FunctionComponent = () => {
   const diaryList = useStore(diaryStore.list)
   useAuthRedirect(true, routeMap.errorForbidden)
+  const navigate = useNavigate()
 
   if (diaryList === null) return <TemplateAdmin />
 
@@ -26,7 +28,7 @@ const AdminDiaryList: FunctionComponent = () => {
       </Heading>
       <Box direction='column' gap='medium'>
         <Box direction='row' justify='start' gap='small' wrap>
-          <Button label='Create post' primary icon={<Icons.Edit />} />
+          <Button label='Create post' primary icon={<Icons.Edit />} onClick={() => navigate(routeMap.adminDiaryId('new'))} />
           <Button label='Create random post' icon={<Icons.Risk />} onClick={() => diaryStore.addRandom()} />
           <Button
             label='Delete all posts'
@@ -41,14 +43,11 @@ const AdminDiaryList: FunctionComponent = () => {
               <CardHeader>
                 <Heading size='small'>{diary.title}</Heading>
               </CardHeader>
-              <CardBody>{diary.content}</CardBody>
               <CardFooter direction='column' justify='start' align='start' gap='small'>
                 <Box direction='row' justify='start' gap='xsmall' wrap>
                   {diary.tags.map((tag) => (
                     <Tag key={tag} value={tag} />
                   ))}
-                  <Tag value={`${diary.likes} likes`} />
-                  <Tag value={`${diary.minRead} min read`} />
                 </Box>
                 <Box direction='row' justify='start' gap='xsmall' wrap>
                   <Button label='Edit' icon={<Icons.Edit />} />
