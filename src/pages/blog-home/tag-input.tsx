@@ -1,30 +1,36 @@
 import React, { FunctionComponent, useState, useRef, useEffect, useMemo } from 'react'
-import Tag from './tag'
 import { Box, TextInput } from 'grommet'
+import { isEqual } from 'lodash-es'
+
+import Tag from './tag'
 
 interface TagInputProps {
-  initialValue?: string[]
+  value?: string[]
   suggestions?: string[]
   onChange?: (value: string[]) => void
 }
 
 const TagInput: FunctionComponent<TagInputProps> = ({
-  initialValue = [],
+  value = [],
   suggestions = [],
   onChange,
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
-  const [chosenTags, setChosenTags] = useState<Array<string>>(initialValue)
+  const [chosenTags, setChosenTags] = useState<Array<string>>(value)
+  useEffect(() => {
+    if (!isEqual(value, chosenTags)) setChosenTags(value)
+  }, [value])
+  useEffect(() => {
+    if (!isEqual(value, chosenTags)) onChange?.(chosenTags)
+  }, [chosenTags])
+
   const leftSuggestions = useMemo(() => (
     suggestions
       .filter(s => !chosenTags.includes(s))
       .filter(s => s.includes(inputValue))
   ), [chosenTags, suggestions, inputValue])
-  const boxRef = useRef(null)
 
-  useEffect(() => {
-    onChange?.(chosenTags)
-  }, [chosenTags])
+  const boxRef = useRef(null)
 
   return (
     <>

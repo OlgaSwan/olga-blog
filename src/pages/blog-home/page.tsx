@@ -33,7 +33,7 @@ const BlogHome: FunctionComponent = () => {
       </Heading>
       <TagInput
         suggestions={allSuggestions}
-        initialValue={tags}
+        value={tags}
         onChange={(value) => setTags(value)}
       />
       <DiaryList isSliced={false} chosenTags={tags} />
