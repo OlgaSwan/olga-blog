@@ -89,7 +89,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
             <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
               ·
             </Text>
-            <Text size='small'>{foundDiary.minRead + ' min read'}</Text>
+            <Text size='small'>69 min read</Text>
           </Box>
         </Box>
         <Button icon={<Icons.ShareRounded color='text' />} hoverIndicator />
