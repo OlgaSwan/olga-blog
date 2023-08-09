@@ -4,6 +4,7 @@ import { Box, Button, TextArea, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { DiaryInternal } from 'src/model/diary/index'
+import TagInput from 'src/pages/blog-home/tag-input'
 
 interface Props {
   disabled?: boolean
@@ -83,6 +84,9 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
             append({ kind: 'image', url: '' })
           }}
         />
+      </Box>
+      <Box>
+        <TagInput />
       </Box>
     </Box>
   )

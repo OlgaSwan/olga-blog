@@ -14,7 +14,7 @@ import TagInput from './tag-input'
 const BlogHome: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
 
-  let allSuggestions = useMemo(() => {
+  const allSuggestions = useMemo(() => {
     const allTags = allDiaries?.flatMap((d) => d.tags) || []
     return [...new Set(allTags)]
   }, [allDiaries])
@@ -23,42 +23,7 @@ const BlogHome: FunctionComponent = () => {
   const tags = (params.get('tags') as string)?.split(',').filter((p) => Boolean(p)) ?? []
   const setTags = (tags: string[]) => setParams({ tags: tags.join(',') })
 
-  const [suggestions, setSuggestions] = useState<string[]>([])
-
-  const updateSuggestions = (selectedTags: string[]) => {
-    setSuggestions(allSuggestions.filter((suggestion) => !selectedTags.includes(suggestion)))
-  }
-
-  useEffect(() => {
-    updateSuggestions(tags)
-  }, [allDiaries])
-
   if (allDiaries === null) return <TemplateContent />
-
-  const onRemoveTag = (tag: string) => {
-    const removeIndex = tags.indexOf(tag)
-    const newTags = [...tags]
-    if (removeIndex >= 0) {
-      newTags.splice(removeIndex, 1)
-    }
-    setTags(newTags)
-    updateSuggestions(newTags)
-  }
-
-  const onAddTag = (tag: string) => {
-    if (!tags.includes(tag) && suggestions.includes(tag)) {
-      const newTags = [...tags, tag]
-      setTags(newTags)
-      updateSuggestions(newTags)
-    }
-  }
-
-  const onFilterSuggestion = (value: string) =>
-    setSuggestions(
-      allSuggestions.filter(
-        (suggestion) => suggestion.toLowerCase().indexOf(value.toLowerCase()) >= 0 && !tags.includes(suggestion),
-      ),
-    )
 
   return (
     <TemplateContent>
@@ -67,13 +32,9 @@ const BlogHome: FunctionComponent = () => {
         Blog
       </Heading>
       <TagInput
-        placeholder='Filter by tags'
-        suggestions={suggestions}
-        value={tags}
-        onRemove={onRemoveTag}
-        onAdd={onAddTag}
-        onChange={(value) => onFilterSuggestion(value)}
-        dropProps={{ round: 'small' }}
+        suggestions={allSuggestions}
+        initialValue={tags}
+        onChange={(value) => setTags(value)}
       />
       <DiaryList isSliced={false} chosenTags={tags} />
     </TemplateContent>
