@@ -10,14 +10,16 @@ interface TagInputProps {
 
 const TagInput: FunctionComponent<TagInputProps> = ({
   initialValue = [],
-  suggestions,
+  suggestions = [],
   onChange,
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
   const [chosenTags, setChosenTags] = useState<Array<string>>(initialValue)
   const leftSuggestions = useMemo(() => (
-    suggestions?.filter(s => !chosenTags.includes(s))
-  ), [chosenTags, suggestions])
+    suggestions
+      .filter(s => !chosenTags.includes(s))
+      .filter(s => s.includes(inputValue))
+  ), [chosenTags, suggestions, inputValue])
   const boxRef = useRef(null)
 
   useEffect(() => {
