@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
-import { useParams, useNavigate, createPath, createSearchParams } from 'react-router-dom'
+import { createPath, createSearchParams, useNavigate, useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
-import { Box, Button, Tag, Text, Heading } from 'grommet'
+import { Box, Button, Heading, Image, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { diaryStore } from 'src/model/diary'
@@ -14,9 +14,11 @@ const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
   const auth = useStore(authStore.store)
   const params = useParams()
+  //TODO: MAKE A HOOK
   const getLikedIds = (): string[] => JSON.parse(localStorage.getItem('isLiked') || '[]')
-  const [isLiked, setIsLiked] = useState<boolean>(() => {
+  const [isLiked, setIsLiked] = useState(() => {
     const likedIds = getLikedIds()
+    //TODO: WHAT THE ACTUAL FUCK IS THIS SHIT?
     if (typeof params.id === 'string') return likedIds.includes(params.id)
     else return false
   })
@@ -24,7 +26,7 @@ const BlogDiaryId: FunctionComponent = () => {
 
   if (allDiaries === null) return <TemplateContent />
 
-  const foundDiary = allDiaries.find((p) => p.id === params.id)
+  const foundDiary = allDiaries.find((d) => d.id === params.id)
 
   if (!foundDiary) {
     navigate(routeMap.errorNotFound)
@@ -33,6 +35,7 @@ const BlogDiaryId: FunctionComponent = () => {
 
   const likeToggle = () => {
     const likedIds = getLikedIds()
+    //TODO: ????
     if (typeof params.id === 'string') {
       const updatedLikedIds = likedIds.includes(params.id)
         ? likedIds.filter((likedId) => likedId !== params.id)
@@ -81,8 +84,18 @@ const BlogDiaryId: FunctionComponent = () => {
           </Box>
         </Box>
       </Box>
-      <Box margin={{ bottom: 'medium' }}>
-        Your content may be here
+      <Box margin={{ bottom: 'medium' }} gap={'medium'}>
+        {foundDiary.content.map(block => {
+          switch (block.kind) {
+            case 'paragraph':
+              return <Text>{block.text}</Text>
+            case 'image':
+              return <Image src={block.url} />
+            case 'iframe':
+              return <iframe src={block.url} />
+          }
+        })}
+
       </Box>
       <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ bottom: 'large' }}>
         {foundDiary.tags.map((tag) => (
@@ -97,8 +110,8 @@ const BlogDiaryId: FunctionComponent = () => {
               navigate(
                 createPath({
                   pathname: routeMap.blogHome,
-                  search: createSearchParams({ tags: [tag] }).toString(),
-                }),
+                  search: createSearchParams({ tags: [tag] }).toString()
+                })
               )
             }}
           />

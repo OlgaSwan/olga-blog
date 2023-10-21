@@ -15,8 +15,8 @@ const TagInput: FunctionComponent<TagInputProps> = ({
   suggestions = [],
   onChange,
 }) => {
-  const [inputValue, setInputValue] = useState<string>('')
-  const [chosenTags, setChosenTags] = useState<Array<string>>(value)
+  const [inputValue, setInputValue] = useState('')
+  const [chosenTags, setChosenTags] = useState(value)
   useEffect(() => {
     if (!isEqual(value, chosenTags)) setChosenTags(value)
   }, [value])

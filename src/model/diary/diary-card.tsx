@@ -1,9 +1,10 @@
 import React, { FunctionComponent, PropsWithChildren, useContext, useState } from 'react'
 import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
 
-import { Box, Button, Card, CardBody, CardFooter, CardHeader, Tag, Text, ResponsiveContext, Heading } from 'grommet'
-import * as Icons from 'grommet-icons'
 import { useStore } from '@nanostores/react'
+
+import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, ResponsiveContext, Tag, Text } from 'grommet'
+import * as Icons from 'grommet-icons'
 
 import { diaryStore } from './store'
 import { routeMap } from 'src/shared/route-map'
@@ -16,7 +17,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   const allDiaries = useStore(diaryStore.list)
   const foundDiary = allDiaries?.find((p) => p.id === id)
   const getLikedIds = (): string[] => JSON.parse(localStorage.getItem('isLiked') || '[]')
-  const [isLiked, setIsLiked] = useState<boolean>(() => {
+  const [isLiked, setIsLiked] = useState(() => {
     const likedIds = getLikedIds()
     return likedIds.includes(id)
   })
@@ -29,6 +30,8 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         <CardBody>Post not found</CardBody>
       </Card>
     )
+
+  const firstParagraph = foundDiary.content.find(block => block.kind === 'paragraph')
 
   const likeToggle = () => {
     const likedIds = getLikedIds()
@@ -56,8 +59,8 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
                   navigate(
                     createPath({
                       pathname: routeMap.blogHome,
-                      search: createSearchParams({ tags: [tag] }).toString(),
-                    }),
+                      search: createSearchParams({ tags: [tag] }).toString()
+                    })
                   )
                 }}
               />
@@ -75,7 +78,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         onClick={() => navigate(routeMap.blogDiaryId(id))}
       >
         <Text size='medium' weight='normal' margin='none'>
-          {foundDiary.content.slice(0, 240) + '...'}
+          {firstParagraph && firstParagraph.kind === 'paragraph' && firstParagraph.text.slice(0, 240).trim() + '...'}
         </Text>
       </CardBody>
       <CardFooter pad={{ horizontal: 'small' }} background='background-back'>

@@ -7,6 +7,7 @@ import { authStore } from './store'
 export const useAuthRedirect = (mustBeAuthorized: boolean, redirectTo: string) => {
   const auth = useStore(authStore.store)
   const navigate = useNavigate()
+
   useEffect(() => {
     if (auth && !mustBeAuthorized) navigate(redirectTo)
     if (!auth && mustBeAuthorized) navigate(redirectTo)
