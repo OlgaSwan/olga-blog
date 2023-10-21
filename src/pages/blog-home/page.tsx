@@ -20,7 +20,7 @@ const BlogHome: FunctionComponent = () => {
   }, [allDiaries])
 
   const [params, setParams] = useSearchParams({ tags: [] })
-  const tags = (params.get('tags') as string)?.split(',').filter((p) => Boolean(p)) ?? []
+  const tags = (params.get('tags'))?.split(',').filter((t) => Boolean(t)) ?? []
   const setTags = (tags: string[]) => setParams({ tags: tags.join(',') })
 
   if (allDiaries === null) return <TemplateContent />

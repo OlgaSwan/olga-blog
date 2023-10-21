@@ -1,6 +1,6 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { FormClose } from 'grommet-icons'
-import { Box, BoxExtendedProps, Button, Keyboard, Text, TextInput } from 'grommet'
+import { Box, BoxExtendedProps, Text } from 'grommet'
 
 interface TagProps extends BoxExtendedProps {
   onRemove: () => void

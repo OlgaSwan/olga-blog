@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Heading } from 'grommet'
 
 import { TemplateContent } from 'src/shared/template'
-import { FormLogin } from './form'
+import { FormLogin } from './form-login'
 import { useAuthRedirect } from 'src/model/auth'
 
 import { Head } from 'src/shared/head-meta/head'
