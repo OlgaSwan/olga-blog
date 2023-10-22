@@ -85,14 +85,14 @@ const BlogDiaryId: FunctionComponent = () => {
         </Box>
       </Box>
       <Box margin={{ bottom: 'medium' }} gap={'medium'}>
-        {foundDiary.content.map(block => {
+        {foundDiary.content.map((block, index) => {
           switch (block.kind) {
             case 'paragraph':
-              return <Text>{block.text}</Text>
+              return <Text key={index}>{block.text}</Text>
             case 'image':
-              return <Image src={block.url} />
+              return <Image key={index} src={block.url} />
             case 'iframe':
-              return <iframe src={block.url} />
+              return <iframe key={index} src={block.url} />
           }
         })}
 

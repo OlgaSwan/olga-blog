@@ -1,26 +1,22 @@
-import React, { FunctionComponent, useEffect, useState, useMemo } from 'react'
+import React, { FunctionComponent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { Heading } from 'grommet'
 
-import { diaryStore } from 'src/model/diary'
+import { DiaryList, diaryStore } from 'src/model/diary'
 import { metadata } from 'src/shared/head-meta/metadata'
-
-import { DiaryList } from 'src/model/diary'
 import { TemplateContent } from 'src/shared/template'
 import { Head } from 'src/shared/head-meta/head'
 import TagInput from './tag-input'
+import { useAllTAgs } from 'src/shared/hooks/useAllTAgs'
 
 const BlogHome: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
 
-  const allSuggestions = useMemo(() => {
-    const allTags = allDiaries?.flatMap((d) => d.tags) || []
-    return [...new Set(allTags)]
-  }, [allDiaries])
+  const allSuggestions = useAllTAgs()
 
   const [params, setParams] = useSearchParams({ tags: [] })
-  const tags = (params.get('tags'))?.split(',').filter((t) => Boolean(t)) ?? []
+  const tags = ( params.get('tags') )?.split(',').filter((t) => Boolean(t)) ?? []
   const setTags = (tags: string[]) => setParams({ tags: tags.join(',') })
 
   if (allDiaries === null) return <TemplateContent />
