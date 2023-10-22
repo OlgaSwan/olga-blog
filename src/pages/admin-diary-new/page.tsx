@@ -1,8 +1,5 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useStore } from '@nanostores/react'
-import { Box, Button, Heading, TextInput, TextArea } from 'grommet'
-import * as Icons from 'grommet-icons'
+import React, { FunctionComponent } from 'react'
+import { Box, Heading } from 'grommet'
 
 import { TemplateAdmin } from 'src/shared/template'
 import { diaryStore } from 'src/model/diary'
@@ -13,9 +10,11 @@ import { Head } from 'src/shared/head-meta/head'
 import { routeMap } from 'src/shared/route-map'
 import { metadata } from 'src/shared/head-meta/metadata'
 import { AdminDiaryIdEditor } from 'src/model/diary/diary-editor'
+import { useNavigate } from 'react-router-dom'
 
 const AdminDiaryNew: FunctionComponent = () => {
   useAuthRedirect(true, routeMap.errorForbidden)
+  const navigate = useNavigate()
 
   return (
     <TemplateAdmin>
@@ -31,17 +30,12 @@ const AdminDiaryNew: FunctionComponent = () => {
               kind: 'paragraph',
               text: ''
             }],
-            tags: [],
+            tags: []
           }}
-          onChange={value => console.log(value)}
-        />
-        <Button
-          primary
-          label='Submit'
-          size='small'
-          margin={{ top: 'medium' }}
-          style={{ width: '200px' }}
-          onClick={() => alert('АХАХАХАХАХАХААХХААХАХАХАХАХА')}
+          onSubmit={async (value) => {
+            await diaryStore.add(value)
+            navigate(routeMap.adminDiaryList)
+          }}
         />
       </Box>
     </TemplateAdmin>
