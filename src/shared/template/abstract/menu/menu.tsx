@@ -11,6 +11,8 @@ export const MenuComponent: FunctionComponent = () => {
   const menuData = useMenuData()
   const colorSchemeValue = useStore(colorScheme.store)
   return <Menu
+    justifyContent='end'
+    dropAlign={{ top: 'top', right: 'right' }}
     icon={<Icons.Menu color='brand' />}
     items={menuData.map(e => ( {
       label: e.label,

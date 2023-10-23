@@ -36,9 +36,9 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
           <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
         </Box>
         <Nav direction='row' align='center' gap='medium'>
-          {menuData.map(e => <LinkCustom style={e.style} label={e.label} href={e.href} onClick={(event) => {
-            if (e.onClick) e.onClick(event)
-          }} icon={e.icon ? e.icon(colorSchemeValue) : undefined} />)}
+          {menuData.map((e, index) => <LinkCustom key={index} style={e.style} label={e.label} href={e.href}
+                                                  onClick={e.onClick}
+                                                  icon={e.icon ? e.icon(colorSchemeValue) : undefined} />)}
         </Nav>
       </Box>
       <Box direction='row' flex='grow' pad={{ horizontal: 'medium' }} gap='medium' justify='between'>

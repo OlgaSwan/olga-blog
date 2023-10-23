@@ -1,13 +1,14 @@
 import React, { FunctionComponent, PropsWithChildren, useContext, useState } from 'react'
 import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
-
-import { useStore } from '@nanostores/react'
-
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, ResponsiveContext, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
+import { useStore } from '@nanostores/react'
+
 import { diaryStore } from './store'
 import { routeMap } from 'src/shared/route-map'
+
+import { useReadTime } from 'src/shared/hooks/useReadTime'
 
 export interface DiaryCardProps {
   id: string
@@ -23,10 +24,11 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   })
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
+  const readTime = useReadTime(foundDiary?.content)
 
   if (!foundDiary)
     return (
-      <Card height='medium' width='large' background='light-1'>
+      <Card height='medium' width='large' background={{ color: 'light-1' }}>
         <CardBody>Post not found</CardBody>
       </Card>
     )
@@ -43,7 +45,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   }
 
   return (
-    <Card width='large' background='light-1'>
+    <Card width='large' background={{ color: 'light-1' }}>
       <CardHeader direction='column' pad='medium' focusIndicator={false} onClick={() => navigate(`/blog/diary/${id}`)}>
         {screenSize !== 'small' && (
           <Box direction='row' flex='grow' gap='small' alignSelf='end'>
@@ -81,7 +83,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           {firstParagraph && firstParagraph.kind === 'paragraph' && firstParagraph.text.slice(0, 240).trim() + '...'}
         </Text>
       </CardBody>
-      <CardFooter pad={{ horizontal: 'small' }} background='background-back'>
+      <CardFooter pad={{ horizontal: 'small' }} background={{ color: 'light-3' }}>
         <Box direction='row' align='center' justify='between'>
           <Button
             icon={isLiked ? <Icons.LikeFill color='brand' /> : <Icons.Like color='text' />}
@@ -92,7 +94,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
             <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
               ·
             </Text>
-            <Text size='small'>69 min read</Text>
+            <Text size='small'>{readTime} min read</Text>
           </Box>
         </Box>
         <Button icon={<Icons.ShareRounded color='text' />} hoverIndicator />

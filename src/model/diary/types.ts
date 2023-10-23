@@ -4,7 +4,7 @@ export interface DiaryInternal {
   tags: Array<string>
 }
 
-type Block = {
+export type Block = {
   kind: 'paragraph'
   text: string
 } | {

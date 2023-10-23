@@ -9,11 +9,13 @@ import { authStore } from 'src/model/auth'
 import { TemplateContent } from 'src/shared/template'
 import { routeMap } from 'src/shared/route-map'
 import { Head } from 'src/shared/head-meta/head'
+import { useReadTime } from 'src/shared/hooks/useReadTime'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
   const auth = useStore(authStore.store)
   const params = useParams()
+  const foundDiary = allDiaries?.find((d) => d.id === params.id)
   //TODO: MAKE A HOOK
   const getLikedIds = (): string[] => JSON.parse(localStorage.getItem('isLiked') || '[]')
   const [isLiked, setIsLiked] = useState(() => {
@@ -23,10 +25,9 @@ const BlogDiaryId: FunctionComponent = () => {
     else return false
   })
   const navigate = useNavigate()
+  const readTime = useReadTime(foundDiary?.content)
 
   if (allDiaries === null) return <TemplateContent />
-
-  const foundDiary = allDiaries.find((d) => d.id === params.id)
 
   if (!foundDiary) {
     navigate(routeMap.errorNotFound)
@@ -69,7 +70,7 @@ const BlogDiaryId: FunctionComponent = () => {
             <Box direction='row' align='center' justify='between' gap='small'>
               <Box direction='row' align='center'>
                 <Button icon={<Icons.Clock color='text' />} hoverIndicator />
-                <Text size='small'>69 min read</Text>
+                <Text size='small'>{readTime} min read</Text>
               </Box>
               <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
                 ·

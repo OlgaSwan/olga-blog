@@ -38,7 +38,7 @@ const adminMenuData: MenuDataItem[] = [{
 }]
 
 const menuDataIcon: MenuDataItem = {
-  style: { lineHeight: '0' },
+  style: { lineHeight: '0', alignSelf: 'center' },
   icon: (colorSchemeValue: string) => colorSchemeValue === 'dark' ? <Icons.Moon /> : <Icons.Sun />,
   href: '#',
   onClick: (event) => {
