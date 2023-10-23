@@ -3,13 +3,16 @@ import { Avatar, Box, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { routeMap } from 'src/shared/route-map'
+
 import { LinkCustom } from 'src/shared/link-custom'
+import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
 
-export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (
-  <>
+export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
+
+  return <>
     <Box
       as='header'
       height='xsmall'
@@ -21,23 +24,14 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       style={{
         position: 'sticky',
         top: 0,
-        backdropFilter: 'blur(6px)',
+        backdropFilter: 'blur(6px)'
       }}
     >
       <Box direction='row' gap='medium' align='center'>
         <LinkCustom size='large' label={<Avatar src={avatar} size='medium' />} href={routeMap.home} />
         <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
       </Box>
-      <Box direction='row' align='center' gap='medium'>
-        <LinkCustom
-          icon={<Icons.Menu />}
-          href='#'
-          onClick={(event) => {
-            event.preventDefault()
-          }}
-          style={{ lineHeight: 0 }}
-        />
-      </Box>
+      <MenuComponent />
     </Box>
     <Box flex='grow' direction='row' pad={{ horizontal: 'medium' }} gap='medium' justify='center'>
       {sidebarLeft ? (
@@ -68,4 +62,5 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       </Box>
     </Box>
   </>
-)
+}
+

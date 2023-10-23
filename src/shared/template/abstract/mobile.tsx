@@ -2,11 +2,13 @@ import React, { FunctionComponent } from 'react'
 import { Avatar, Box, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
+import { routeMap } from 'src/shared/route-map'
+
 import { LinkCustom } from '../../link-custom'
+import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
-import { routeMap } from 'src/shared/route-map'
 
 export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (
   <>
@@ -21,33 +23,14 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       style={{
         position: 'sticky',
         top: 0,
-        backdropFilter: 'blur(6px)',
+        backdropFilter: 'blur(6px)'
       }}
     >
-      <Box direction='row' align='center' gap='medium'>
-        <LinkCustom
-          icon={<Icons.Menu />}
-          href='#'
-          onClick={(event) => {
-            event.preventDefault()
-          }}
-          style={{ lineHeight: 0 }}
-        />
-      </Box>
       <Box direction='row' gap='medium' align='center'>
         <LinkCustom size='large' label={<Avatar src={avatar} size='medium' />} href={routeMap.home} />
         <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
       </Box>
-      <Box direction='row' align='center' gap='medium'>
-        <LinkCustom
-          icon={<Icons.Menu />}
-          href='#'
-          onClick={(event) => {
-            event.preventDefault()
-          }}
-          style={{ lineHeight: 0 }}
-        />
-      </Box>
+      <MenuComponent />
     </Box>
     <Box as='main' flex='grow' pad='medium'>
       {main}

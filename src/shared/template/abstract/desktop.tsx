@@ -2,18 +2,17 @@ import React, { FunctionComponent } from 'react'
 import { Avatar, Box, Nav, Text } from 'grommet'
 import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
-
-import { authStore } from 'src/model/auth'
+import { routeMap } from 'src/shared/route-map'
+import { useMenuData } from 'src/shared/template/abstract/menu/menu-data'
 import { colorScheme } from 'src/model/color-scheme'
-import { LinkCustom } from '../../link-custom'
 
+import { LinkCustom } from '../../link-custom'
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
-import { routeMap } from 'src/shared/route-map'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
-  const authStoreValue = useStore(authStore.store)
   const colorSchemeValue = useStore(colorScheme.store)
+  const menuData = useMenuData()
 
   return (
     <>
@@ -29,7 +28,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
           position: 'sticky',
           top: 0,
           backdropFilter: 'blur(6px)',
-          zIndex: 1,
+          zIndex: 1
         }}
       >
         <Box direction='row' align='center' gap='medium'>
@@ -37,28 +36,9 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
           <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
         </Box>
         <Nav direction='row' align='center' gap='medium'>
-          <LinkCustom label='Blog' href={routeMap.blogHome} />
-          <LinkCustom label='About' href={routeMap.aboutMe} />
-          <LinkCustom label='Hire me' href={routeMap.aboutHire} />
-          {authStoreValue && (
-            <LinkCustom
-              label='Sign out'
-              href='#'
-              onClick={(event) => {
-                event.preventDefault()
-                authStore.logout()
-              }}
-            />
-          )}
-          <LinkCustom
-            icon={colorSchemeValue === 'dark' ? <Icons.Moon /> : <Icons.Sun />}
-            href='#'
-            onClick={(event) => {
-              event.preventDefault()
-              colorScheme.toggle()
-            }}
-            style={{ lineHeight: 0 }}
-          />
+          {menuData.map(e => <LinkCustom style={e.style} label={e.label} href={e.href} onClick={(event) => {
+            if (e.onClick) e.onClick(event)
+          }} icon={e.icon ? e.icon(colorSchemeValue) : undefined} />)}
         </Nav>
       </Box>
       <Box direction='row' flex='grow' pad={{ horizontal: 'medium' }} gap='medium' justify='between'>
