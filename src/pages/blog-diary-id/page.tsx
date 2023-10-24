@@ -59,28 +59,28 @@ const BlogDiaryId: FunctionComponent = () => {
         <Box direction='row' align='center' alignSelf='start'>
           <Box direction='row' align='center' justify='between'>
             <Button
-              icon={isLiked ? <Icons.LikeFill color='brand' /> : <Icons.Like color='text' />}
+              icon={isLiked ? <Icons.LikeFill color='brand' size='22px' /> : <Icons.Like color='text' size='22px' />}
               hoverIndicator
               onClick={likeToggle}
             />
             <Box direction='row' align='center'>
-              <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
+              <Text size='small' weight='bold' style={{ lineHeight: '24px' }}>
                 ·
               </Text>
             </Box>
             <Box direction='row' align='center' justify='between' gap='small'>
               <Box direction='row' align='center'>
-                <Button icon={<Icons.Clock color='text' />} hoverIndicator />
+                <Button icon={<Icons.Clock color='text' size='24px' />} hoverIndicator />
                 <Text size='small'>{readTime} min read</Text>
               </Box>
-              <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
+              <Text size='small' weight='bold' style={{ lineHeight: '24px' }}>
                 ·
               </Text>
             </Box>
           </Box>
           <Box direction='row' align='center' justify='between'>
             <Box direction='row' align='center'>
-              <SharedBtn diary_id={foundDiary.id} />
+              <SharedBtn diary_id={foundDiary.id} size='24px' />
               <Text size='small'>{'Share'}</Text>
             </Box>
           </Box>

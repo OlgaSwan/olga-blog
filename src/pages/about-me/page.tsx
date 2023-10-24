@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Box, Text, Heading, Image } from 'grommet'
+import { Box, Heading, Image, Text } from 'grommet'
 import { faker } from '@faker-js/faker'
 
 import { TemplateContent } from 'src/shared/template'
@@ -18,7 +18,7 @@ const AboutMe: FunctionComponent = () => (
     <Box direction='row' align='center' gap='medium'>
       <Box gap='medium' width='large'>
         <Heading level='3' margin='none'>
-          {faker.lorem.sentence()}
+          {'OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO,'}
         </Heading>
         <Text>{faker.lorem.paragraph(5)}</Text>
       </Box>
