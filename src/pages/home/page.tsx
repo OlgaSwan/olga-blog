@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import { PageHeader, Paragraph, Button, Heading, Text } from 'grommet'
+import { Button, Heading, PageHeader, Paragraph, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { LinkCustom } from 'src/shared/link-custom'
+import { LinkCustom } from 'src/shared/utils/link-custom'
 import { TemplateContent } from 'src/shared/template'
 import { Head } from 'src/shared/head-meta/head'
 import { DiaryList } from 'src/model/diary'

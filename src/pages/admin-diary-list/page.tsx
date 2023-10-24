@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, Tag } from 'grommet'
+import { Box, Button, Card, CardFooter, CardHeader, Heading, Tag } from 'grommet'
 import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 
@@ -28,18 +28,19 @@ const AdminDiaryList: FunctionComponent = () => {
       </Heading>
       <Box direction='column' gap='medium'>
         <Box direction='row' justify='start' gap='small' wrap>
-          <Button label='Create post' primary icon={<Icons.Edit />} onClick={() => navigate(routeMap.adminDiaryId('new'))} />
-          <Button label='Create random post' icon={<Icons.Risk />} onClick={() => diaryStore.addRandom()} />
+          <Button label='Create post' primary icon={<Icons.Edit size='18px' />}
+                  onClick={() => navigate(routeMap.adminDiaryId('new'))} />
+          <Button label='Create random post' icon={<Icons.Risk size='18px' />} onClick={() => diaryStore.addRandom()} />
           <Button
             label='Delete all posts'
-            icon={<Icons.Threats />}
+            icon={<Icons.Threats size='18px' />}
             color='status-critical'
             onClick={() => diaryStore.removeAll()}
           />
         </Box>
         <Box gap='medium'>
           {diaryList.map((diary) => (
-            <Card key={diary.title} gap='small' pad='medium' background='background-contrast'>
+            <Card key={diary.title} gap='small' pad='medium'>
               <CardHeader>
                 <Heading size='small'>{diary.title}</Heading>
               </CardHeader>
@@ -50,10 +51,11 @@ const AdminDiaryList: FunctionComponent = () => {
                   ))}
                 </Box>
                 <Box direction='row' justify='start' gap='xsmall' wrap>
-                  <Button label='Edit' icon={<Icons.Edit />} />
+                  <Button label='Edit'
+                          icon={<Icons.Edit size='18px' onClick={() => navigate(routeMap.adminDiaryId(diary.id))} />} />
                   <Button
                     label='Delete'
-                    icon={<Icons.Trash />}
+                    icon={<Icons.Trash size='18px' />}
                     color='status-critical'
                     onClick={() => diaryStore.remove(diary.id)}
                   />

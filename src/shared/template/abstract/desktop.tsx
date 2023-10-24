@@ -6,7 +6,7 @@ import { routeMap } from 'src/shared/route-map'
 import { useMenuData } from 'src/shared/template/abstract/menu/menu-data'
 import { colorScheme } from 'src/model/color-scheme'
 
-import { LinkCustom } from '../../link-custom'
+import { LinkCustom } from '../../utils/link-custom'
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
 
