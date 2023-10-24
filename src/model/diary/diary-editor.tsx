@@ -129,6 +129,5 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
         />
       </Box>
     </form>
-
   )
 }
