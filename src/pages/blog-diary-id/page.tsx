@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import { createPath, createSearchParams, useNavigate, useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
-import { Box, Button, Heading, Image, Notification, Tag, Text } from 'grommet'
+import { Box, Button, Heading, Image, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { diaryStore } from 'src/model/diary'
@@ -11,7 +11,7 @@ import { routeMap } from 'src/shared/route-map'
 import { Head } from 'src/shared/head-meta/head'
 import { TemplateContent } from 'src/shared/template'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
-import { getUrl } from 'src/shared/utils/get-url'
+import { SharedBtn } from 'src/model/diary/shared-btn'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
@@ -26,7 +26,6 @@ const BlogDiaryId: FunctionComponent = () => {
     else return false
   })
 
-  const [open, setOpen] = useState(false)
   const navigate = useNavigate()
   const readTime = useReadTime(foundDiary?.content)
 
@@ -53,15 +52,6 @@ const BlogDiaryId: FunctionComponent = () => {
   return (
     <TemplateContent>
       <Head title={foundDiary.title} description={foundDiary.content.slice(0, 240) + '...'} />
-      {open && (
-        <Notification
-          toast
-          time={2000}
-          icon={<Icons.StatusGood color='brand' />}
-          message='Link copied!'
-          onClose={() => setOpen(false)}
-        />
-      )}
       <Heading size='medium' alignSelf='start' margin={{ top: 'xlarge', bottom: 'medium' }}>
         {foundDiary.title}
       </Heading>
@@ -90,8 +80,7 @@ const BlogDiaryId: FunctionComponent = () => {
           </Box>
           <Box direction='row' align='center' justify='between'>
             <Box direction='row' align='center'>
-              <Button icon={<Icons.ShareRounded color='text' />} hoverIndicator
-                      onClick={async () => await getUrl(setOpen, foundDiary.id)} />
+              <SharedBtn diary_id={foundDiary.id} />
               <Text size='small'>{'Share'}</Text>
             </Box>
           </Box>

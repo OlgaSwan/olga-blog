@@ -8,7 +8,7 @@ import { colorScheme } from 'src/model/color-scheme'
 
 type MenuDataItem = {
   style?: CSSProperties
-  icon?: (colorSchemeValue: string) => ReactElement
+  icon?: ReactElement
   label?: string
   href: string
   onClick?: (event: any) => void
@@ -36,18 +36,22 @@ const adminMenuData: MenuDataItem[] = [{
     await authStore.logout()
   }
 }]
-
-const menuDataIcon: MenuDataItem = {
-  style: { lineHeight: '0', alignSelf: 'center' },
-  icon: (colorSchemeValue: string) => colorSchemeValue === 'dark' ? <Icons.Moon /> : <Icons.Sun />,
-  href: '#',
-  onClick: (event) => {
-    event.preventDefault()
-    colorScheme.toggle()
+const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
+  return {
+    style: { lineHeight: '0', alignSelf: 'center' },
+    icon: colorSchemeValue === 'dark' ? <Icons.Moon /> : <Icons.Sun />,
+    href: '#',
+    onClick: (event) => {
+      event.preventDefault()
+      colorScheme.toggle()
+    }
   }
 }
+
 export const useMenuData = () => {
   const authStoreValue = useStore(authStore.store)
-  if (!authStoreValue) return [...menuData, menuDataIcon]
-  else return [...menuData, ...adminMenuData, menuDataIcon]
+  const colorSchemeValue = useStore(colorScheme.store)
+  const themeMenuItem = getThemeMenuItem(colorSchemeValue)
+  if (!authStoreValue) return [...menuData, themeMenuItem]
+  else return [...menuData, ...adminMenuData, themeMenuItem]
 }

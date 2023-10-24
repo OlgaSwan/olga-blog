@@ -1,18 +1,6 @@
 import React, { FunctionComponent, PropsWithChildren, useContext, useState } from 'react'
 import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Heading,
-  Notification,
-  ResponsiveContext,
-  Tag,
-  Text
-} from 'grommet'
+import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, ResponsiveContext, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { useStore } from '@nanostores/react'
@@ -20,8 +8,8 @@ import { useStore } from '@nanostores/react'
 import { diaryStore } from './store'
 import { routeMap } from 'src/shared/route-map'
 
+import { SharedBtn } from 'src/model/diary/shared-btn'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
-import { getUrl } from 'src/shared/utils/get-url'
 
 export interface DiaryCardProps {
   id: string
@@ -35,7 +23,6 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
     const likedIds = getLikedIds()
     return likedIds.includes(id)
   })
-  const [open, setOpen] = useState(false)
 
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
@@ -61,15 +48,6 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
 
   return (
     <>
-      {open && (
-        <Notification
-          toast
-          time={2000}
-          icon={<Icons.StatusGood color='brand' />}
-          message='Link copied!'
-          onClose={() => setOpen(false)}
-        />
-      )}
       <Card width='large' background={{ color: 'light-1' }}>
         <CardHeader direction='column' pad='medium' focusIndicator={false}
                     onClick={() => navigate(`/blog/diary/${id}`)}>
@@ -123,8 +101,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
               <Text size='small'>{readTime} min read</Text>
             </Box>
           </Box>
-          <Button icon={<Icons.ShareRounded color='text' />} hoverIndicator
-                  onClick={async () => await getUrl(setOpen, foundDiary.id)} />
+          <SharedBtn diary_id={foundDiary.id} />
         </CardFooter>
       </Card>
     </>
