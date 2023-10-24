@@ -19,38 +19,37 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
                                                                onSubmit
                                                              }) => {
   const { control, register, handleSubmit, getValues, setValue } = useForm({
-    defaultValues: initialValue
+    defaultValues: initialValue, mode: 'onChange'
   })
   const { fields, append, move, remove } = useFieldArray({
     control,
     name: 'content'
   })
 
+  const allTags = useAllTAgs()
+
   const tagsValue = getValues('tags')
 
   const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content', 'id'>, index: number) => {
-    if (field.kind === 'paragraph') return (
-      <TextArea
-        placeholder='Paragraph content'
-        {...register(`content.${index}.text`)}
-        required={true}
-      />
-    )
-    if (field.kind === 'iframe') return (
-      <TextInput
-        placeholder='IFrame URL'
-        {...register(`content.${index}.url`)}
-        required={true}
-      />
-    )
-    if (field.kind === 'image') return (
-      <TextInput
-        placeholder='Image URL'
-        {...register(`content.${index}.url`)}
-        required={true}
-      />
-    )
-    return null
+    switch (field.kind) {
+      case 'paragraph':
+        return <TextArea
+          placeholder='Paragraph content'
+          {...register(`content.${index}.text` as const, { required: true, minLength: 20 })}
+        />
+      case 'image':
+        return <TextInput
+          placeholder='Image URL'
+          {...register(`content.${index}.url` as const, { required: true })}
+        />
+      case 'iframe':
+        return <TextInput
+          placeholder='IFrame URL'
+          {...register(`content.${index}.url` as const, { required: true })}
+        />
+      default:
+        return null
+    }
   }
 
   const deleteBlock = (index: number) => {
@@ -74,8 +73,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           <TextInput
             placeholder='Title'
             disabled={disabled}
-            {...register('title')}
-            required={true}
+            {...register('title' as const, { required: true, minLength: 4, maxLength: 30 })}
           />
         </Box>
         <Box gap='medium'>
@@ -119,7 +117,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           />
         </Box>
         <Box>
-          <TagInput value={tagsValue} suggestions={useAllTAgs()} onChange={(value) => setValue('tags', value)} />
+          <TagInput value={tagsValue} suggestions={allTags} onChange={(value) => setValue('tags', value)} />
         </Box>
         <Button
           type='submit'

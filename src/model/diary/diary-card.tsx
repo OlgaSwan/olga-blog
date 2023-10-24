@@ -90,7 +90,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         <CardFooter pad={{ horizontal: 'small' }} background={{ color: 'light-3' }}>
           <Box direction='row' align='center' justify='between'>
             <Button
-              icon={isLiked ? <Icons.LikeFill color='brand' /> : <Icons.Like color='text' />}
+              icon={isLiked ? <Icons.LikeFill color='brand' size='18px' /> : <Icons.Like color='text' size='18px' />}
               hoverIndicator
               onClick={likeToggle}
             />
@@ -101,7 +101,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
               <Text size='small'>{readTime} min read</Text>
             </Box>
           </Box>
-          <SharedBtn diary_id={foundDiary.id} />
+          <SharedBtn diary_id={foundDiary.id} size='20px' />
         </CardFooter>
       </Card>
     </>
