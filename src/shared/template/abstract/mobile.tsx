@@ -4,7 +4,7 @@ import * as Icons from 'grommet-icons'
 
 import { routeMap } from 'src/shared/route-map'
 
-import { LinkCustom } from '../../link-custom'
+import { LinkCustom } from '../../utils/link-custom'
 import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'

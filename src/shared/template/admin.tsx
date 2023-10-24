@@ -2,7 +2,7 @@ import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { Heading } from 'grommet'
 
 import { TemplateAbstract } from './abstract'
-import { LinkCustom } from '../link-custom'
+import { LinkCustom } from '../utils/link-custom'
 
 import { routeMap } from 'src/shared/route-map'
 

@@ -97,21 +97,21 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
         </Box>
         <Box direction='row' align='start' gap='small'>
           <Button
-            icon={<Icons.Add />}
+            icon={<Icons.Add size='18px' />}
             label='Paragraph'
             onClick={() => {
               append({ kind: 'paragraph', text: '' })
             }}
           />
           <Button
-            icon={<Icons.Add />}
+            icon={<Icons.Add size='18px' />}
             label='IFrame'
             onClick={() => {
               append({ kind: 'iframe', url: '' })
             }}
           />
           <Button
-            icon={<Icons.Add />}
+            icon={<Icons.Add size='18px' />}
             label='Image'
             onClick={() => {
               append({ kind: 'image', url: '' })
