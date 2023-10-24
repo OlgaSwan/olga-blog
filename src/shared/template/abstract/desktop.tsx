@@ -1,17 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import { Avatar, Box, Nav, Text } from 'grommet'
-import { useStore } from '@nanostores/react'
 import * as Icons from 'grommet-icons'
 import { routeMap } from 'src/shared/route-map'
 import { useMenuData } from 'src/shared/template/abstract/menu/menu-data'
-import { colorScheme } from 'src/model/color-scheme'
 
 import { LinkCustom } from '../../utils/link-custom'
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
-  const colorSchemeValue = useStore(colorScheme.store)
   const menuData = useMenuData()
 
   return (
@@ -38,7 +35,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
         <Nav direction='row' align='center' gap='medium'>
           {menuData.map((e, index) => <LinkCustom key={index} style={e.style} label={e.label} href={e.href}
                                                   onClick={e.onClick}
-                                                  icon={e.icon ? e.icon(colorSchemeValue) : undefined} />)}
+                                                  icon={e.icon} />)}
         </Nav>
       </Box>
       <Box direction='row' flex='grow' pad={{ horizontal: 'medium' }} gap='medium' justify='between'>
