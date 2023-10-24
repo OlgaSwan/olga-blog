@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren, useContext, useState } from 'react'
+import React, { FunctionComponent, PropsWithChildren, useContext } from 'react'
 import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, ResponsiveContext, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
@@ -10,6 +10,7 @@ import { routeMap } from 'src/shared/route-map'
 
 import { SharedBtn } from 'src/model/diary/shared-btn'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
+import { useIsLiked } from 'src/shared/hooks/useIsLiked'
 
 export interface DiaryCardProps {
   id: string
@@ -18,15 +19,12 @@ export interface DiaryCardProps {
 export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
   const allDiaries = useStore(diaryStore.list)
   const foundDiary = allDiaries?.find((p) => p.id === id)
-  const getLikedIds = (): string[] => JSON.parse(localStorage.getItem('isLiked') || '[]')
-  const [isLiked, setIsLiked] = useState(() => {
-    const likedIds = getLikedIds()
-    return likedIds.includes(id)
-  })
 
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
   const readTime = useReadTime(foundDiary?.content)
+
+  const [isLiked, likeToggle] = useIsLiked(id)
 
   if (!foundDiary)
     return (
@@ -36,15 +34,6 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
     )
 
   const firstParagraph = foundDiary.content.find(block => block.kind === 'paragraph')
-
-  const likeToggle = () => {
-    const likedIds = getLikedIds()
-    const updatedLikedIds = likedIds.includes(id) ? likedIds.filter((likedId) => likedId !== id) : [...likedIds, id]
-
-    if (updatedLikedIds.length > 0) localStorage.setItem('isLiked', JSON.stringify(updatedLikedIds))
-    else localStorage.removeItem('isLiked')
-    setIsLiked(!isLiked)
-  }
 
   return (
     <>

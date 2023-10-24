@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { createPath, createSearchParams, useNavigate, useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
 import { Box, Button, Heading, Image, Tag, Text } from 'grommet'
@@ -12,41 +12,23 @@ import { Head } from 'src/shared/head-meta/head'
 import { TemplateContent } from 'src/shared/template'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
 import { SharedBtn } from 'src/model/diary/shared-btn'
+import { useIsLiked } from 'src/shared/hooks/useIsLiked'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
   const auth = useStore(authStore.store)
   const params = useParams()
   const foundDiary = allDiaries?.find((d) => d.id === params.id)
-  //TODO: MAKE A HOOK
-  const getLikedIds = (): string[] => JSON.parse(localStorage.getItem('isLiked') || '[]')
-  const [isLiked, setIsLiked] = useState(() => {
-    const likedIds = getLikedIds()
-    if (params.id) return likedIds.includes(params.id)
-    else return false
-  })
 
   const navigate = useNavigate()
   const readTime = useReadTime(foundDiary?.content)
+  const [isLiked, likeToggle] = useIsLiked(foundDiary?.id)
 
   if (allDiaries === null) return <TemplateContent />
 
   if (!foundDiary) {
     navigate(routeMap.errorNotFound)
     return <TemplateContent />
-  }
-
-  const likeToggle = () => {
-    const likedIds = getLikedIds()
-    if (params.id) {
-      const updatedLikedIds = likedIds.includes(params.id)
-        ? likedIds.filter((likedId) => likedId !== params.id)
-        : [...likedIds, params.id]
-
-      if (updatedLikedIds.length > 0) localStorage.setItem('isLiked', JSON.stringify(updatedLikedIds))
-      else localStorage.removeItem('isLiked')
-      setIsLiked(!isLiked)
-    }
   }
 
   return (
