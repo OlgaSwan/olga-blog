@@ -23,7 +23,7 @@ const AdminDiaryList: FunctionComponent = () => {
   return (
     <TemplateAdmin>
       <Head title={metadata.adminDiaryList.title} description={metadata.adminDiaryList.description} />
-      <Heading level='1' margin={{ bottom: 'medium' }}>
+      <Heading level='2' margin={{ bottom: 'medium' }}>
         Diary list
       </Heading>
       <Box direction='column' gap='medium'>

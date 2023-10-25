@@ -4,7 +4,7 @@ import { useStore } from '@nanostores/react'
 
 import { routeMap } from 'src/shared/route-map'
 import { authStore } from 'src/model/auth'
-import { colorScheme } from 'src/model/color-scheme'
+import { colorScheme } from 'src/shared/template/abstract/color-scheme'
 
 type MenuDataItem = {
   style?: CSSProperties
