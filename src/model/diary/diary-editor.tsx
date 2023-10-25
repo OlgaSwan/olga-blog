@@ -3,9 +3,11 @@ import { FieldArrayWithId, useFieldArray, useForm } from 'react-hook-form'
 import { Box, Button, TextArea, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
 
+import { useStore } from '@nanostores/react'
+import { tagsStore } from 'src/model/tag/store'
+
 import { DiaryInternal } from 'src/model/diary/index'
 import TagInput from 'src/pages/blog-home/tag-input'
-import { useAllTAgs } from 'src/shared/hooks/useAllTAgs'
 
 interface Props {
   disabled?: boolean
@@ -26,7 +28,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
     name: 'content'
   })
 
-  const allTags = useAllTAgs()
+  const tagsDB = useStore(tagsStore.tags)
 
   const tagsValue = getValues('tags')
 
@@ -117,7 +119,8 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           />
         </Box>
         <Box>
-          <TagInput value={tagsValue} suggestions={allTags} onChange={(value) => setValue('tags', value)} />
+          <TagInput value={tagsValue} suggestions={tagsDB?.map(t => t.name)}
+                    onChange={(value) => setValue('tags', value)} />
         </Box>
         <Button
           type='submit'

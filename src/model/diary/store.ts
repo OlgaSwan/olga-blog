@@ -1,4 +1,4 @@
-import { collection, getFirestore, addDoc, updateDoc, doc, onSnapshot, deleteDoc, getDocs } from 'firebase/firestore'
+import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, onSnapshot, updateDoc } from 'firebase/firestore'
 import { atom } from 'nanostores'
 import { faker } from '@faker-js/faker/locale/en'
 import { random, sampleSize } from 'lodash-es'
@@ -6,10 +6,7 @@ import { eachLimit } from 'async'
 
 import { firebaseApp } from 'src/shared/firebase-app'
 
-import {
-  DiaryExternal,
-  DiaryInternal,
-} from './types'
+import { DiaryExternal, DiaryInternal } from './types'
 
 const firestore = getFirestore(firebaseApp)
 const diaryCollection = collection(firestore, 'diary')
@@ -17,26 +14,25 @@ const diaryCollection = collection(firestore, 'diary')
 const list = atom<Array<DiaryExternal> | null>(null)
 
 onSnapshot(diaryCollection, (snapshot) => {
-  list.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }) as DiaryExternal))
+  list.set(snapshot.docs.map((doc) => ( { id: doc.id, ...doc.data() } ) as DiaryExternal))
 })
 
 export const diaryStore = {
   list,
   add: async (diary: DiaryInternal) => {
-    // diaryInternalSchema.parse(diary)
     await addDoc(diaryCollection, diary)
   },
   addRandom: async () => {
     const data: DiaryInternal = {
       title: faker.company.catchPhrase(),
-      content: new Array(random(5, 10)).fill('').map(() => ({
+      content: new Array(random(5, 10)).fill('').map(() => ( {
         kind: 'paragraph',
-        text: faker.helpers.multiple(faker.hacker.phrase, { count: random(10, 15, false) }).join(' '),
-      })),
+        text: faker.helpers.multiple(faker.hacker.phrase, { count: random(10, 15, false) }).join(' ')
+      } )),
       tags: sampleSize(
         ['react', 'vue', 'angular', 'graphql', 'html', 'css', 'semantic-markup', 'architecture', 'security', 'accessibility'],
-        random(2, 6),
-      ),
+        random(2, 6)
+      )
     }
     await addDoc(diaryCollection, data)
   },
@@ -49,5 +45,5 @@ export const diaryStore = {
   removeAll: async () => {
     const docsQuerySnapshot = await getDocs(diaryCollection)
     await eachLimit(docsQuerySnapshot.docs, 5, async (d) => await deleteDoc(d.ref))
-  },
+  }
 }
