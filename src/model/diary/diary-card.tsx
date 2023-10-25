@@ -28,7 +28,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
 
   if (!foundDiary)
     return (
-      <Card height='medium' width='large' background={{ color: 'light-1' }}>
+      <Card height='medium' width='large' background={{ color: 'white' }}>
         <CardBody>Post not found</CardBody>
       </Card>
     )
@@ -37,7 +37,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
 
   return (
     <>
-      <Card width='large' background={{ color: 'light-1' }}>
+      <Card width='large' background={{ color: 'white' }}>
         <CardHeader direction='column' pad='medium' focusIndicator={false}
                     onClick={() => navigate(`/blog/diary/${id}`)}>
           {screenSize !== 'small' && (
@@ -76,10 +76,10 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
             {firstParagraph && firstParagraph.kind === 'paragraph' && firstParagraph.text.slice(0, 240).trim() + '...'}
           </Text>
         </CardBody>
-        <CardFooter pad={{ horizontal: 'small' }} background={{ color: 'light-3' }}>
+        <CardFooter pad={{ horizontal: 'small' }} background={{ color: 'light-2' }}>
           <Box direction='row' align='center' justify='between'>
             <Button
-              icon={isLiked ? <Icons.LikeFill color='brand' size='18px' /> : <Icons.Like color='text' size='18px' />}
+              icon={isLiked ? <Icons.LikeFill color='brand' size='18px' /> : <Icons.Like color='brand' size='18px' />}
               hoverIndicator
               onClick={likeToggle}
             />
