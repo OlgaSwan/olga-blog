@@ -28,7 +28,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
 
   if (!foundDiary)
     return (
-      <Card height='medium' width='large' background={{ color: 'white' }}>
+      <Card height='medium' width='large'>
         <CardBody>Post not found</CardBody>
       </Card>
     )
@@ -37,8 +37,10 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
 
   return (
     <>
-      <Card width='large' background={{ color: 'white' }}>
-        <CardHeader direction='column' pad='medium' focusIndicator={false}
+      <Card width='large' background={{ color: 'white' }} animation='slideLeft'>
+        <CardHeader direction='column'
+                    pad={{ top: 'medium', bottom: 'small', left: 'medium', right: 'medium' }}
+                    focusIndicator={false}
                     onClick={() => navigate(`/blog/diary/${id}`)}>
           {screenSize !== 'small' && (
             <Box direction='row' flex='grow' gap='small' alignSelf='end'>

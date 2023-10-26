@@ -1,6 +1,6 @@
 # Olya's blog
 
-Petproject, blog, portfolio
+Petproject, blog
 
 # Getting started
 
