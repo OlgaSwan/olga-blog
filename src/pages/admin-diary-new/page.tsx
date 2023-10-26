@@ -28,10 +28,12 @@ const AdminDiaryNew: FunctionComponent = () => {
             title: '',
             content: [{
               kind: 'paragraph',
-              text: ''
+              text: '',
             }],
-            tags: []
-          }}
+            tags: [],
+            timestamp: Date.now(),
+          }
+          }
           onSubmit={async (value) => {
             await diaryStore.add(value)
             navigate(routeMap.adminDiaryList)

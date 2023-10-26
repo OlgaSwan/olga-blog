@@ -34,7 +34,10 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
     )
 
   const firstParagraph = foundDiary.content.find(block => block.kind === 'paragraph')
-
+  const date = new Date(foundDiary.timestamp).toLocaleString('en-US', {
+    day: 'numeric',
+    month: 'short',
+  })
   return (
     <>
       <Card width='large' background={{ color: 'white' }} animation='slideLeft'>
@@ -56,8 +59,8 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
                     navigate(
                       createPath({
                         pathname: routeMap.blogHome,
-                        search: createSearchParams({ tags: [tag] }).toString()
-                      })
+                        search: createSearchParams({ tags: [tag] }).toString(),
+                      }),
                     )
                   }}
                 />
@@ -86,11 +89,16 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
               onClick={likeToggle}
             />
             <Box direction='row' gap='small'>
-              <Text size='small' weight='bold' style={{ lineHeight: '20px' }}>
+              <Text size='small' weight='bold' style={{ lineHeight: '18px' }}>
                 ·
               </Text>
               <Text size='small'>{readTime} min read</Text>
+              <Text size='small' weight='bold' style={{ lineHeight: '18px' }}>
+                ·
+              </Text>
+              <Text size='small'>{date}</Text>
             </Box>
+
           </Box>
           <SharedBtn diary_id={foundDiary.id} size='20px' />
         </CardFooter>

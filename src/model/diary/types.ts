@@ -2,6 +2,7 @@ export interface DiaryInternal {
   title: string
   content: Array<Block>
   tags: Array<string>
+  timestamp: number
 }
 
 export type Block = {

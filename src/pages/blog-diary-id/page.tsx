@@ -30,6 +30,10 @@ const BlogDiaryId: FunctionComponent = () => {
     navigate(routeMap.errorNotFound)
     return <TemplateContent />
   }
+  const date = new Date(foundDiary.timestamp).toLocaleString('en-US', {
+    day: 'numeric',
+    month: 'long',
+  })
 
   return (
     <TemplateContent>
@@ -45,11 +49,9 @@ const BlogDiaryId: FunctionComponent = () => {
               hoverIndicator
               onClick={likeToggle}
             />
-            <Box direction='row' align='center'>
-              <Text size='small' weight='bold' style={{ lineHeight: '24px' }}>
-                ·
-              </Text>
-            </Box>
+            <Text size='small' weight='bold' style={{ lineHeight: '24px' }}>
+              ·
+            </Text>
             <Box direction='row' align='center' justify='between' gap='small'>
               <Box direction='row' align='center'>
                 <Button icon={<Icons.Clock color='text' size='24px' />} hoverIndicator />
@@ -60,13 +62,18 @@ const BlogDiaryId: FunctionComponent = () => {
               </Text>
             </Box>
           </Box>
-          <Box direction='row' align='center' justify='between'>
+          <Box direction='row' align='center' justify='between' gap='small'>
             <Box direction='row' align='center'>
               <SharedBtn diary_id={foundDiary.id} size='24px' />
               <Text size='small'>{'Share'}</Text>
             </Box>
+            <Text size='small' weight='bold' style={{ lineHeight: '24px' }}>
+              ·
+            </Text>
+            <Text size='small'>{date}</Text>
           </Box>
         </Box>
+
       </Box>
       <Box margin={{ bottom: 'medium' }} gap={'medium'}>
         {foundDiary.content.map((block, index) => {
@@ -74,9 +81,11 @@ const BlogDiaryId: FunctionComponent = () => {
             case 'paragraph':
               return <Text key={index}>{block.text}</Text>
             case 'image':
-              return <Image key={index} src={block.url} />
+              return <Image key={index} src={block.url} style={{ borderRadius: '12px' }} />
             case 'iframe':
               return <iframe key={index} src={block.url} />
+            default:
+              return null
           }
         })}
 
@@ -94,8 +103,8 @@ const BlogDiaryId: FunctionComponent = () => {
               navigate(
                 createPath({
                   pathname: routeMap.blogHome,
-                  search: createSearchParams({ tags: [tag] }).toString()
-                })
+                  search: createSearchParams({ tags: [tag] }).toString(),
+                }),
               )
             }}
           />
