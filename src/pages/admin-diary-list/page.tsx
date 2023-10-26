@@ -52,7 +52,8 @@ const AdminDiaryList: FunctionComponent = () => {
                 </Box>
                 <Box direction='row' justify='start' gap='xsmall' wrap>
                   <Button label='Edit'
-                          icon={<Icons.Edit size='18px' onClick={() => navigate(routeMap.adminDiaryId(diary.id))} />} />
+                          onClick={() => navigate(routeMap.adminDiaryId(diary.id))}
+                          icon={<Icons.Edit size='18px' />} />
                   <Button
                     label='Delete'
                     icon={<Icons.Trash size='18px' />}
