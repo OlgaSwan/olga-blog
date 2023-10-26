@@ -37,21 +37,34 @@ const theme = deepMerge(grommet, {
         light: 'neutral-3'
       }
     },
+    font: {
+      family: 'Satoshi'
+    },
     elevation: {
       dark: {
-        xsmall: '0px 12px 16px #111',
-        small: '0px 16px 20px #111',
-        medium: '0px 16px 20px #111',
-        large: '0px 20px 24px #111',
-        xlarge: '0px 24px 28px #111'
+        xsmall: '0px 12px 26px #1B1B1B',
+        small: '0px 16px 30px #1B1B1B',
+        medium: '0px 16px 30px #1B1B1B',
+        large: '0px 20px 34px #1B1B1B',
+        xlarge: '0px 24px 38px #1B1B1B'
       },
       light: {
-        xsmall: '0px 12px 16px #CCC',
-        small: '0px 16px 20px #CCC',
-        medium: '0px 16px 20px #CCC',
-        large: '0px 20px 24px #CCC',
-        xlarge: '0px 24px 28px #CCC'
+        xsmall: '0px 12px 26px #CCC',
+        small: '0px 16px 30px #CCC',
+        medium: '0px 16px 30px #CCC',
+        large: '0px 20px 34px #CCC',
+        xlarge: '0px 24px 38px #CCC'
       }
+    },
+    focus: {
+      border: {
+        color: 'none'
+      }
+    }
+  },
+  heading: {
+    font: {
+      family: 'Ubuntu'
     }
   },
   menu: {
@@ -60,6 +73,7 @@ const theme = deepMerge(grommet, {
   anchor: {
     color: 'brand'
   },
+  //TODO: btn hovering doesn't work
   button: {
     primary: {
       background: {
@@ -73,6 +87,13 @@ const theme = deepMerge(grommet, {
     },
     border: {
       color: 'brand'
+    }
+  },
+  notification: {
+    toast: {
+      container: {
+        elevation: 'none'
+      }
     }
   }
 })
