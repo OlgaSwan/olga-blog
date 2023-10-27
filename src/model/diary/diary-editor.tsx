@@ -1,12 +1,13 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { FieldArrayWithId, useFieldArray, useForm } from 'react-hook-form'
-import { Box, Button, TextArea, TextInput } from 'grommet'
+import { Box, Button, FileInput, Notification, TextArea, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { useStore } from '@nanostores/react'
 import { tagsStore } from 'src/model/tag/store'
 
 import { DiaryInternal } from 'src/model/diary/index'
+import { deleteImageFromFirebase, uploadPhoto } from 'src/shared/utils/image-storage'
 import TagInput from 'src/pages/blog-home/tag-input'
 
 interface Props {
@@ -18,20 +19,28 @@ interface Props {
 export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
                                                                disabled = false,
                                                                initialValue,
-                                                               onSubmit
+                                                               onSubmit,
                                                              }) => {
   const { control, register, handleSubmit, getValues, setValue } = useForm({
-    defaultValues: initialValue, mode: 'onChange'
+    defaultValues: initialValue, mode: 'onChange',
   })
   const { fields, append, move, remove } = useFieldArray({
     control,
-    name: 'content'
+    name: 'content',
   })
 
   const tagsDB = useStore(tagsStore.tags)
-
   const tagsValue = getValues('tags')
 
+  const getFirebaseFileUrl = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event?.target.files) return
+    const file = event.target.files[0]
+    const url = await uploadPhoto(file)
+    if (url) append({ kind: 'image', url: url })
+    setOpen(true)
+  }
+
+  const [open, setOpen] = useState(false)
   const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content', 'id'>, index: number) => {
     switch (field.kind) {
       case 'paragraph':
@@ -54,7 +63,8 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
     }
   }
 
-  const deleteBlock = (index: number) => {
+  const deleteBlock = async (field: FieldArrayWithId<DiaryInternal, 'content', 'id'>, index: number) => {
+    if (field.kind === 'image') await deleteImageFromFirebase(field.url)
     remove(index)
   }
 
@@ -70,6 +80,15 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      {open && (
+        <Notification
+          toast
+          time={2000}
+          icon={<Icons.StatusGood color='brand' />}
+          message='Image uploaded!'
+          onClose={() => setOpen(false)}
+        />
+      )}
       <Box gap='medium'>
         <Box>
           <TextInput
@@ -90,7 +109,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
                 createBlock(field, index)
               }
               <Box direction='column' alignSelf='center'>
-                <Icons.FormTrash onClick={() => deleteBlock(index)} cursor='pointer' />
+                <Icons.FormTrash onClick={() => deleteBlock(field, index)} cursor='pointer' />
               </Box>
             </Box>
           })}
@@ -122,6 +141,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           <TagInput value={tagsValue} suggestions={tagsDB?.map(t => t.name)}
                     onChange={(value) => setValue('tags', value)} />
         </Box>
+        <FileInput
+          name='file'
+          multiple={false}
+          onChange={async event => {
+            if (event) await getFirebaseFileUrl(event)
+          }}
+        />
         <Button
           type='submit'
           primary
