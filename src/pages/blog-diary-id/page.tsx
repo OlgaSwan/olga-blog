@@ -45,8 +45,10 @@ const BlogDiaryId: FunctionComponent = () => {
         <Box direction='row' align='center' alignSelf='start'>
           <Box direction='row' align='center' justify='between'>
             <Button
-              icon={isLiked ? <Icons.LikeFill color='brand' size='22px' /> : <Icons.Like color='text' size='22px' />}
+              icon={isLiked ? <Icons.LikeFill color='brand' size='22px' /> :
+                <Icons.Like color='text' size='22px' />}
               hoverIndicator
+              style={{ borderRadius: '4px' }}
               onClick={likeToggle}
             />
             <Text size='small' weight='bold' style={{ lineHeight: '24px' }}>
@@ -54,7 +56,7 @@ const BlogDiaryId: FunctionComponent = () => {
             </Text>
             <Box direction='row' align='center' justify='between' gap='small'>
               <Box direction='row' align='center'>
-                <Button icon={<Icons.Clock color='text' size='24px' />} hoverIndicator />
+                <Button icon={<Icons.Clock color='text' size='24px' />} />
                 <Text size='small'>{readTime} min read</Text>
               </Box>
               <Text size='small' weight='bold' style={{ lineHeight: '24px' }}>

@@ -86,6 +86,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
             <Button
               icon={isLiked ? <Icons.LikeFill color='brand' size='18px' /> : <Icons.Like color='brand' size='18px' />}
               hoverIndicator
+              style={{ borderRadius: '4px' }}
               onClick={likeToggle}
             />
             <Box direction='row' gap='small'>
