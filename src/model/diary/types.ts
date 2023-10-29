@@ -14,6 +14,7 @@ export type Block = {
 } | {
   kind: 'image'
   url: string
+  file_name?: string
 }
 
 export interface DiaryExternal extends DiaryInternal {

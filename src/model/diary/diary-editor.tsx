@@ -9,6 +9,7 @@ import { tagsStore } from 'src/model/tag/store'
 import { DiaryInternal } from 'src/model/diary/index'
 import { deleteImageFromFirebase, uploadPhoto } from 'src/shared/utils/image-storage'
 import TagInput from 'src/pages/blog-home/tag-input'
+import ConditionalInput from 'src/model/diary/conditional-input'
 
 interface Props {
   disabled?: boolean
@@ -36,7 +37,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
     if (!event?.target.files) return
     const file = event.target.files[0]
     const url = await uploadPhoto(file)
-    if (url) append({ kind: 'image', url: url })
+    if (url) append({ kind: 'image', url: url, file_name: file.name })
     setOpen(true)
   }
 
@@ -49,10 +50,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           {...register(`content.${index}.text` as const, { required: true, minLength: 20 })}
         />
       case 'image':
-        return <TextInput
-          placeholder='Image URL'
-          {...register(`content.${index}.url` as const, { required: true })}
-        />
+        return <ConditionalInput control={control} index={index} />
       case 'iframe':
         return <TextInput
           placeholder='IFrame URL'

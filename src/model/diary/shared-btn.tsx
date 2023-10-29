@@ -24,6 +24,7 @@ export const SharedBtn: FunctionComponent<SharedBtnProps> = ({ diary_id, size })
         />
       )}
       <Button icon={<Icons.ShareRounded color='text' size={size} />} hoverIndicator
+              style={{ borderRadius: '4px' }}
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(getUrl(diary_id))
