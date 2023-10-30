@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
-import { FieldArrayWithId, useFieldArray, useForm } from 'react-hook-form'
+import { Controller, FieldArrayWithId, useFieldArray, useForm } from 'react-hook-form'
 import { Box, Button, FileInput, Notification, TextArea, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
 
@@ -9,7 +9,7 @@ import { tagsStore } from 'src/model/tag/store'
 import { DiaryInternal } from 'src/model/diary/index'
 import { deleteImageFromFirebase, uploadPhoto } from 'src/shared/utils/image-storage'
 import TagInput from 'src/pages/blog-home/tag-input'
-import ConditionalInput from 'src/model/diary/conditional-input'
+import ImageInput from 'src/model/diary/image-input'
 
 interface Props {
   disabled?: boolean
@@ -22,7 +22,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
                                                                initialValue,
                                                                onSubmit,
                                                              }) => {
-  const { control, register, handleSubmit, getValues, setValue } = useForm({
+  const { control, register, handleSubmit } = useForm({
     defaultValues: initialValue, mode: 'onChange',
   })
   const { fields, append, move, remove } = useFieldArray({
@@ -31,7 +31,6 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
   })
 
   const tagsDB = useStore(tagsStore.tags)
-  const tagsValue = getValues('tags')
 
   const getFirebaseFileUrl = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event?.target.files) return
@@ -50,7 +49,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           {...register(`content.${index}.text` as const, { required: true, minLength: 20 })}
         />
       case 'image':
-        return <ConditionalInput control={control} index={index} />
+        return <ImageInput control={control} index={index} />
       case 'iframe':
         return <TextInput
           placeholder='IFrame URL'
@@ -114,31 +113,32 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
         </Box>
         <Box direction='row' align='start' gap='small'>
           <Button
-            icon={<Icons.Add size='18px' />}
+            icon={<Icons.Add size='16px' />}
             label='Paragraph'
             onClick={() => {
               append({ kind: 'paragraph', text: '' })
             }}
           />
           <Button
-            icon={<Icons.Add size='18px' />}
+            icon={<Icons.Add size='16px' />}
             label='IFrame'
             onClick={() => {
               append({ kind: 'iframe', url: '' })
             }}
           />
           <Button
-            icon={<Icons.Add size='18px' />}
+            icon={<Icons.Add size='16px' />}
             label='Image'
             onClick={() => {
               append({ kind: 'image', url: '' })
             }}
           />
         </Box>
-        <Box>
-          <TagInput value={tagsValue} suggestions={tagsDB?.map(t => t.name)}
-                    onChange={(value) => setValue('tags', value)} />
-        </Box>
+        <Controller control={control} name='tags' rules={{ required: true }}
+                    render={({ field: { onChange, value } }) => (
+                      <TagInput value={value} suggestions={tagsDB?.map(t => t.name)}
+                                onChange={onChange} />
+                    )} />
         <FileInput
           name='file'
           multiple={false}
