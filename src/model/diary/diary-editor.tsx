@@ -31,6 +31,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
   })
 
   const tagsDB = useStore(tagsStore.tags)
+  const [open, setOpen] = useState(false)
 
   const getFirebaseFileUrl = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event?.target.files) return
@@ -40,7 +41,6 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
     setOpen(true)
   }
 
-  const [open, setOpen] = useState(false)
   const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content', 'id'>, index: number) => {
     switch (field.kind) {
       case 'paragraph':

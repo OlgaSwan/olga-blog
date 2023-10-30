@@ -25,11 +25,10 @@ const ImageInput: FunctionComponent<ImageInputProps> = ({ control, index }) => {
       name={`content.${index}.url`}
       rules={{ required: true }}
       render={({ field }) =>
-        <Tip content={<Box pad='none' height='small' width='small' alignSelf='center' justify='center'><Image
-          src={url}
-          fallback='https://png.pngtree.com/element_our/20200611/ourmid/pngtree-popup-window-when-system-fails-to-load-image_2252419.jpg' />
-        </Box>}
-             dropProps={{ background: { opacity: 40 } }}>
+        <Tip
+          content={<Box pad='none' height='small' width='small' alignSelf='center' justify='center'><Image src={url} />
+          </Box>}
+          dropProps={{ background: { opacity: 40 } }}>
           <TextInput
             placeholder='Image URL'
             readOnly={!!fileName}
