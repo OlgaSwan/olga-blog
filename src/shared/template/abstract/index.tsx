@@ -15,30 +15,30 @@ const theme = deepMerge(grommet, {
   global: {
     breakpoints: {
       small: {
-        value: 640
+        value: 640,
       },
       medium: {
-        value: 1024
+        value: 1024,
       },
-      large: {}
+      large: {},
     },
     colors: {
+      brand: {
+        dark: 'accent-4',
+        light: 'neutral-3',
+      },
       background: {
         dark: '#222',
-        light: 'light-2'
+        light: 'light-2',
       },
       focus: 'brand',
       menuColor: {
         dark: '#222',
-        light: 'light-2'
+        light: 'light-2',
       },
-      brand: {
-        dark: 'accent-4',
-        light: 'neutral-3'
-      }
     },
     font: {
-      family: 'Satoshi'
+      family: 'Satoshi',
     },
     elevation: {
       dark: {
@@ -46,56 +46,53 @@ const theme = deepMerge(grommet, {
         small: '0px 16px 30px #1B1B1B',
         medium: '0px 16px 30px #1B1B1B',
         large: '0px 20px 34px #1B1B1B',
-        xlarge: '0px 24px 38px #1B1B1B'
+        xlarge: '0px 24px 38px #1B1B1B',
       },
       light: {
         xsmall: '0px 12px 26px #CCC',
         small: '0px 16px 30px #CCC',
         medium: '0px 16px 30px #CCC',
         large: '0px 20px 34px #CCC',
-        xlarge: '0px 24px 38px #CCC'
-      }
+        xlarge: '0px 24px 38px #CCC',
+      },
     },
     focus: {
       border: {
-        color: 'none'
-      }
-    }
+        color: 'none',
+      },
+    },
   },
   heading: {
     font: {
-      family: 'Ubuntu'
-    }
+      family: 'Ubuntu',
+    },
   },
   menu: {
-    background: 'menuColor'
+    background: 'menuColor',
   },
   anchor: {
-    color: 'brand'
+    color: 'brand',
   },
-  //TODO: btn hovering doesn't work
   button: {
     primary: {
-      background: {
-        color: 'brand'
-      }
+      color: 'brand',
     },
     secondary: {
       font: {
-        weight: 'normal'
-      }
+        weight: 'normal',
+      },
     },
     border: {
-      color: 'brand'
-    }
+      color: 'brand',
+    },
   },
   notification: {
     toast: {
       container: {
-        elevation: 'none'
-      }
-    }
-  }
+        elevation: 'none',
+      },
+    },
+  },
 })
 
 export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
@@ -106,12 +103,12 @@ export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
       theme={theme}
       full='min'
       options={{
-        box: { cssGap: true }
+        box: { cssGap: true },
       }}
       style={{
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative'
+        position: 'relative',
       }}
       themeMode={colorSchemeValue}
     >
