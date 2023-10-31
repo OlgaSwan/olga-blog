@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Controller, FieldArrayWithId, useFieldArray, useForm } from 'react-hook-form'
-import { Box, Button, FileInput, Notification, TextArea, TextInput } from 'grommet'
+import { Box, Button, TextArea, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { useStore } from '@nanostores/react'
@@ -9,6 +9,7 @@ import { tagsStore } from 'src/model/tag/store'
 import { DiaryInternal } from 'src/model/diary/index'
 import { deleteImageFromFirebase, uploadPhoto } from 'src/shared/utils/image-storage'
 import TagInput from 'src/pages/blog-home/tag-input'
+import ImageUrlInput from 'src/model/diary/imageurl-input'
 import ImageInput from 'src/model/diary/image-input'
 
 interface Props {
@@ -31,15 +32,8 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
   })
 
   const tagsDB = useStore(tagsStore.tags)
-  const [open, setOpen] = useState(false)
 
-  const getFirebaseFileUrl = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event?.target.files) return
-    const file = event.target.files[0]
-    const url = await uploadPhoto(file)
-    if (url) append({ kind: 'image', url: url, file_name: file.name })
-    setOpen(true)
-  }
+  // const uploadFiles = async (diary: DiaryInternal)
 
   const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content', 'id'>, index: number) => {
     switch (field.kind) {
@@ -49,19 +43,22 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           {...register(`content.${index}.text` as const, { required: true, minLength: 20 })}
         />
       case 'image':
-        return <ImageInput control={control} index={index} />
+        return <ImageUrlInput control={control} index={index} />
       case 'iframe':
         return <TextInput
           placeholder='IFrame URL'
           {...register(`content.${index}.url` as const, { required: true })}
         />
+      case 'file':
+        return <ImageInput control={control} index={index} />
       default:
         return null
     }
   }
 
-  const deleteBlock = async (field: FieldArrayWithId<DiaryInternal, 'content', 'id'>, index: number) => {
-    if (field.kind === 'image') await deleteImageFromFirebase(field.url)
+  const deleteBlock = async (index: number) => {
+    const field = fields.at(index)
+    if (field && field.kind === 'image') await deleteImageFromFirebase(field.url)
     remove(index)
   }
 
@@ -76,16 +73,20 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {open && (
-        <Notification
-          toast
-          time={2000}
-          icon={<Icons.StatusGood color='brand' />}
-          message='Image uploaded!'
-          onClose={() => setOpen(false)}
-        />
-      )}
+    <form onSubmit={handleSubmit(async diary => {
+      const diaryCopy = { ...diary }
+      diaryCopy.content = []
+
+      for (let block of diary.content) {
+        if (block.kind === 'file' && block.file) {
+          const arr = await uploadPhoto(block.file)
+          if (arr) {
+            diaryCopy.content.push({ kind: 'image', url: arr[0], file_name: arr[1] })
+          }
+        } else diaryCopy.content.push(block)
+      }
+      onSubmit(diaryCopy)
+    })}>
       <Box gap='medium'>
         <Box>
           <TextInput
@@ -106,7 +107,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
                 createBlock(field, index)
               }
               <Box direction='column' alignSelf='center'>
-                <Icons.FormTrash onClick={() => deleteBlock(field, index)} cursor='pointer' />
+                <Icons.FormTrash onClick={() => deleteBlock(index)} cursor='pointer' />
               </Box>
             </Box>
           })}
@@ -133,19 +134,19 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
               append({ kind: 'image', url: '' })
             }}
           />
+          <Button
+            icon={<Icons.Add size='16px' />}
+            label='File'
+            onClick={() => {
+              append({ kind: 'file' })
+            }}
+          />
         </Box>
         <Controller control={control} name='tags' rules={{ required: true }}
                     render={({ field: { onChange, value } }) => (
                       <TagInput value={value} suggestions={tagsDB?.map(t => t.name)}
                                 onChange={onChange} />
                     )} />
-        <FileInput
-          name='file'
-          multiple={false}
-          onChange={async event => {
-            if (event) await getFirebaseFileUrl(event)
-          }}
-        />
         <Button
           type='submit'
           primary
