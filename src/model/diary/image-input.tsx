@@ -1,43 +1,35 @@
-import React, { FunctionComponent } from 'react'
-import { Control, Controller, useWatch } from 'react-hook-form'
+import React, { FunctionComponent, useState } from 'react'
+import { Control, Controller } from 'react-hook-form'
 import { DiaryInternal } from 'src/model/diary/types'
-import { Box, Image, TextInput, Tip } from 'grommet'
+import { Box, FileInput, Image, Tip } from 'grommet'
 
-interface ImageInputProps {
+interface FileInputProps {
   control: Control<DiaryInternal>
   index: number
 }
 
-const ImageInput: FunctionComponent<ImageInputProps> = ({ control, index }) => {
-  const fileName = useWatch({
-    name: `content.${index}.file_name`,
-    control,
-  })
+const ImageInput: FunctionComponent<FileInputProps> = ({ control, index }) => {
 
-  const url = useWatch({
-    name: `content.${index}.url`,
-    control,
-  })
+  const [image, setImage] = useState('')
 
   return (
-    <Controller
-      control={control}
-      name={`content.${index}.url`}
-      rules={{ required: true }}
-      render={({ field }) =>
-        <Tip
-          content={<Box pad='none' height='small' width='small' alignSelf='center' justify='center'><Image src={url} />
-          </Box>}
-          dropProps={{ background: { opacity: 40 } }}>
-          <TextInput
-            placeholder='Image URL'
-            readOnly={!!fileName}
-            {...field}
-          />
-        </Tip>
-      }
+    <Controller control={control} name={`content.${index}.file`} rules={{ required: true }}
+                render={({ field: { onChange } }) =>
+                  <Tip
+                    content={<Box pad='none' height='small' width='small' alignSelf='center' justify='center'><Image
+                      src={image} />
+                    </Box>}
+                    dropProps={{ background: { opacity: 40 } }}>
+                    <FileInput multiple={false} onChange={(event) => {
+                      if (event?.target.files && event.target.files[0]) {
+                        onChange(event.target.files[0])
+                        setImage(URL.createObjectURL(event.target.files[0]))
+                      }
+                    }
+                    } />
+                  </Tip>
+                }
     />
   )
 }
 export default ImageInput
-

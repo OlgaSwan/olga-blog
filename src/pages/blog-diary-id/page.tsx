@@ -4,14 +4,13 @@ import { useStore } from '@nanostores/react'
 import { Box, Button, Heading, Image, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { diaryStore } from 'src/model/diary'
+import { diaryStore, SharedBtn } from 'src/model/diary'
 import { authStore } from 'src/model/auth'
 import { routeMap } from 'src/shared/route-map'
 
 import { Head } from 'src/shared/head-meta/head'
 import { TemplateContent } from 'src/shared/template'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
-import { SharedBtn } from 'src/model/diary/shared-btn'
 import { useIsLiked } from 'src/shared/hooks/useIsLiked'
 
 const BlogDiaryId: FunctionComponent = () => {

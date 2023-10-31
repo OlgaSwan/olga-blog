@@ -1,4 +1,5 @@
 export { DiaryList } from './diary-list'
 export { DiaryCard } from './diary-card'
 export { diaryStore } from './store'
+export { SharedBtn } from './shared-btn'
 export type { DiaryInternal, DiaryExternal } from './types'
