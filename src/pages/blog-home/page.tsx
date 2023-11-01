@@ -7,7 +7,7 @@ import { DiaryList, diaryStore } from 'src/model/diary'
 import { metadata } from 'src/shared/head-meta/metadata'
 import { TemplateContent } from 'src/shared/template'
 import { Head } from 'src/shared/head-meta/head'
-import TagInput from './tag-input'
+import { TagInput } from 'src/model/tag'
 import { useAllTAgs } from 'src/shared/hooks/useAllTAgs'
 
 const BlogHome: FunctionComponent = () => {

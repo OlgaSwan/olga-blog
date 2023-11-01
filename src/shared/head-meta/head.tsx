@@ -5,6 +5,7 @@ interface HelmetProps {
   title: string
   description: string
 }
+
 export const Head: FunctionComponent<HelmetProps> = ({ title, description }) => {
   return (
     <Helmet>

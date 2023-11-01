@@ -36,13 +36,13 @@ const Home: FunctionComponent = () => (
       href={routeMap.blogHome}
     />
     <Heading level='2' margin={{ top: 'medium', bottom: 'medium' }}>
-      My skillset
+      My skill set
     </Heading>
     <Heading level='3' margin={{ bottom: 'small' }}>
       Hard-skills
     </Heading>
     <Text margin={{ bottom: 'small' }}>
-      I've worked with a lot of technologies on petprojects and in production
+      I've worked with a lot of technologies on pet-projects and in production
       <ul>
         <li>Vanilla JS, TypeScript</li>
         <li>REST and CRUD APIs, Firebase</li>

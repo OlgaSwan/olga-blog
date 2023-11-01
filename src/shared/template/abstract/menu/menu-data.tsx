@@ -16,25 +16,25 @@ type MenuDataItem = {
 
 const menuData: MenuDataItem[] = [{
   label: 'Blog',
-  href: routeMap.blogHome
+  href: routeMap.blogHome,
 }, {
   label: 'About',
-  href: routeMap.aboutMe
+  href: routeMap.aboutMe,
 }, {
   label: 'Hire me',
-  href: routeMap.aboutHire
+  href: routeMap.aboutHire,
 }]
 
 const adminMenuData: MenuDataItem[] = [{
   label: 'Admin',
-  href: routeMap.adminDiaryList
+  href: routeMap.adminDiaryList,
 }, {
   label: 'Sign out',
   href: '#',
   onClick: async (event) => {
     event.preventDefault()
     await authStore.logout()
-  }
+  },
 }]
 const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
   return {
@@ -44,7 +44,7 @@ const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
     onClick: (event) => {
       event.preventDefault()
       colorScheme.toggle()
-    }
+    },
   }
 }
 

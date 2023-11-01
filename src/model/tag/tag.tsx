@@ -6,24 +6,23 @@ interface TagProps extends BoxExtendedProps {
   onRemove: () => void
 }
 
-const Tag: FunctionComponent<PropsWithChildren<TagProps>> = ({ children, onRemove, ...rest }) => {
+export const Tag: FunctionComponent<PropsWithChildren<TagProps>> = ({ children, onRemove, ...rest }) => {
   return (
     <Box
       direction='row'
       align='center'
-      background='brand'
+      background={{ color: 'brand' }}
       pad={{ horizontal: 'xsmall', vertical: 'xxsmall' }}
       margin={{ vertical: 'xxsmall' }}
-      round='medium'
+      round='small'
       onClick={onRemove}
       {...rest}
     >
       <Text size='xsmall' margin={{ right: 'xxsmall' }}>
         {children}
       </Text>
-      <FormClose size='small' color='white' />
+      <FormClose size='small' color='text' />
     </Box>
   )
 }
 
-export default Tag

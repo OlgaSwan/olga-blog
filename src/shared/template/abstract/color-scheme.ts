@@ -10,7 +10,7 @@ const store = atom<'light' | 'dark'>(
         ? 'dark'
         : matchMedia('(prefers-color-scheme: light)').matches
           ? 'light'
-          : 'dark'
+          : 'dark',
 )
 
 store.subscribe((value) => {
