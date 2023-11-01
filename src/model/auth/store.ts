@@ -1,10 +1,10 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   User,
-  onAuthStateChanged,
 } from 'firebase/auth'
 import { atom } from 'nanostores'
 

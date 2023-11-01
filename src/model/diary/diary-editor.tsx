@@ -8,7 +8,7 @@ import { tagsStore } from 'src/model/tag/store'
 
 import { DiaryInternal } from 'src/model/diary/index'
 import { deleteImageFromFirebase, uploadPhoto } from 'src/shared/utils/image-storage'
-import TagInput from 'src/pages/blog-home/tag-input'
+import { TagInput } from 'src/model/tag'
 import ImageUrlInput from 'src/model/diary/imageurl-input'
 import ImageInput from 'src/model/diary/image-input'
 
@@ -33,9 +33,22 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
 
   const tagsDB = useStore(tagsStore.tags)
 
-  // const uploadFiles = async (diary: DiaryInternal)
+  const uploadPhotos = async (diary: DiaryInternal) => {
+    const diaryCopy = { ...diary }
+    diaryCopy.content = []
 
-  const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content', 'id'>, index: number) => {
+    for (let block of diary.content) {
+      if (block.kind === 'file' && block.file) {
+        const arr = await uploadPhoto(block.file)
+        if (arr) {
+          diaryCopy.content.push({ kind: 'image', url: arr[0], file_name: arr[1] })
+        }
+      } else diaryCopy.content.push(block)
+    }
+    onSubmit(diaryCopy)
+  }
+
+  const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content'>, index: number) => {
     switch (field.kind) {
       case 'paragraph':
         return <TextArea
@@ -73,20 +86,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(async diary => {
-      const diaryCopy = { ...diary }
-      diaryCopy.content = []
-
-      for (let block of diary.content) {
-        if (block.kind === 'file' && block.file) {
-          const arr = await uploadPhoto(block.file)
-          if (arr) {
-            diaryCopy.content.push({ kind: 'image', url: arr[0], file_name: arr[1] })
-          }
-        } else diaryCopy.content.push(block)
-      }
-      onSubmit(diaryCopy)
-    })}>
+    <form onSubmit={handleSubmit(async (diary) => await uploadPhotos(diary))}>
       <Box gap='medium'>
         <Box>
           <TextInput

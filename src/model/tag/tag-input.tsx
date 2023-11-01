@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 import { Box, TextInput } from 'grommet'
 import { isEqual } from 'lodash-es'
-
-import Tag from './tag'
+import { Tag } from 'src/model/tag/tag'
 
 interface TagInputProps {
   value?: string[]
@@ -10,11 +9,11 @@ interface TagInputProps {
   onChange?: (value: string[]) => void
 }
 
-const TagInput: FunctionComponent<TagInputProps> = ({
-                                                      value = [],
-                                                      suggestions = [],
-                                                      onChange,
-                                                    }) => {
+export const TagInput: FunctionComponent<TagInputProps> = ({
+                                                             value = [],
+                                                             suggestions = [],
+                                                             onChange,
+                                                           }) => {
   const [inputValue, setInputValue] = useState('')
   const [chosenTags, setChosenTags] = useState(value)
   useEffect(() => {
@@ -76,4 +75,3 @@ const TagInput: FunctionComponent<TagInputProps> = ({
   )
 }
 
-export default TagInput

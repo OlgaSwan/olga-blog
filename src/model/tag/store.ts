@@ -20,5 +20,5 @@ export const tagsStore = {
   },
   remove: async (id: string) => {
     await deleteDoc(doc(tagsCollection, id))
-  }
+  },
 }
