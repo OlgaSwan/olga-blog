@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useRef, useEffect, useMemo } from 'react'
+import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 import { Box, TextInput } from 'grommet'
 import { isEqual } from 'lodash-es'
 
@@ -11,10 +11,10 @@ interface TagInputProps {
 }
 
 const TagInput: FunctionComponent<TagInputProps> = ({
-  value = [],
-  suggestions = [],
-  onChange,
-}) => {
+                                                      value = [],
+                                                      suggestions = [],
+                                                      onChange,
+                                                    }) => {
   const [inputValue, setInputValue] = useState('')
   const [chosenTags, setChosenTags] = useState(value)
   useEffect(() => {

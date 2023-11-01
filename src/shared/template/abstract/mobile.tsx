@@ -9,6 +9,7 @@ import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
+import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
 
 export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (
   <>
@@ -23,7 +24,8 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       style={{
         position: 'sticky',
         top: 0,
-        backdropFilter: 'blur(6px)'
+        backdropFilter: 'blur(6px)',
+        zIndex: 1,
       }}
     >
       <Box direction='row' gap='medium' align='center'>
@@ -32,10 +34,12 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       </Box>
       <MenuComponent />
     </Box>
-    <Box as='main' flex='grow' pad='medium'>
+    <Box as='main' flex='grow' margin={{ top: '30px' }} pad='medium'>
       {main}
     </Box>
-    <Box as='footer' direction='column' pad='medium' align='center' gap='small'>
+    <Box as='footer' direction='column' margin={{ top: '20px', bottom: '10px' }} pad='medium' align='center'
+         gap='small'>
+      <SwanLogo />
       <Box direction='row' gap='small' justify='center'>
         <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
         <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github />} />

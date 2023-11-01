@@ -37,7 +37,7 @@ const BlogDiaryId: FunctionComponent = () => {
   return (
     <TemplateContent>
       <Head title={foundDiary.title} description={foundDiary.content.slice(0, 240) + '...'} />
-      <Heading size='medium' alignSelf='start' margin={{ top: 'xlarge', bottom: 'medium' }}>
+      <Heading size='medium' alignSelf='start' margin={{ bottom: 'medium' }}>
         {foundDiary.title}
       </Heading>
       <Box gap='medium' margin={{ bottom: 'medium' }}>

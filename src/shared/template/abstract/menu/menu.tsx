@@ -8,6 +8,7 @@ export const MenuComponent: FunctionComponent = () => {
   const menuData = useMenuData()
   return <Menu
     justifyContent='end'
+    dropProps={{ round: 'small' }}
     dropAlign={{ top: 'top', right: 'right' }}
     icon={<Icons.Menu color='brand' />}
     items={menuData.map(e => ( {
@@ -15,7 +16,7 @@ export const MenuComponent: FunctionComponent = () => {
       href: e.href,
       style: e.style,
       icon: e.icon,
-      onClick: e.onClick
+      onClick: e.onClick,
     } ))}
   />
 }

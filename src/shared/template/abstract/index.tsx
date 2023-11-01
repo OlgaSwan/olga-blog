@@ -24,16 +24,16 @@ const theme = deepMerge(grommet, {
     },
     colors: {
       brand: {
-        dark: 'accent-4',
-        light: 'neutral-3',
+        dark: '#FFFF00',
+        light: '#009CBA',
       },
       background: {
-        dark: '#222',
+        dark: '#1F1F1F',
         light: 'light-2',
       },
       focus: 'brand',
       menuColor: {
-        dark: '#222',
+        dark: '#1F1F1F',
         light: 'light-2',
       },
     },
@@ -84,6 +84,12 @@ const theme = deepMerge(grommet, {
     },
     border: {
       color: 'brand',
+    },
+  },
+  //DOESNT WORK
+  tag: {
+    remove: {
+      color: 'red',
     },
   },
   notification: {
