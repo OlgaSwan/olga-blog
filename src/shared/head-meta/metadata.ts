@@ -24,23 +24,23 @@ export const metadata = {
     description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
   },
   adminDiaryList: {
-    title: 'Admin - Olga Swan Blog',
+    title: 'Admin Diary List - Olga Swan Blog',
     description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
   },
   adminDiaryId: {
-    title: 'Admin - Olga Swan Blog',
+    title: 'Admin Diary - Olga Swan Blog',
     description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
   },
   adminTagList: {
-    title: 'Admin - Olga Swan Blog',
+    title: 'Admin Tag List - Olga Swan Blog',
     description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
   },
   errorForbidden: {
     title: 'Access Forbidden - Olga Swan Blog',
-    description: "Sorry, you don't have permission to access this page",
+    description: 'Sorry, you don\'t have permission to access this page',
   },
   errorNotFound: {
     title: 'Page Not Found - Olga Swan Blog',
-    description: "Oops! The page you're looking for could not be found.",
+    description: 'Oops! The page you\'re looking for could not be found.',
   },
 }

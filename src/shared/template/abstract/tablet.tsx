@@ -9,6 +9,7 @@ import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
+import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
 
 export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
 
@@ -24,7 +25,8 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       style={{
         position: 'sticky',
         top: 0,
-        backdropFilter: 'blur(6px)'
+        backdropFilter: 'blur(6px)',
+        zIndex: 1,
       }}
     >
       <Box direction='row' gap='medium' align='center'>
@@ -33,7 +35,8 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       </Box>
       <MenuComponent />
     </Box>
-    <Box flex='grow' direction='row' pad={{ horizontal: 'medium' }} gap='medium' justify='center'>
+    <Box flex='grow' direction='row' margin={{ top: '80px' }} pad={{ horizontal: 'medium' }} gap='medium'
+         justify='center'>
       {sidebarLeft ? (
         <>
           <Box basis='240px' flex={false}>
@@ -53,8 +56,11 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
         </>
       )}
     </Box>
-    <Box as='footer' height='xsmall' pad='medium' direction='row' align='center' justify='between'>
+    <Box as='footer' margin={{ top: '60px', bottom: '10px' }} height='xsmall' pad='medium' direction='row'
+         align='center'
+         justify='between'>
       <Text>© Olga Swan, 2023</Text>
+      <SwanLogo />
       <Box direction='row' gap='small' justify='center'>
         <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
         <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github />} />

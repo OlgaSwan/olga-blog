@@ -99,7 +99,6 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
               </Text>
               <Text size='small'>{date}</Text>
             </Box>
-
           </Box>
           <SharedBtn diary_id={foundDiary.id} size='20px' />
         </CardFooter>
