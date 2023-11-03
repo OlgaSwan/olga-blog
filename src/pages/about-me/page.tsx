@@ -15,7 +15,7 @@ const AboutMe: FunctionComponent = () => (
     <Heading level='2' margin={{ bottom: 'medium' }}>
       About me
     </Heading>
-    <Box direction='row' align='center' gap='medium'>
+    <Box direction='row' align='start' gap='medium'>
       <Box gap='medium' width='large'>
         <Heading level='3' margin='none'>
           {'OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO,'}

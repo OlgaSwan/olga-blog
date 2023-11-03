@@ -2,11 +2,11 @@ import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { FormClose } from 'grommet-icons'
 import { Box, BoxExtendedProps, Text } from 'grommet'
 
-interface TagProps extends BoxExtendedProps {
+interface TagCustomProps extends BoxExtendedProps {
   onRemove: () => void
 }
 
-export const Tag: FunctionComponent<PropsWithChildren<TagProps>> = ({ children, onRemove, ...rest }) => {
+export const TagCustom: FunctionComponent<PropsWithChildren<TagCustomProps>> = ({ children, onRemove, ...rest }) => {
   return (
     <Box
       direction='row'

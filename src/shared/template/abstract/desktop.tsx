@@ -7,10 +7,13 @@ import { useMenuData } from 'src/shared/template/abstract/menu/menu-data'
 import { LinkCustom } from '../../utils/link-custom'
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
-import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
+import { SwanLogoDark, SwanLogoLight } from 'src/shared/template/abstract/swan-logo'
+import { useStore } from '@nanostores/react'
+import { colorScheme } from 'src/shared/template/abstract/color-scheme'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
   const menuData = useMenuData()
+  const colorSchemeValue = useStore(colorScheme.store)
 
   return (
     <>
@@ -54,7 +57,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
       <Box as='footer' margin={{ top: '100px' }} height='xsmall' pad='medium' direction='row' align='center'
            justify='between'>
         <Text>© Olga Swan, 2023 </Text>
-        <SwanLogo />
+        {colorSchemeValue === 'light' ? <SwanLogoLight /> : <SwanLogoDark />}
         <Box direction='row' gap='medium' justify='center'>
           <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
           <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github />} />
