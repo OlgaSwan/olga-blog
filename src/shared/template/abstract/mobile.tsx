@@ -9,7 +9,7 @@ import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
-import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
+import { SwanLogoLight } from 'src/shared/template/abstract/swan-logo'
 
 export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (
   <>
@@ -39,7 +39,7 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
     </Box>
     <Box as='footer' direction='column' margin={{ top: '20px', bottom: '10px' }} pad='medium' align='center'
          gap='small'>
-      <SwanLogo />
+      <SwanLogoLight />
       <Box direction='row' gap='small' justify='center'>
         <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
         <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github />} />

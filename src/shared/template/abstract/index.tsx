@@ -86,12 +86,6 @@ const theme = deepMerge(grommet, {
       color: 'brand',
     },
   },
-  //DOESNT WORK
-  tag: {
-    remove: {
-      color: 'red',
-    },
-  },
   notification: {
     toast: {
       container: {

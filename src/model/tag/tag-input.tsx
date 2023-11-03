@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 import { Box, TextInput } from 'grommet'
 import { isEqual } from 'lodash-es'
-import { Tag } from 'src/model/tag/tag'
+import { TagCustom } from 'src/model/tag/tag-custom'
 
 interface TagInputProps {
   value?: string[]
@@ -44,14 +44,14 @@ export const TagInput: FunctionComponent<TagInputProps> = ({
         wrap
       >
         {chosenTags.map(tag => (
-          <Tag
+          <TagCustom
             key={tag}
             margin='xxsmall'
             onRemove={() => {
               setChosenTags(chosenTags.filter(t => t !== tag))
             }}>
             {tag}
-          </Tag>
+          </TagCustom>
         ))}
         <Box flex style={{ minWidth: '120px' }}>
           <TextInput

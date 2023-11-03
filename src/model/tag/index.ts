@@ -1,4 +1,4 @@
 export { tagsStore } from './store'
-export { Tag } from './tag'
+export { TagCustom } from './tag-custom'
 export { TagInput } from './tag-input'
 export type { TagInternal, TagExternal } from './types'
