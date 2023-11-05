@@ -1,4 +1,6 @@
 import { FunctionComponent } from 'react'
+import { useStore } from '@nanostores/react'
+import { colorScheme } from 'src/shared/template/abstract/color-scheme'
 
 export const SwanLogoLight: FunctionComponent = () => {
   return (
@@ -36,4 +38,9 @@ export const SwanLogoDark: FunctionComponent = () => {
         fill='#FF002E' />
     </svg>
   )
+}
+
+export const SwanLogo: FunctionComponent = () => {
+  const colorSchemeValue = useStore(colorScheme.store)
+  return colorSchemeValue === 'light' ? <SwanLogoLight /> : <SwanLogoDark />
 }
