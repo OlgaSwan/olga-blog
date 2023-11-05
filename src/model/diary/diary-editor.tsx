@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 import { Controller, FieldArrayWithId, useFieldArray, useForm } from 'react-hook-form'
 import { Box, Button, TextArea, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
@@ -85,6 +85,14 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
     move(index, index + 1)
   }
 
+  const dragItem = useRef<number | null>(null)
+  const dragOverItem = useRef<number | null>(null)
+
+  const handleDrag = (dragItem: React.MutableRefObject<number | null>, dragOverItem: React.MutableRefObject<number | null>) => {
+    if (dragItem.current && dragOverItem.current)
+      move(dragItem.current, dragOverItem.current)
+  }
+
   return (
     <form onSubmit={handleSubmit(async (diary) => await uploadPhotos(diary))}>
       <Box gap='medium'>
@@ -98,7 +106,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
         <Box gap='medium'>
 
           {fields.map((field, index) => {
-            return <Box gap='small' direction='row' key={field.id}>
+            return <Box gap='small' direction='row' key={field.id} draggable
+                        onDragOver={(e) => e.preventDefault()}
+                        onDragStart={() => dragItem.current = index}
+                        onDragEnter={() => dragOverItem.current = index}
+                        onDrop={() => handleDrag(dragItem, dragOverItem)
+                        }
+                        style={{ cursor: 'move' }}>
               <Box direction='column' alignSelf='center'>
                 <Icons.FormUp onClick={() => formUp(index)} cursor='pointer' />
                 <Icons.FormDown onClick={() => formDown(index)} cursor='pointer' />

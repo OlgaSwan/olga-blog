@@ -109,6 +109,7 @@ export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
+        overflow: 'clip',
       }}
       themeMode={colorSchemeValue}
     >
