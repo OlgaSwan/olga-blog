@@ -9,7 +9,7 @@ import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
 import avatar from './avatar.jpg'
-import { SwanLogoLight } from 'src/shared/template/abstract/swan-logo'
+import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
 
 export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
 
@@ -60,7 +60,7 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
          align='center'
          justify='between'>
       <Text>© Olga Swan, 2023</Text>
-      <SwanLogoLight />
+      <SwanLogo />
       <Box direction='row' gap='small' justify='center'>
         <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
         <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github />} />
