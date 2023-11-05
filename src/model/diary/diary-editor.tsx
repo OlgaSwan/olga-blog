@@ -88,9 +88,9 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
   const dragItem = useRef<number | null>(null)
   const dragOverItem = useRef<number | null>(null)
 
-  const handleDrag = (dragItem: React.MutableRefObject<number | null>, dragOverItem: React.MutableRefObject<number | null>) => {
-    if (dragItem.current && dragOverItem.current)
-      move(dragItem.current, dragOverItem.current)
+  const handleDrag = () => {
+    if (dragItem.current === null || dragOverItem.current === null) return
+    move(dragItem.current, dragOverItem.current)
   }
 
   return (
@@ -110,8 +110,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
                         onDragOver={(e) => e.preventDefault()}
                         onDragStart={() => dragItem.current = index}
                         onDragEnter={() => dragOverItem.current = index}
-                        onDrop={() => handleDrag(dragItem, dragOverItem)
-                        }
+                        onDrop={handleDrag}
                         style={{ cursor: 'move' }}>
               <Box direction='column' alignSelf='center'>
                 <Icons.FormUp onClick={() => formUp(index)} cursor='pointer' />
