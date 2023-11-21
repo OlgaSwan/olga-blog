@@ -35,11 +35,7 @@ const AdminDiaryId: FunctionComponent = () => {
         Diary editor
       </Heading>
       <Box gap='small' margin={{ top: 'medium' }}>
-        <AdminDiaryIdEditor
-          initialValue={foundDiary}
-          onSubmit={value => updateDiary(value)}
-        />
-
+        <AdminDiaryIdEditor initialValue={foundDiary} onSubmit={(value) => updateDiary(value)} />
       </Box>
     </TemplateAdmin>
   )

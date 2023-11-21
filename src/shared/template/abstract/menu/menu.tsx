@@ -6,17 +6,19 @@ import { useMenuData } from 'src/shared/template/abstract/menu/menu-data'
 
 export const MenuComponent: FunctionComponent = () => {
   const menuData = useMenuData()
-  return <Menu
-    justifyContent='end'
-    dropProps={{ round: 'small' }}
-    dropAlign={{ top: 'top', right: 'right' }}
-    icon={<Icons.Menu color='brand' />}
-    items={menuData.map(e => ( {
-      label: e.label,
-      href: e.href,
-      style: e.style,
-      icon: e.icon,
-      onClick: e.onClick,
-    } ))}
-  />
+  return (
+    <Menu
+      justifyContent='end'
+      dropProps={{ round: 'small' }}
+      dropAlign={{ top: 'top', right: 'right' }}
+      icon={<Icons.Menu color='brand' />}
+      items={menuData.map((e) => ({
+        label: e.label,
+        href: e.href,
+        style: e.style,
+        icon: e.icon,
+        onClick: e.onClick,
+      }))}
+    />
+  )
 }

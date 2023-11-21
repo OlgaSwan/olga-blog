@@ -11,7 +11,6 @@ import { TemplateTablet } from './tablet'
 import { TemplateMobile } from './mobile'
 
 const theme = deepMerge(grommet, {
-
   global: {
     breakpoints: {
       small: {

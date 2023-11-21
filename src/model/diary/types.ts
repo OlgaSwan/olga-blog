@@ -5,20 +5,24 @@ export interface DiaryInternal {
   timestamp: number
 }
 
-export type Block = {
-  kind: 'paragraph'
-  text: string
-} | {
-  kind: 'iframe'
-  url: string
-} | {
-  kind: 'image'
-  url: string
-  file_name?: string
-} | {
-  kind: 'file'
-  file?: File
-}
+export type Block =
+  | {
+      kind: 'paragraph'
+      text: string
+    }
+  | {
+      kind: 'iframe'
+      url: string
+    }
+  | {
+      kind: 'image'
+      url: string
+      file_name?: string
+    }
+  | {
+      kind: 'file'
+      file?: File
+    }
 
 export interface DiaryExternal extends DiaryInternal {
   id: string

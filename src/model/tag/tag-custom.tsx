@@ -25,4 +25,3 @@ export const TagCustom: FunctionComponent<PropsWithChildren<TagCustomProps>> = (
     </Box>
   )
 }
-

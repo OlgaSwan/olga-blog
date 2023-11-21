@@ -20,9 +20,8 @@ const Home: FunctionComponent = () => (
       <Icons.Diamond size='medium' color='brand' />
     </Paragraph>
     <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
-      I'm a frontend developer from Moscow. I <LinkCustom label='write' href={routeMap.blogHome} color='brand' /> about
-      code, ux/ui
-      and art. <br />
+      I'm a frontend developer from Moscow. I <LinkCustom label='write' href={routeMap.blogHome} color='brand' /> about code, ux/ui and art.{' '}
+      <br />
       Passionate about traditional and digital drawing, gaming and paleontology.
     </Paragraph>
     <PageHeader size='small' title='Latest posts' margin={{ bottom: 'medium', top: 'small' }} />
@@ -67,8 +66,7 @@ const Home: FunctionComponent = () => (
       Soft-skills
     </Heading>
     <Text margin={{ bottom: 'medium' }}>
-      ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some
-      technologies)
+      ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some technologies)
       <ul>
         <li>Solution research and presentation</li>
         <li>Management and delegation</li>

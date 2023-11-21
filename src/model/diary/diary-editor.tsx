@@ -18,13 +18,10 @@ interface Props {
   onSubmit: (value: DiaryInternal) => void
 }
 
-export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
-                                                               disabled = false,
-                                                               initialValue,
-                                                               onSubmit,
-                                                             }) => {
+export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false, initialValue, onSubmit }) => {
   const { control, register, handleSubmit } = useForm({
-    defaultValues: initialValue, mode: 'onChange',
+    defaultValues: initialValue,
+    mode: 'onChange',
   })
   const { fields, append, move, remove } = useFieldArray({
     control,
@@ -51,17 +48,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
   const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content'>, index: number) => {
     switch (field.kind) {
       case 'paragraph':
-        return <TextArea
-          placeholder='Paragraph content'
-          {...register(`content.${index}.text` as const, { required: true, minLength: 20 })}
-        />
+        return (
+          <TextArea placeholder='Paragraph content' {...register(`content.${index}.text` as const, { required: true, minLength: 20 })} />
+        )
       case 'image':
         return <ImageUrlInput control={control} index={index} />
       case 'iframe':
-        return <TextInput
-          placeholder='IFrame URL'
-          {...register(`content.${index}.url` as const, { required: true })}
-        />
+        return <TextInput placeholder='IFrame URL' {...register(`content.${index}.url` as const, { required: true })} />
       case 'file':
         return <ImageInput control={control} index={index} />
       default:
@@ -104,25 +97,29 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
           />
         </Box>
         <Box gap='medium'>
-
           {fields.map((field, index) => {
-            return <Box gap='small' direction='row' key={field.id} draggable
-                        onDragOver={(e) => e.preventDefault()}
-                        onDragStart={() => dragItem.current = index}
-                        onDragEnter={() => dragOverItem.current = index}
-                        onDrop={handleDrag}
-                        style={{ cursor: 'move' }}>
-              <Box direction='column' alignSelf='center'>
-                <Icons.FormUp onClick={() => formUp(index)} cursor='pointer' />
-                <Icons.FormDown onClick={() => formDown(index)} cursor='pointer' />
+            return (
+              <Box
+                gap='small'
+                direction='row'
+                key={field.id}
+                draggable
+                onDragOver={(e) => e.preventDefault()}
+                onDragStart={() => (dragItem.current = index)}
+                onDragEnter={() => (dragOverItem.current = index)}
+                onDrop={handleDrag}
+                style={{ cursor: 'move' }}
+              >
+                <Box direction='column' alignSelf='center'>
+                  <Icons.FormUp onClick={() => formUp(index)} cursor='pointer' />
+                  <Icons.FormDown onClick={() => formDown(index)} cursor='pointer' />
+                </Box>
+                {createBlock(field, index)}
+                <Box direction='column' alignSelf='center'>
+                  <Icons.FormTrash onClick={() => deleteBlock(index)} cursor='pointer' />
+                </Box>
               </Box>
-              {
-                createBlock(field, index)
-              }
-              <Box direction='column' alignSelf='center'>
-                <Icons.FormTrash onClick={() => deleteBlock(index)} cursor='pointer' />
-              </Box>
-            </Box>
+            )
           })}
         </Box>
         <Box direction='row' align='start' gap='small'>
@@ -155,19 +152,15 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({
             }}
           />
         </Box>
-        <Controller control={control} name='tags' rules={{ required: true }}
-                    render={({ field: { onChange, value } }) => (
-                      <TagInput value={value} suggestions={tagsDB?.map(t => t.name)}
-                                onChange={onChange} />
-                    )} />
-        <Button
-          type='submit'
-          primary
-          label='Submit'
-          size='small'
-          margin={{ top: 'medium' }}
-          style={{ width: '200px' }}
+        <Controller
+          control={control}
+          name='tags'
+          rules={{ required: true }}
+          render={({ field: { onChange, value } }) => (
+            <TagInput value={value} suggestions={tagsDB?.map((t) => t.name)} onChange={onChange} />
+          )}
         />
+        <Button type='submit' primary label='Submit' size='small' margin={{ top: 'medium' }} style={{ width: '200px' }} />
       </Box>
     </form>
   )

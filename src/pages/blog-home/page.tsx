@@ -16,7 +16,11 @@ const BlogHome: FunctionComponent = () => {
   const allSuggestions = useAllTAgs()
 
   const [params, setParams] = useSearchParams({ tags: [] })
-  const tags = ( params.get('tags') )?.split(',').filter((t) => Boolean(t)) ?? []
+  const tags =
+    params
+      .get('tags')
+      ?.split(',')
+      .filter((t) => Boolean(t)) ?? []
   const setTags = (tags: string[]) => setParams({ tags: tags.join(',') })
 
   if (allDiaries === null) return <TemplateContent />
@@ -27,11 +31,7 @@ const BlogHome: FunctionComponent = () => {
       <Heading level='2' margin={{ bottom: 'medium' }}>
         Blog
       </Heading>
-      <TagInput
-        suggestions={allSuggestions}
-        value={tags}
-        onChange={(value) => setTags(value)}
-      />
+      <TagInput suggestions={allSuggestions} value={tags} onChange={(value) => setTags(value)} />
       <DiaryList isSliced={false} chosenTags={tags} />
     </TemplateContent>
   )
