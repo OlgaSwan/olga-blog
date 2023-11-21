@@ -87,7 +87,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
   }
 
   return (
-    <form onSubmit={handleSubmit(async (diary) => await uploadPhotos(diary))}>
+    <form onSubmit={handleSubmit(async diary => await uploadPhotos(diary))}>
       <Box gap='medium'>
         <Box>
           <TextInput
@@ -104,7 +104,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
                 direction='row'
                 key={field.id}
                 draggable
-                onDragOver={(e) => e.preventDefault()}
+                onDragOver={e => e.preventDefault()}
                 onDragStart={() => (dragItem.current = index)}
                 onDragEnter={() => (dragOverItem.current = index)}
                 onDrop={handleDrag}
@@ -156,9 +156,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
           control={control}
           name='tags'
           rules={{ required: true }}
-          render={({ field: { onChange, value } }) => (
-            <TagInput value={value} suggestions={tagsDB?.map((t) => t.name)} onChange={onChange} />
-          )}
+          render={({ field: { onChange, value } }) => <TagInput value={value} suggestions={tagsDB?.map(t => t.name)} onChange={onChange} />}
         />
         <Button type='submit' primary label='Submit' size='small' margin={{ top: 'medium' }} style={{ width: '200px' }} />
       </Box>

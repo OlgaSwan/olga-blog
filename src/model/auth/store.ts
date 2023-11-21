@@ -7,7 +7,7 @@ const firebaseAuth = getAuth(firebaseApp)
 
 const store = atom<User | null>(firebaseAuth.currentUser)
 
-onAuthStateChanged(firebaseAuth, (user) => store.set(user))
+onAuthStateChanged(firebaseAuth, user => store.set(user))
 
 export const authStore = {
   store,

@@ -94,7 +94,7 @@ const theme = deepMerge(grommet, {
   },
 })
 
-export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
+export const TemplateAbstract: FunctionComponent<TemplateProps> = props => {
   const colorSchemeValue = useStore(colorScheme.store)
 
   return (
@@ -113,7 +113,7 @@ export const TemplateAbstract: FunctionComponent<TemplateProps> = (props) => {
       themeMode={colorSchemeValue}
     >
       <ResponsiveContext.Consumer>
-        {(screenSize) => (
+        {screenSize => (
           <>
             {screenSize === 'large' && <TemplateDesktop {...props} />}
             {screenSize === 'medium' && <TemplateTablet {...props} />}

@@ -12,7 +12,7 @@ export const MenuComponent: FunctionComponent = () => {
       dropProps={{ round: 'small' }}
       dropAlign={{ top: 'top', right: 'right' }}
       icon={<Icons.Menu color='brand' />}
-      items={menuData.map((e) => ({
+      items={menuData.map(e => ({
         label: e.label,
         href: e.href,
         style: e.style,

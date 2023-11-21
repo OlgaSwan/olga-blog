@@ -7,7 +7,7 @@ const averageReadTime = 1400
 export const useReadTime = (content: Array<Block> | undefined) => {
   return useMemo(() => {
     if (!content) return 1
-    const filteredContent = content.map((e) => {
+    const filteredContent = content.map(e => {
       if (e.kind === 'paragraph') return e.text
       else return ''
     })

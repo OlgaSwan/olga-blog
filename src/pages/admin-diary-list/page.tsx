@@ -38,14 +38,14 @@ const AdminDiaryList: FunctionComponent = () => {
           />
         </Box>
         <Box gap='medium'>
-          {diaryList.map((diary) => (
+          {diaryList.map(diary => (
             <Card key={diary.title} gap='small' pad='medium'>
               <CardHeader>
                 <Heading size='small'>{diary.title}</Heading>
               </CardHeader>
               <CardFooter direction='column' justify='start' align='start' gap='small'>
                 <Box direction='row' justify='start' gap='xsmall' wrap>
-                  {diary.tags.map((tag) => (
+                  {diary.tags.map(tag => (
                     <Tag key={tag} value={tag} />
                   ))}
                 </Box>

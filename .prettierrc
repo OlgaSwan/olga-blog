@@ -8,5 +8,5 @@
   "useTabs": false,
   "printWidth": 140,
   "bracketSpacing": true,
-  "arrowParens": "always"
+  "arrowParens": "avoid"
 }
