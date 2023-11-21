@@ -35,7 +35,7 @@ const AdminDiaryNew: FunctionComponent = () => {
             tags: [],
             timestamp: Date.now(),
           }}
-          onSubmit={async (value) => {
+          onSubmit={async value => {
             await diaryStore.add(value)
             navigate(routeMap.adminDiaryList)
           }}

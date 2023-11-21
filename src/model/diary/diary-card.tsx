@@ -18,7 +18,7 @@ export interface DiaryCardProps {
 
 export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
   const allDiaries = useStore(diaryStore.list)
-  const foundDiary = allDiaries?.find((p) => p.id === id)
+  const foundDiary = allDiaries?.find(p => p.id === id)
 
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
@@ -33,7 +33,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
       </Card>
     )
 
-  const firstParagraph = foundDiary.content.find((block) => block.kind === 'paragraph')
+  const firstParagraph = foundDiary.content.find(block => block.kind === 'paragraph')
   const date = new Date(foundDiary.timestamp).toLocaleString('en-US', {
     day: 'numeric',
     month: 'short',
@@ -49,14 +49,14 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         >
           {screenSize !== 'small' && (
             <Box direction='row' flex='grow' gap='small' alignSelf='end'>
-              {foundDiary.tags.map((tag) => (
+              {foundDiary.tags.map(tag => (
                 <Tag
                   key={tag}
                   value={tag}
                   size='small'
                   // @ts-ignore
                   style={{ borderWidth: '2px' }}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation()
                     navigate(
                       createPath({

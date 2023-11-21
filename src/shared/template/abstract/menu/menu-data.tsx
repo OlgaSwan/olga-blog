@@ -37,7 +37,7 @@ const adminMenuData: MenuDataItem[] = [
   {
     label: 'Sign out',
     href: '#',
-    onClick: async (event) => {
+    onClick: async event => {
       event.preventDefault()
       await authStore.logout()
     },
@@ -48,7 +48,7 @@ const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
     style: { lineHeight: '0', alignSelf: 'center' },
     icon: colorSchemeValue === 'dark' ? <Icons.Moon /> : <Icons.Sun />,
     href: '#',
-    onClick: (event) => {
+    onClick: event => {
       event.preventDefault()
       colorScheme.toggle()
     },

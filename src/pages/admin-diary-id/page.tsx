@@ -18,7 +18,7 @@ const AdminDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
   const params = useParams()
   const navigate = useNavigate()
-  const foundDiary = allDiaries?.find((d) => d.id === params.id)
+  const foundDiary = allDiaries?.find(d => d.id === params.id)
 
   if (!allDiaries) return <TemplateAdmin />
   if (!foundDiary) return <TemplateAdmin />
@@ -35,7 +35,7 @@ const AdminDiaryId: FunctionComponent = () => {
         Diary editor
       </Heading>
       <Box gap='small' margin={{ top: 'medium' }}>
-        <AdminDiaryIdEditor initialValue={foundDiary} onSubmit={(value) => updateDiary(value)} />
+        <AdminDiaryIdEditor initialValue={foundDiary} onSubmit={value => updateDiary(value)} />
       </Box>
     </TemplateAdmin>
   )

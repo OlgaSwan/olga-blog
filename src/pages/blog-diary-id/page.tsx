@@ -17,7 +17,7 @@ const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
   const auth = useStore(authStore.store)
   const params = useParams()
-  const foundDiary = allDiaries?.find((d) => d.id === params.id)
+  const foundDiary = allDiaries?.find(d => d.id === params.id)
 
   const navigate = useNavigate()
   const readTime = useReadTime(foundDiary?.content)
@@ -89,14 +89,14 @@ const BlogDiaryId: FunctionComponent = () => {
         })}
       </Box>
       <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ bottom: 'large' }}>
-        {foundDiary.tags.map((tag) => (
+        {foundDiary.tags.map(tag => (
           <Tag
             key={tag}
             value={tag}
             size='small'
             // @ts-ignore
             style={{ borderWidth: '2px' }}
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation()
               navigate(
                 createPath({

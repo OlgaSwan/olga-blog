@@ -29,7 +29,7 @@ const ImageInput: FunctionComponent<FileInputProps> = ({ control, index }) => {
             <Box fill={true}>
               <FileInput
                 multiple={false}
-                onChange={(event) => {
+                onChange={event => {
                   const file = event?.target.files?.[0]
                   onChange(file)
                   setImage(file ? URL.createObjectURL(file) : '')

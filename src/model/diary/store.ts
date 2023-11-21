@@ -13,8 +13,8 @@ const diaryCollection = collection(firestore, 'diary')
 
 const list = atom<Array<DiaryExternal> | null>(null)
 
-onSnapshot(diaryCollection, (snapshot) => {
-  list.set(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }) as DiaryExternal).sort((a, b) => b.timestamp - a.timestamp))
+onSnapshot(diaryCollection, snapshot => {
+  list.set(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as DiaryExternal).sort((a, b) => b.timestamp - a.timestamp))
 })
 
 export const diaryStore = {
@@ -45,6 +45,6 @@ export const diaryStore = {
   },
   removeAll: async () => {
     const docsQuerySnapshot = await getDocs(diaryCollection)
-    await eachLimit(docsQuerySnapshot.docs, 5, async (d) => await deleteDoc(d.ref))
+    await eachLimit(docsQuerySnapshot.docs, 5, async d => await deleteDoc(d.ref))
   },
 }

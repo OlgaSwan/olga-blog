@@ -20,7 +20,7 @@ export const TagInput: FunctionComponent<TagInputProps> = ({ value = [], suggest
   }, [chosenTags])
 
   const leftSuggestions = useMemo(
-    () => suggestions.filter((s) => !chosenTags.includes(s)).filter((s) => s.includes(inputValue)),
+    () => suggestions.filter(s => !chosenTags.includes(s)).filter(s => s.includes(inputValue)),
     [chosenTags, suggestions, inputValue],
   )
 
@@ -38,12 +38,12 @@ export const TagInput: FunctionComponent<TagInputProps> = ({ value = [], suggest
         ref={boxRef}
         wrap
       >
-        {chosenTags.map((tag) => (
+        {chosenTags.map(tag => (
           <TagCustom
             key={tag}
             margin='xxsmall'
             onRemove={() => {
-              setChosenTags(chosenTags.filter((t) => t !== tag))
+              setChosenTags(chosenTags.filter(t => t !== tag))
             }}
           >
             {tag}
@@ -55,9 +55,9 @@ export const TagInput: FunctionComponent<TagInputProps> = ({ value = [], suggest
             plain
             placeholder='Filter by tags'
             value={inputValue}
-            onChange={(event) => setInputValue(event.currentTarget.value)}
+            onChange={event => setInputValue(event.currentTarget.value)}
             suggestions={leftSuggestions}
-            onSuggestionSelect={(event) => {
+            onSuggestionSelect={event => {
               setInputValue('')
               setChosenTags([...chosenTags, event.suggestion])
             }}
