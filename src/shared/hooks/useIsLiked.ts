@@ -18,7 +18,7 @@ export const useIsLiked = (id?: string): [boolean, () => void] => {
       const updatedLikedIds = likedIds.includes(id) ? likedIds.filter((likedId) => likedId !== id) : [...likedIds, id]
       if (updatedLikedIds.length > 0) localStorage.setItem('isLiked', JSON.stringify(updatedLikedIds))
       else localStorage.removeItem('isLiked')
-      setIsLiked(prevState => !prevState)
+      setIsLiked((prevState) => !prevState)
     }
   }, [id])
   return [isLiked, likeToggle]

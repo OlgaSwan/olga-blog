@@ -25,4 +25,3 @@ export const deleteImageFromFirebase = async (input_value: string) => {
     if (error instanceof Error) console.warn(error.message)
   }
 }
-

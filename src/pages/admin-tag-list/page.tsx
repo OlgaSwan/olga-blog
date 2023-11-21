@@ -25,7 +25,7 @@ const AdminTagList: FunctionComponent = () => {
       </Heading>
       <Form
         value={value}
-        onChange={nextValue => setValue(nextValue)}
+        onChange={(nextValue) => setValue(nextValue)}
         onReset={() => setValue({ name: '' })}
         onSubmit={async ({ value }) => {
           if (value.name) await tagsStore.add(value)
@@ -42,8 +42,7 @@ const AdminTagList: FunctionComponent = () => {
       </Form>
 
       <Box margin={{ top: 'large' }} wrap={true} direction='row' gap='small'>
-        {tagsDB && tagsDB.map(t => <Tag alignSelf='start' value={t.name}
-                                        onRemove={async () => await tagsStore.remove(t.id)} />)}
+        {tagsDB && tagsDB.map((t) => <Tag alignSelf='start' value={t.name} onRemove={async () => await tagsStore.remove(t.id)} />)}
       </Box>
     </TemplateAdmin>
   )

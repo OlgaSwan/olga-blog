@@ -37,10 +37,10 @@ export const metadata = {
   },
   errorForbidden: {
     title: 'Access Forbidden - Olga Swan Blog',
-    description: 'Sorry, you don\'t have permission to access this page',
+    description: "Sorry, you don't have permission to access this page",
   },
   errorNotFound: {
     title: 'Page Not Found - Olga Swan Blog',
-    description: 'Oops! The page you\'re looking for could not be found.',
+    description: "Oops! The page you're looking for could not be found.",
   },
 }

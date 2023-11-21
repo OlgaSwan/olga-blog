@@ -24,20 +24,19 @@ const ImageUrlInput: FunctionComponent<ImageInputProps> = ({ control, index }) =
       control={control}
       name={`content.${index}.url`}
       rules={{ required: true }}
-      render={({ field }) =>
+      render={({ field }) => (
         <Tip
-          content={<Box pad='none' height='small' width='small' alignSelf='center' justify='center'><Image src={url} />
-          </Box>}
-          dropProps={{ background: { opacity: 40 } }}>
-          <TextInput
-            placeholder='Image URL'
-            readOnly={!!fileName}
-            {...field}
-          />
+          content={
+            <Box pad='none' height='small' width='small' alignSelf='center' justify='center'>
+              <Image src={url} />
+            </Box>
+          }
+          dropProps={{ background: { opacity: 40 } }}
+        >
+          <TextInput placeholder='Image URL' readOnly={!!fileName} {...field} />
         </Tip>
-      }
+      )}
     />
   )
 }
 export default ImageUrlInput
-

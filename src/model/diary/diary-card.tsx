@@ -33,7 +33,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
       </Card>
     )
 
-  const firstParagraph = foundDiary.content.find(block => block.kind === 'paragraph')
+  const firstParagraph = foundDiary.content.find((block) => block.kind === 'paragraph')
   const date = new Date(foundDiary.timestamp).toLocaleString('en-US', {
     day: 'numeric',
     month: 'short',
@@ -41,10 +41,12 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   return (
     <>
       <Card width='large' background={{ color: 'white' }} animation='slideLeft'>
-        <CardHeader direction='column'
-                    pad={{ top: 'medium', bottom: 'small', left: 'medium', right: 'medium' }}
-                    focusIndicator={false}
-                    onClick={() => navigate(`/blog/diary/${id}`)}>
+        <CardHeader
+          direction='column'
+          pad={{ top: 'medium', bottom: 'small', left: 'medium', right: 'medium' }}
+          focusIndicator={false}
+          onClick={() => navigate(`/blog/diary/${id}`)}
+        >
           {screenSize !== 'small' && (
             <Box direction='row' flex='grow' gap='small' alignSelf='end'>
               {foundDiary.tags.map((tag) => (
