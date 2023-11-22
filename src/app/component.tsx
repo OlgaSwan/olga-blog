@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 
 const Component: FunctionComponent = () => {
-  const [state, setState] = useState('')
+  const [state, setState] = useState('testing')
   return (
     <>
       <header title='heading'>Component Heading</header>
