@@ -2,7 +2,11 @@
   "jsxSingleQuote": true,
   "semi": false,
   "singleQuote": true,
+  "trailingComma": "all",
+  "quoteProps": "as-needed",
   "tabWidth": 2,
   "useTabs": false,
-  "printWidth": 120
+  "printWidth": 140,
+  "bracketSpacing": true,
+  "arrowParens": "avoid"
 }

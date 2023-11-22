@@ -26,15 +26,16 @@ const AdminDiaryNew: FunctionComponent = () => {
         <AdminDiaryIdEditor
           initialValue={{
             title: '',
-            content: [{
-              kind: 'paragraph',
-              text: '',
-            }],
+            content: [
+              {
+                kind: 'paragraph',
+                text: '',
+              },
+            ],
             tags: [],
             timestamp: Date.now(),
-          }
-          }
-          onSubmit={async (value) => {
+          }}
+          onSubmit={async value => {
             await diaryStore.add(value)
             navigate(routeMap.adminDiaryList)
           }}

@@ -1,11 +1,4 @@
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
-  User,
-} from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
 import { atom } from 'nanostores'
 
 import { firebaseApp } from 'src/shared/firebase-app'
@@ -14,7 +7,7 @@ const firebaseAuth = getAuth(firebaseApp)
 
 const store = atom<User | null>(firebaseAuth.currentUser)
 
-onAuthStateChanged(firebaseAuth, (user) => store.set(user))
+onAuthStateChanged(firebaseAuth, user => store.set(user))
 
 export const authStore = {
   store,

@@ -15,25 +15,21 @@ export const SharedBtn: FunctionComponent<SharedBtnProps> = ({ diary_id, size })
   return (
     <>
       {open && (
-        <Notification
-          toast
-          time={2000}
-          icon={<Icons.StatusGood color='brand' />}
-          message='Link copied!'
-          onClose={() => setOpen(false)}
-        />
+        <Notification toast time={2000} icon={<Icons.StatusGood color='brand' />} message='Link copied!' onClose={() => setOpen(false)} />
       )}
-      <Button icon={<Icons.ShareRounded color='text' size={size} />} hoverIndicator
-              style={{ borderRadius: '4px' }}
-              onClick={async () => {
-                try {
-                  await navigator.clipboard.writeText(getUrl(diary_id))
-                  setOpen(true)
-                } catch (error) {
-                  if (error instanceof Error) console.warn(error.message)
-                }
-              }} />
+      <Button
+        icon={<Icons.ShareRounded color='text' size={size} />}
+        hoverIndicator
+        style={{ borderRadius: '4px' }}
+        onClick={async () => {
+          try {
+            await navigator.clipboard.writeText(getUrl(diary_id))
+            setOpen(true)
+          } catch (error) {
+            if (error instanceof Error) console.warn(error.message)
+          }
+        }}
+      />
     </>
   )
 }
-

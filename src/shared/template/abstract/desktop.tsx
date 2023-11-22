@@ -34,13 +34,12 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
           <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
         </Box>
         <Nav direction='row' align='center' gap='medium'>
-          {menuData.map((e, index) => <LinkCustom key={index} style={e.style} label={e.label} href={e.href}
-                                                  onClick={e.onClick}
-                                                  icon={e.icon} />)}
+          {menuData.map((e, index) => (
+            <LinkCustom key={index} style={e.style} label={e.label} href={e.href} onClick={e.onClick} icon={e.icon} />
+          ))}
         </Nav>
       </Box>
-      <Box direction='row' flex='grow' margin={{ top: '100px' }} pad={{ horizontal: 'medium' }} gap='medium'
-           justify='between'>
+      <Box direction='row' flex='grow' margin={{ top: '100px' }} pad={{ horizontal: 'medium' }} gap='medium' justify='between'>
         <Box basis='240px' flex='shrink'>
           {sidebarLeft}
         </Box>
@@ -51,8 +50,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
           {sidebarRight}
         </Box>
       </Box>
-      <Box as='footer' margin={{ top: '100px' }} height='xsmall' pad='medium' direction='row' align='center'
-           justify='between'>
+      <Box as='footer' margin={{ top: '100px' }} height='xsmall' pad='medium' direction='row' align='center' justify='between'>
         <Text>© Olga Swan, 2023 </Text>
         <SwanLogo />
         <Box direction='row' gap='medium' justify='center'>

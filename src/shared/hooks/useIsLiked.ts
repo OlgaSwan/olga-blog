@@ -15,7 +15,7 @@ export const useIsLiked = (id?: string): [boolean, () => void] => {
   const likeToggle = useCallback(() => {
     if (id) {
       const likedIds = getLikedIds()
-      const updatedLikedIds = likedIds.includes(id) ? likedIds.filter((likedId) => likedId !== id) : [...likedIds, id]
+      const updatedLikedIds = likedIds.includes(id) ? likedIds.filter(likedId => likedId !== id) : [...likedIds, id]
       if (updatedLikedIds.length > 0) localStorage.setItem('isLiked', JSON.stringify(updatedLikedIds))
       else localStorage.removeItem('isLiked')
       setIsLiked(prevState => !prevState)

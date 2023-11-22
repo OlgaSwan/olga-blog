@@ -17,7 +17,7 @@ const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
   const auth = useStore(authStore.store)
   const params = useParams()
-  const foundDiary = allDiaries?.find((d) => d.id === params.id)
+  const foundDiary = allDiaries?.find(d => d.id === params.id)
 
   const navigate = useNavigate()
   const readTime = useReadTime(foundDiary?.content)
@@ -44,8 +44,7 @@ const BlogDiaryId: FunctionComponent = () => {
         <Box direction='row' align='center' alignSelf='start'>
           <Box direction='row' align='center' justify='between'>
             <Button
-              icon={isLiked ? <Icons.LikeFill color='brand' size='22px' /> :
-                <Icons.Like color='text' size='22px' />}
+              icon={isLiked ? <Icons.LikeFill color='brand' size='22px' /> : <Icons.Like color='text' size='22px' />}
               hoverIndicator
               style={{ borderRadius: '4px' }}
               onClick={likeToggle}
@@ -74,7 +73,6 @@ const BlogDiaryId: FunctionComponent = () => {
             <Text size='small'>{date}</Text>
           </Box>
         </Box>
-
       </Box>
       <Box margin={{ bottom: 'medium' }} gap={'medium'}>
         {foundDiary.content.map((block, index) => {
@@ -89,17 +87,16 @@ const BlogDiaryId: FunctionComponent = () => {
               return null
           }
         })}
-
       </Box>
       <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ bottom: 'large' }}>
-        {foundDiary.tags.map((tag) => (
+        {foundDiary.tags.map(tag => (
           <Tag
             key={tag}
             value={tag}
             size='small'
             // @ts-ignore
             style={{ borderWidth: '2px' }}
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation()
               navigate(
                 createPath({
