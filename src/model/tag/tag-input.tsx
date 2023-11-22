@@ -9,11 +9,7 @@ interface TagInputProps {
   onChange?: (value: string[]) => void
 }
 
-export const TagInput: FunctionComponent<TagInputProps> = ({
-                                                             value = [],
-                                                             suggestions = [],
-                                                             onChange,
-                                                           }) => {
+export const TagInput: FunctionComponent<TagInputProps> = ({ value = [], suggestions = [], onChange }) => {
   const [inputValue, setInputValue] = useState('')
   const [chosenTags, setChosenTags] = useState(value)
   useEffect(() => {
@@ -23,11 +19,10 @@ export const TagInput: FunctionComponent<TagInputProps> = ({
     if (!isEqual(value, chosenTags)) onChange?.(chosenTags)
   }, [chosenTags])
 
-  const leftSuggestions = useMemo(() => (
-    suggestions
-      .filter(s => !chosenTags.includes(s))
-      .filter(s => s.includes(inputValue))
-  ), [chosenTags, suggestions, inputValue])
+  const leftSuggestions = useMemo(
+    () => suggestions.filter(s => !chosenTags.includes(s)).filter(s => s.includes(inputValue)),
+    [chosenTags, suggestions, inputValue],
+  )
 
   const boxRef = useRef(null)
 
@@ -49,7 +44,8 @@ export const TagInput: FunctionComponent<TagInputProps> = ({
             margin='xxsmall'
             onRemove={() => {
               setChosenTags(chosenTags.filter(t => t !== tag))
-            }}>
+            }}
+          >
             {tag}
           </TagCustom>
         ))}
@@ -74,4 +70,3 @@ export const TagInput: FunctionComponent<TagInputProps> = ({
     </>
   )
 }
-

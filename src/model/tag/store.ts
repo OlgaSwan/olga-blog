@@ -9,8 +9,8 @@ const tagsCollection = collection(firestore, 'tags')
 
 const tags = atom<Array<TagExternal> | null>(null)
 
-onSnapshot(tagsCollection, (snapshot) => {
-  tags.set(snapshot.docs.map(doc => ( { id: doc.id, ...doc.data() } ) as TagExternal))
+onSnapshot(tagsCollection, snapshot => {
+  tags.set(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as TagExternal))
 })
 
 export const tagsStore = {

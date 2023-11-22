@@ -7,7 +7,7 @@ type LinkCustomProps = Omit<AnchorProps & LinkProps, 'as' | 'to'> & {
   href: string
 }
 
-export const LinkCustom: FunctionComponent<LinkCustomProps> = (props) =>
+export const LinkCustom: FunctionComponent<LinkCustomProps> = props =>
   isAbsoluteUrl(props.href) ? (
     <Anchor {...props} />
   ) : (

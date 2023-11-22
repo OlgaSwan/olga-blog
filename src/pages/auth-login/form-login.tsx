@@ -15,9 +15,9 @@ export const FormLogin: FunctionComponent = () => {
     <Box gap='medium'>
       <Form
         value={value}
-        onChange={(newValue) => setValue(newValue)}
+        onChange={newValue => setValue(newValue)}
         onReset={() => setValue({ login: '', password: '' })}
-        onSubmit={(event) => authStore.login(event.value)}
+        onSubmit={event => authStore.login(event.value)}
       >
         <FormField label='Email'>
           <TextInput type='email' name='login' size='small' placeholder='email@example.com' />

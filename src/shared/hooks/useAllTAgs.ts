@@ -6,7 +6,7 @@ export const useAllTAgs = () => {
   const allDiaries = useStore(diaryStore.list)
 
   return useMemo(() => {
-    const allTags = allDiaries?.flatMap((d) => d.tags) || []
+    const allTags = allDiaries?.flatMap(d => d.tags) || []
     return [...new Set(allTags)]
   }, [allDiaries])
 }

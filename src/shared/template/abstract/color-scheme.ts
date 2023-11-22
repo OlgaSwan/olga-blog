@@ -13,7 +13,7 @@ const store = atom<'light' | 'dark'>(
           : 'dark',
 )
 
-store.subscribe((value) => {
+store.subscribe(value => {
   localStorage.setItem('preferred-color-scheme', value)
 })
 

@@ -14,6 +14,3 @@ export const useReadTime = (content: Array<Block> | undefined) => {
     return Math.ceil(filteredContent.join('').length / averageReadTime)
   }, [content])
 }
-
-
-

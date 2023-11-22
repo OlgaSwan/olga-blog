@@ -13,9 +13,8 @@ const diaryCollection = collection(firestore, 'diary')
 
 const list = atom<Array<DiaryExternal> | null>(null)
 
-onSnapshot(diaryCollection, (snapshot) => {
-  list.set(snapshot.docs.map((doc) => ( { id: doc.id, ...doc.data() } ) as DiaryExternal)
-    .sort((a, b) => b.timestamp - a.timestamp))
+onSnapshot(diaryCollection, snapshot => {
+  list.set(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as DiaryExternal).sort((a, b) => b.timestamp - a.timestamp))
 })
 
 export const diaryStore = {
@@ -26,10 +25,10 @@ export const diaryStore = {
   addRandom: async () => {
     const data: DiaryInternal = {
       title: faker.company.catchPhrase(),
-      content: new Array(random(5, 10)).fill('').map(() => ( {
+      content: new Array(random(5, 10)).fill('').map(() => ({
         kind: 'paragraph',
         text: faker.helpers.multiple(faker.hacker.phrase, { count: random(10, 15, false) }).join(' '),
-      } )),
+      })),
       tags: sampleSize(
         ['react', 'vue', 'angular', 'graphql', 'html', 'css', 'semantic-markup', 'architecture', 'security', 'accessibility'],
         random(2, 6),
@@ -46,6 +45,6 @@ export const diaryStore = {
   },
   removeAll: async () => {
     const docsQuerySnapshot = await getDocs(diaryCollection)
-    await eachLimit(docsQuerySnapshot.docs, 5, async (d) => await deleteDoc(d.ref))
+    await eachLimit(docsQuerySnapshot.docs, 5, async d => await deleteDoc(d.ref))
   },
 }

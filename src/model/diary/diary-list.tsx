@@ -19,7 +19,7 @@ export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true, 
     let diariesTransformed = allDiaries
 
     if (chosenTags.length > 0) {
-      diariesTransformed = diariesTransformed.filter((diary) => diary.tags.some((tag) => chosenTags.includes(tag)))
+      diariesTransformed = diariesTransformed.filter(diary => diary.tags.some(tag => chosenTags.includes(tag)))
     }
 
     if (isSliced) {
@@ -31,7 +31,7 @@ export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true, 
 
   return (
     <Box gap='medium'>
-      {allDiariesMemo.map((d) => (
+      {allDiariesMemo.map(d => (
         <DiaryCard key={d.id} id={d.id} />
       ))}
     </Box>
