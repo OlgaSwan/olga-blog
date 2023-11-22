@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react'
 import { useStore } from '@nanostores/react'
 import { colorScheme } from 'src/shared/template/abstract/color-scheme'
 
-export const SwanLogoLight: FunctionComponent = () => {
+const SwanLogoLight: FunctionComponent = () => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='49' height='45' viewBox='0 0 49 45' fill='none'>
       <path
@@ -25,11 +25,12 @@ export const SwanLogoLight: FunctionComponent = () => {
         d='M4.87237 6.18356L6.91521 5.04717C6.97082 5.01624 7.0334 5 7.09703 5C7.43025 5 7.59712 5.40288 7.3615 5.6385L6.5 6.5C6.04964 7.03932 6.19154 7.85399 6.79774 8.20927L7.95697 8.88869C8.4846 9.19793 8.57758 9.92242 8.14512 10.3549C8.04952 10.4505 7.93429 10.5242 7.8074 10.5709L7.71391 10.6053C7.1553 10.811 6.52774 10.6374 6.15428 10.1738L4.49587 8.11546C4.19169 7.73792 4.12552 7.22145 4.32472 6.77942C4.43843 6.52707 4.63049 6.31811 4.87237 6.18356Z'
         fill='#FF002E'
       />
+      <title>SwanLogo</title>
     </svg>
   )
 }
 
-export const SwanLogoDark: FunctionComponent = () => {
+const SwanLogoDark: FunctionComponent = () => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='48' height='44' viewBox='0 0 48 44' fill='none'>
       <path
@@ -48,6 +49,7 @@ export const SwanLogoDark: FunctionComponent = () => {
         d='M4.28226 5.21356L6.3251 4.07717C6.38071 4.04623 6.44329 4.03 6.50693 4.03C6.84015 4.03 7.00702 4.43287 6.7714 4.6685L5.9099 5.53C5.45954 6.06932 5.60144 6.88399 6.20763 7.23927L7.36686 7.91869C7.8945 8.22793 7.98748 8.95242 7.55502 9.38487C7.45941 9.48048 7.34418 9.55419 7.2173 9.60091L7.12381 9.63533C6.5652 9.841 5.93764 9.66738 5.56417 9.20384L3.90576 7.14546C3.60158 6.76791 3.53542 6.25145 3.73461 5.80942C3.84833 5.55707 4.04038 5.34811 4.28226 5.21356Z'
         fill='#FF002E'
       />
+      <title>SwanLogo</title>
     </svg>
   )
 }

@@ -8,9 +8,11 @@ import { Head } from 'src/shared/head-meta/head'
 import { DiaryList } from 'src/model/diary'
 import { routeMap } from 'src/shared/route-map'
 import { metadata } from 'src/shared/head-meta/metadata'
+import Component from 'src/app/component'
 
 const Home: FunctionComponent = () => (
   <TemplateContent>
+    <Component />
     <Head title={metadata.home.title} description={metadata.home.description} />
     <Heading level='1' margin={{ top: 'large', bottom: 'medium' }}>
       Howdy, I'm Olga!
