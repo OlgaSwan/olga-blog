@@ -8,14 +8,14 @@ test('Renders the test component', () => {
 
   expect(screen.getByTitle('heading')).toHaveTextContent('Component Heading')
 })
-test('main testing', () => {
+test('main testing', async () => {
   render(<Component />)
 
   const resetBtn = screen.getByText('Reset')
   const input = screen.getByPlaceholderText('Enter text')
   expect(resetBtn).toBeTruthy()
   expect(resetBtn).not.toBeDisabled()
-  userEvent.click(resetBtn)
+  await userEvent.click(resetBtn)
   expect(input).toHaveValue('')
 })
 
