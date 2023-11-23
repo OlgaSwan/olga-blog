@@ -49,7 +49,10 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
     switch (field.kind) {
       case 'paragraph':
         return (
-          <TextArea placeholder='Paragraph content' {...register(`content.${index}.text` as const, { required: true, minLength: 20 })} />
+          <TextArea
+            placeholder='Paragraph content'
+            {...register(`content.${index}.text` as const, { required: true, minLength: 20 })}
+          />
         )
       case 'image':
         return <ImageUrlInput control={control} index={index} />
@@ -156,9 +159,18 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
           control={control}
           name='tags'
           rules={{ required: true }}
-          render={({ field: { onChange, value } }) => <TagInput value={value} suggestions={tagsDB?.map(t => t.name)} onChange={onChange} />}
+          render={({ field: { onChange, value } }) => (
+            <TagInput value={value} suggestions={tagsDB?.map(t => t.name)} onChange={onChange} />
+          )}
         />
-        <Button type='submit' primary label='Submit' size='small' margin={{ top: 'medium' }} style={{ width: '200px' }} />
+        <Button
+          type='submit'
+          primary
+          label='Submit'
+          size='small'
+          margin={{ top: 'medium' }}
+          style={{ width: '200px' }}
+        />
       </Box>
     </form>
   )

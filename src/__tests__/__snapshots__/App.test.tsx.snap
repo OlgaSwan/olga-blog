@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component main testing 1`] = `
+<button>
+  Reset
+</button>
+`;
+
+exports[`Testing component main testing 2`] = `
+<input
+  placeholder="Enter text"
+  type="text"
+  value=""
+/>
+`;

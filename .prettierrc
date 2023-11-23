@@ -6,7 +6,7 @@
   "quoteProps": "as-needed",
   "tabWidth": 2,
   "useTabs": false,
-  "printWidth": 140,
+  "printWidth": 120,
   "bracketSpacing": true,
   "arrowParens": "avoid"
 }
