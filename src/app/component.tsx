@@ -11,7 +11,7 @@ export const Component: FunctionComponent = () => {
       <header title='heading'>Component Heading</header>
       <main>
         {data && (
-          <div title='data' style={{ backgroundColor: 'beige' }}>
+          <div title='data' style={{ border: '1px' }}>
             data
           </div>
         )}
