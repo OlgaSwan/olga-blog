@@ -8,11 +8,13 @@ import { Head } from 'src/shared/head-meta/head'
 import { DiaryList } from 'src/model/diary'
 import { routeMap } from 'src/shared/route-map'
 import { metadata } from 'src/shared/head-meta/metadata'
+import { Component } from 'src/app/component'
 
 const Home: FunctionComponent = () => (
   <TemplateContent>
+    <Component />
     <Head title={metadata.home.title} description={metadata.home.description} />
-    <Heading level='1' margin={{ top: 'large', bottom: 'medium' }}>
+    <Heading level='1' margin={{ top: 'large', bottom: 'medium' }} data-testid='home-page'>
       Howdy, I'm Olga!
     </Heading>
     <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
@@ -20,8 +22,8 @@ const Home: FunctionComponent = () => (
       <Icons.Diamond size='medium' color='brand' />
     </Paragraph>
     <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
-      I'm a frontend developer from Moscow. I <LinkCustom label='write' href={routeMap.blogHome} color='brand' /> about code, ux/ui and art.{' '}
-      <br />
+      I'm a frontend developer from Moscow. I <LinkCustom label='write' href={routeMap.blogHome} color='brand' /> about
+      code, ux/ui and art. <br />
       Passionate about traditional and digital drawing, gaming and paleontology.
     </Paragraph>
     <PageHeader size='small' title='Latest posts' margin={{ bottom: 'medium', top: 'small' }} />
@@ -66,7 +68,8 @@ const Home: FunctionComponent = () => (
       Soft-skills
     </Heading>
     <Text margin={{ bottom: 'medium' }}>
-      ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some technologies)
+      ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some
+      technologies)
       <ul>
         <li>Solution research and presentation</li>
         <li>Management and delegation</li>

@@ -15,7 +15,13 @@ export const SharedBtn: FunctionComponent<SharedBtnProps> = ({ diary_id, size })
   return (
     <>
       {open && (
-        <Notification toast time={2000} icon={<Icons.StatusGood color='brand' />} message='Link copied!' onClose={() => setOpen(false)} />
+        <Notification
+          toast
+          time={2000}
+          icon={<Icons.StatusGood color='brand' />}
+          message='Link copied!'
+          onClose={() => setOpen(false)}
+        />
       )}
       <Button
         icon={<Icons.ShareRounded color='text' size={size} />}

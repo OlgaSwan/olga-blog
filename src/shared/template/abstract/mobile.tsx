@@ -37,7 +37,14 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
     <Box as='main' flex='grow' margin={{ top: '30px' }} pad='medium'>
       {main}
     </Box>
-    <Box as='footer' direction='column' margin={{ top: '20px', bottom: '10px' }} pad='medium' align='center' gap='small'>
+    <Box
+      as='footer'
+      direction='column'
+      margin={{ top: '20px', bottom: '10px' }}
+      pad='medium'
+      align='center'
+      gap='small'
+    >
       <SwanLogo />
       <Box direction='row' gap='small' justify='center'>
         <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />

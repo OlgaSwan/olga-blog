@@ -42,7 +42,8 @@ const AdminTagList: FunctionComponent = () => {
       </Form>
 
       <Box margin={{ top: 'large' }} wrap={true} direction='row' gap='small'>
-        {tagsDB && tagsDB.map(t => <Tag alignSelf='start' value={t.name} onRemove={async () => await tagsStore.remove(t.id)} />)}
+        {tagsDB &&
+          tagsDB.map(t => <Tag alignSelf='start' value={t.name} onRemove={async () => await tagsStore.remove(t.id)} />)}
       </Box>
     </TemplateAdmin>
   )

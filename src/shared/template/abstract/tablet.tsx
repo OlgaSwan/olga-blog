@@ -35,7 +35,14 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
         </Box>
         <MenuComponent />
       </Box>
-      <Box flex='grow' direction='row' margin={{ top: '80px' }} pad={{ horizontal: 'medium' }} gap='medium' justify='center'>
+      <Box
+        flex='grow'
+        direction='row'
+        margin={{ top: '80px' }}
+        pad={{ horizontal: 'medium' }}
+        gap='medium'
+        justify='center'
+      >
         {sidebarLeft ? (
           <>
             <Box basis='240px' flex={false}>
