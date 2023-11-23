@@ -1,8 +1,9 @@
-import { expect, test, describe } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+
+import { SharedBtn } from '../model/diary'
 import { Component, delay, delayFunc, mapArrToStrings, square } from '../app/component'
-import { AboutMe } from '../pages/about-me'
 // Component
 describe('Testing component', () => {
   test('heading testing', () => {
@@ -49,22 +50,24 @@ describe('Mapping to string', () => {
   })
 })
 
-// describe('square', () => {
-//   let mockValue: number
-//   beforeAll(() => {
-//     mockValue = Math.round(Math.random())
-//   })
-//   test('Simple', () => {
-//     expect(square(mockValue)).toBe(Math.pow(mockValue, mockValue))
-//     expect(square(mockValue)).not.toBeUndefined()
+describe('square', () => {
+  let mockValue: number
+  beforeAll(() => {
+    mockValue = Math.round(Math.random())
+  })
+  test('Simple', () => {
+    expect(square(mockValue)).toBe(Math.pow(mockValue, mockValue))
+    expect(square(mockValue)).not.toBeUndefined()
 
-//     const spyMathPow = jest.spyOn(Math, 'pow')
-//     square(1)
-//     expect(spyMathPow).not.toHaveBeenCalled()
-//   })
+    const spyMathPow = vi.spyOn(Math, 'pow')
+    square(1)
+    expect(spyMathPow).not.toHaveBeenCalled()
+  })
 
-//   afterAll(() => jest.clearAllMocks())
-// })
+  afterAll(() => {
+    vi.clearAllMocks()
+  })
+})
 
 describe('delay', () => {
   test('Delay Function', async () => {
@@ -73,13 +76,10 @@ describe('delay', () => {
   })
 })
 
-//I'M SO FUCKING DONE eto kakoy-to pizdec
-//me too
-// describe('Testing router', () => {
-//   test('Testing avatar link', async () => {
-//     render(<AboutMe />)
-//     const link = screen.getByTestId('avatar-link')
-//     await userEvent.click(link)
-//     expect(screen.getByTestId('home-page')).toBeInTheDocument()
-//   })
-// })
+describe('Testing components', () => {
+  test('Testing SharedBtn', async () => {
+    render(<SharedBtn diary_id='1' />)
+    const button = screen.getByRole('button')
+    expect(button).toBeInTheDocument()
+  })
+})
