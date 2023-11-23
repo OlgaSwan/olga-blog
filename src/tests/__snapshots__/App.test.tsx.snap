@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing component > main testing 1`] = `
+<button>
+  Reset
+</button>
+`;
+
+exports[`Testing component > main testing 2`] = `
+<input
+  placeholder="Enter text"
+  type="text"
+  value=""
+/>
+`;

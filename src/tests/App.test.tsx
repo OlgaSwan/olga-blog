@@ -16,7 +16,7 @@ describe('Testing component', () => {
 
     const divData = await screen.findByTitle('data')
     expect(divData).toBeInTheDocument()
-    expect(divData).toHaveStyle({ backgroundColor: 'beige' })
+    expect(divData).toHaveStyle('border: 1px')
 
     const resetBtn = screen.getByText('Reset')
     const input = screen.getByPlaceholderText('Enter text')
