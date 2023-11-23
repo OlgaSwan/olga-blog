@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -8,17 +10,20 @@ const packageRoot = packageDirectorySync()
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react()
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
-      'src': path.resolve(packageRoot, './src'),
+      src: path.resolve(packageRoot, './src'),
     },
   },
   build: {
     dynamicImportVarsOptions: {
       exclude: [],
     },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/tests/setup.ts'],
   },
 })
