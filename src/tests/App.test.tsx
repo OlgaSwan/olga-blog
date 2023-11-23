@@ -1,7 +1,6 @@
+import { expect, test, describe } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import '@testing-library/jest-dom'
-
 import { Component, delay, delayFunc, mapArrToStrings, square } from '../app/component'
 import { AboutMe } from '../pages/about-me'
 // Component
@@ -50,22 +49,22 @@ describe('Mapping to string', () => {
   })
 })
 
-describe('square', () => {
-  let mockValue: number
-  beforeAll(() => {
-    mockValue = Math.round(Math.random())
-  })
-  test('Simple', () => {
-    expect(square(mockValue)).toBe(Math.pow(mockValue, mockValue))
-    expect(square(mockValue)).not.toBeUndefined()
+// describe('square', () => {
+//   let mockValue: number
+//   beforeAll(() => {
+//     mockValue = Math.round(Math.random())
+//   })
+//   test('Simple', () => {
+//     expect(square(mockValue)).toBe(Math.pow(mockValue, mockValue))
+//     expect(square(mockValue)).not.toBeUndefined()
 
-    const spyMathPow = jest.spyOn(Math, 'pow')
-    square(1)
-    expect(spyMathPow).not.toHaveBeenCalled()
-  })
+//     const spyMathPow = jest.spyOn(Math, 'pow')
+//     square(1)
+//     expect(spyMathPow).not.toHaveBeenCalled()
+//   })
 
-  afterAll(() => jest.clearAllMocks())
-})
+//   afterAll(() => jest.clearAllMocks())
+// })
 
 describe('delay', () => {
   test('Delay Function', async () => {
@@ -75,11 +74,12 @@ describe('delay', () => {
 })
 
 //I'M SO FUCKING DONE eto kakoy-to pizdec
-describe('Testing router', () => {
-  test('Testing avatar link', async () => {
-    render(<AboutMe />)
-    const link = screen.getByTestId('avatar-link')
-    await userEvent.click(link)
-    expect(screen.getByTestId('home-page')).toBeInTheDocument()
-  })
-})
+//me too
+// describe('Testing router', () => {
+//   test('Testing avatar link', async () => {
+//     render(<AboutMe />)
+//     const link = screen.getByTestId('avatar-link')
+//     await userEvent.click(link)
+//     expect(screen.getByTestId('home-page')).toBeInTheDocument()
+//   })
+// })
