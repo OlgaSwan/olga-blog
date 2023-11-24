@@ -43,7 +43,7 @@ const adminMenuData: MenuDataItem[] = [
     },
   },
 ]
-const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
+export const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
   return {
     style: { lineHeight: '0', alignSelf: 'center' },
     icon: colorSchemeValue === 'dark' ? <Icons.Moon /> : <Icons.Sun />,

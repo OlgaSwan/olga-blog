@@ -8,6 +8,7 @@ export const MenuComponent: FunctionComponent = () => {
   const menuData = useMenuData()
   return (
     <Menu
+      title='menu'
       justifyContent='end'
       dropProps={{ round: 'small' }}
       dropAlign={{ top: 'top', right: 'right' }}
