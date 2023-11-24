@@ -51,6 +51,7 @@ export const TagInput: FunctionComponent<TagInputProps> = ({ value = [], suggest
         ))}
         <Box flex style={{ minWidth: '120px' }}>
           <TextInput
+            title='text-input'
             type='search'
             plain
             placeholder='Filter by tags'

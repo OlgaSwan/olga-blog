@@ -7,7 +7,7 @@ interface SharedBtnProps {
   size?: string
 }
 
-const getUrl = (diary_id: string) => window.location.origin + `/blog/diary/${diary_id}`
+export const getUrl = (diary_id: string) => window.location.origin + `/blog/diary/${diary_id}`
 
 export const SharedBtn: FunctionComponent<SharedBtnProps> = ({ diary_id, size }) => {
   const [open, setOpen] = useState(false)
