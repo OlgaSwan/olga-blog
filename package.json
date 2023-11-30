@@ -64,9 +64,9 @@
   },
   "engines": {
     "node": ">=18.16.0",
-    "yarn": "1.22.19"
+    "yarn": "1.22.21"
   },
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "yarn@1.22.21",
   "eslintConfig": {
     "extends": [
       "react-app",
