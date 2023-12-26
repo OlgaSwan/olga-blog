@@ -1,6 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren, useContext, useRef } from 'react'
 import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, ResponsiveContext, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
@@ -21,6 +22,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   const allDiaries = useStore(diaryStore.list)
   const foundDiary = allDiaries?.find(p => p.id === id)
   const cardRef = useRef<HTMLDivElement>(null)
+  const { contextSafe } = useGSAP({ scope: cardRef })
 
   const navigate = useNavigate()
   const screenSize = useContext(ResponsiveContext)
@@ -28,7 +30,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
 
   const [isLiked, likeToggle] = useIsLiked(id)
 
-  const moveCard = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cardRef.current) {
       const rect = cardRef.current.getBoundingClientRect()
       const isInCard =
@@ -43,26 +45,28 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
         const rotateX = ((e.clientY - centerY) / halfHeight) * -10
         const rotateY = ((e.clientX - centerX) / halfWidth) * 10
 
-        gsap.to(cardRef.current, {
-          rotationY: rotateY,
-          rotationX: rotateX,
-          duration: 0.8,
-          ease: 'power2.out',
-        })
+        moveCard(rotateX, rotateY)
       }
     }
   }
 
-  const resetCard = () => {
-    if (cardRef.current) {
-      gsap.to(cardRef.current, {
-        rotationY: 0,
-        rotationX: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-      })
-    }
-  }
+  const moveCard = contextSafe((rotateX: number, rotateY: number) =>
+    gsap.to(cardRef.current, {
+      rotationY: rotateY,
+      rotationX: rotateX,
+      duration: 0.8,
+      ease: 'circ.out',
+    }),
+  )
+
+  const resetCard = contextSafe(() => {
+    gsap.to(cardRef.current, {
+      rotationY: 0,
+      rotationX: 0,
+      duration: 0.8,
+      ease: 'circ.out',
+    })
+  })
 
   if (!foundDiary)
     return (
@@ -80,8 +84,8 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   return (
     <div
       ref={cardRef}
-      onMouseMove={moveCard}
-      onMouseLeave={resetCard}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => resetCard()}
       style={{ margin: '0', padding: '0', perspective: '1000px', transformStyle: 'preserve-3d' }}
     >
       <Card width='large' background={{ color: 'white' }} animation='slideLeft'>
