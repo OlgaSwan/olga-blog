@@ -33,6 +33,7 @@
     "firebase": "^10.0.0",
     "grommet": "^2.32.2",
     "grommet-icons": "^4.11.0",
+    "gsap": "^3.12.4",
     "is-absolute-url": "^4.0.1",
     "lodash-es": "^4.17.21",
     "modern-css-reset": "^1.4.0",
