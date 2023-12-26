@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
+    "@gsap/react": "^2.0.2",
     "@loadable/component": "^5.15.3",
     "@mdi/js": "^7.2.96",
     "@mdi/react": "^1.6.1",
