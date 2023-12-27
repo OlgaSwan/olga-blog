@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from 'react'
-import { Box, Heading, Image, Text } from 'grommet'
-import { faker } from '@faker-js/faker'
+import React, { FunctionComponent, useRef } from 'react'
+import { Box, Heading, Image, Paragraph } from 'grommet'
 
 import { TemplateContent } from 'src/shared/template'
 import { Head } from 'src/shared/head-meta/head'
@@ -8,25 +7,58 @@ import { Head } from 'src/shared/head-meta/head'
 import { metadata } from 'src/shared/head-meta/metadata'
 
 import selfie from './selfie.jpg'
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { handleMouseMove } from 'src/shared/utils/tilting'
 
-const AboutMe: FunctionComponent = () => (
-  <TemplateContent>
-    <Head title={metadata.aboutMe.title} description={metadata.aboutMe.description} />
-    <Heading level='2' margin={{ bottom: 'medium' }}>
-      About me
-    </Heading>
-    <Box direction='row' align='start' gap='medium'>
-      <Box gap='medium' width='large'>
-        <Heading level='3' margin='none'>
-          {'OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO, OLYA: CHUDO,'}
-        </Heading>
-        <Text>{faker.lorem.paragraph(5)}</Text>
+const AboutMe: FunctionComponent = () => {
+  const imageRef = useRef<HTMLDivElement>(null)
+  const { contextSafe } = useGSAP({ scope: imageRef })
+
+  const moveCard = contextSafe((rotateX: number, rotateY: number) => {
+    gsap.to(imageRef.current, {
+      rotationY: rotateY,
+      rotationX: rotateX,
+      duration: 0.8,
+      ease: 'circ.out',
+    })
+  })
+
+  const resetCard = contextSafe(() => {
+    gsap.to(imageRef.current, {
+      rotationY: 0,
+      rotationX: 0,
+      duration: 0.8,
+      ease: 'circ.out',
+    })
+  })
+
+  return (
+    <TemplateContent>
+      <Head title={metadata.aboutMe.title} description={metadata.aboutMe.description} />
+      <Heading level='2' margin={{ bottom: 'medium' }}>
+        About me
+      </Heading>
+      <Box direction='row' align='start' gap='small'>
+        <Box gap='medium' width='large'>
+          <Paragraph>{`Beyond the technologies, I'm interested in many aspects of life. Sometimes, when I have free time from reading the documentation, I spend my time with biographical and World War literature.`}</Paragraph>
+          <Paragraph>{`Art holds a special place in my heart, helps expressing my creativity through both traditional and digital drawing. The canvas serves for me as a means of conveying emotions and ideas into visual expressions.`}</Paragraph>
+          {/*<Paragraph>{`Paleontology allows me to connect with the wonders of prehistoric times, the beauty and complexity of the natural world.`}</Paragraph>*/}
+          <Paragraph>{`Equally enamored with the simple joys of nature, I'm taking walks outside. In these moments I find clarity, inspiration, and a connection to the world around me.`}</Paragraph>
+          <Paragraph>{`I am Olga Swan — an individual who lives on the intersection of technology, psychology and art.`}</Paragraph>
+        </Box>
+        <Box
+          ref={imageRef}
+          onMouseMove={e => handleMouseMove(e, imageRef, moveCard)}
+          onMouseLeave={() => resetCard()}
+          height='420px'
+          width='medium'
+        >
+          <Image fit='cover' src={selfie} style={{ borderRadius: '10px', cursor: 'pointer' }} />
+        </Box>
       </Box>
-      <Box height='medium' width='medium'>
-        <Image fit='cover' src={selfie} />
-      </Box>
-    </Box>
-  </TemplateContent>
-)
+    </TemplateContent>
+  )
+}
 
 export default AboutMe
