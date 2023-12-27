@@ -6,7 +6,6 @@ import { LinkCustom } from '../../utils/link-custom'
 import { TemplateProps } from './props'
 
 import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
-import { MainContent } from 'src/shared/template/abstract/maincontent'
 import Header from './header'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
@@ -28,7 +27,9 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
         <Box basis='240px' flex='shrink'>
           {sidebarLeft}
         </Box>
-        <MainContent main={main} />
+        <Box as='main' basis='768px' flex='shrink'>
+          {main}
+        </Box>
         <Box basis='240px' flex='shrink'>
           {sidebarRight}
         </Box>

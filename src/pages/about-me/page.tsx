@@ -41,11 +41,10 @@ const AboutMe: FunctionComponent = () => {
       </Heading>
       <Box direction='row' align='start' gap='small'>
         <Box gap='medium' width='large'>
-          <Paragraph>{`Beyond the technologies, I'm interested in many aspects of life. Sometimes, when I have free time from reading the documentation, I spend my time with biographical and World War literature.`}</Paragraph>
+          <Paragraph>{`Beyond the technologies, I'm interested in many aspects of life. Sometimes, when I have free time from reading the documentation, I spend hours with biographical and World War literature.`}</Paragraph>
           <Paragraph>{`Art holds a special place in my heart, helps expressing my creativity through both traditional and digital drawing. The canvas serves for me as a means of conveying emotions and ideas into visual expressions.`}</Paragraph>
-          {/*<Paragraph>{`Paleontology allows me to connect with the wonders of prehistoric times, the beauty and complexity of the natural world.`}</Paragraph>*/}
           <Paragraph>{`Equally enamored with the simple joys of nature, I'm taking walks outside. In these moments I find clarity, inspiration, and a connection to the world around me.`}</Paragraph>
-          <Paragraph>{`I am Olga Swan — an individual who lives on the intersection of technology, psychology and art.`}</Paragraph>
+          <Paragraph>{`I am Olga Swan — an individual who lives on the intersection of technology, empathy and art.`}</Paragraph>
         </Box>
         <Box
           ref={imageRef}
