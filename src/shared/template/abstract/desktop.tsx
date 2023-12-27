@@ -6,11 +6,16 @@ import { useMenuData } from 'src/shared/template/abstract/menu/menu-data'
 
 import { LinkCustom } from '../../utils/link-custom'
 import { TemplateProps } from './props'
+
 import avatar from './avatar.jpg'
 import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
+import { MainContent } from 'src/shared/template/abstract/maincontent'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
   const menuData = useMenuData()
+  //renders twice when 'main' prop loads cards and animation flashes(( Nujno kak-to peredavat' main v otdel'nyi
+  // component no eto impossible
+  console.log('render')
 
   return (
     <>
@@ -29,7 +34,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
           zIndex: 1,
         }}
       >
-        <Box direction='row' align='center' gap='medium'>
+        <Box direction='row' align='center' gap='medium' animation='slideRight'>
           <LinkCustom
             size='large'
             label={<Avatar src={avatar} size='medium' />}
@@ -38,7 +43,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
           />
           <LinkCustom size='large' label='Olga Swan' href={routeMap.home} />
         </Box>
-        <Nav direction='row' align='center' gap='medium'>
+        <Nav direction='row' align='center' gap='medium' animation='slideLeft'>
           {menuData.map((e, index) => (
             <LinkCustom key={index} style={e.style} label={e.label} href={e.href} onClick={e.onClick} icon={e.icon} />
           ))}
@@ -55,9 +60,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
         <Box basis='240px' flex='shrink'>
           {sidebarLeft}
         </Box>
-        <Box as='main' basis='768px' flex='shrink'>
-          {main}
-        </Box>
+        <MainContent main={main} />
         <Box basis='240px' flex='shrink'>
           {sidebarRight}
         </Box>
