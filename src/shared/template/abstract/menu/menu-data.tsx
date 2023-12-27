@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement } from 'react'
+import React, { CSSProperties, ReactElement, useMemo } from 'react'
 import * as Icons from 'grommet-icons'
 import { useStore } from '@nanostores/react'
 
@@ -6,7 +6,7 @@ import { routeMap } from 'src/shared/route-map'
 import { authStore } from 'src/model/auth'
 import { colorScheme } from 'src/shared/template/abstract/color-scheme'
 
-type MenuDataItem = {
+export type MenuDataItem = {
   style?: CSSProperties
   icon?: ReactElement
   label?: string
@@ -43,6 +43,7 @@ const adminMenuData: MenuDataItem[] = [
     },
   },
 ]
+
 export const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
   return {
     style: { lineHeight: '0', alignSelf: 'center' },
@@ -58,7 +59,13 @@ export const getThemeMenuItem = (colorSchemeValue: string): MenuDataItem => {
 export const useMenuData = () => {
   const authStoreValue = useStore(authStore.store)
   const colorSchemeValue = useStore(colorScheme.store)
-  const themeMenuItem = getThemeMenuItem(colorSchemeValue)
-  if (!authStoreValue) return [...menuData, themeMenuItem]
-  else return [...menuData, ...adminMenuData, themeMenuItem]
+
+  const menuDataMemo = useMemo(() => {
+    const themeMenuItem = getThemeMenuItem(colorSchemeValue)
+
+    if (!authStoreValue) return [...menuData, themeMenuItem]
+    else return [...menuData, ...adminMenuData, themeMenuItem]
+  }, [colorSchemeValue, authStoreValue])
+
+  return menuDataMemo
 }
