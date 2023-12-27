@@ -9,10 +9,6 @@ import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
 import Header from './header'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
-  //renders twice when 'main' prop loads cards and animation flashes(( Nujno kak-to peredavat' main v otdel'nyi
-  // component no eto impossible
-  console.log('render')
-
   return (
     <>
       <Header />
