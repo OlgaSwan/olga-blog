@@ -9,7 +9,6 @@ import { TemplateProps } from './props'
 
 import avatar from './avatar.jpg'
 import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
-import { MainContent } from 'src/shared/template/abstract/maincontent'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
   const menuData = useMenuData()
@@ -60,7 +59,9 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
         <Box basis='240px' flex='shrink'>
           {sidebarLeft}
         </Box>
-        <MainContent main={main} />
+        <Box as='main' basis='768px' flex='shrink'>
+          {main}
+        </Box>
         <Box basis='240px' flex='shrink'>
           {sidebarRight}
         </Box>
