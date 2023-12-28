@@ -31,8 +31,8 @@ const Home: FunctionComponent = () => {
   //   })
   // })
 
-  //u menya nichego ne poluchilos' Rabotaet tol'ko esli sdelat' polovinku okna browser))) To est' kogda est'
-  // menu-burger vmesto nav
+  //u menya nichego ne poluchilos' Rabotaet tol'ko esli sdelat' polovinku okna browser Ili Cntrl+S nazhat pushto
+  // togda boxes uzhe tochno est')
   // Sorry((
   //Budu zavtra ewe smotret' na eto.. uzhe 7 utra..
 
@@ -40,29 +40,29 @@ const Home: FunctionComponent = () => {
   const box2 = useRef(null)
   const box3 = useRef(null)
 
+  console.log(box3.current)
+
   useGSAP(() => {
-    if (box1.current && box2.current && box3.current) {
-      gsap.from(box1.current, {
-        scrollTrigger: box1.current,
-        x: '-300',
-        opacity: 0,
-        duration: 1,
-      })
+    gsap.from(box1.current, {
+      scrollTrigger: box1.current,
+      x: '-200',
+      opacity: 0,
+      duration: 1,
+    })
 
-      gsap.from(box2.current, {
-        scrollTrigger: box2.current,
-        x: '300',
-        opacity: 0,
-        duration: 1,
-      })
+    gsap.from(box2.current, {
+      scrollTrigger: box2.current,
+      x: '200',
+      opacity: 0,
+      duration: 1,
+    })
 
-      gsap.from(box3.current, {
-        scrollTrigger: box3.current,
-        x: '-300',
-        opacity: 0,
-        duration: 1,
-      })
-    }
+    gsap.from(box3.current, {
+      scrollTrigger: box3.current,
+      x: '-200',
+      opacity: 0,
+      duration: 1,
+    })
   })
 
   return (
@@ -94,7 +94,7 @@ const Home: FunctionComponent = () => {
         My skill set
       </Heading>
 
-      <Box className='box1' ref={box1}>
+      <Box className='box' ref={box1}>
         <Heading level='3' margin={{ bottom: 'medium' }}>
           Hard-skills
         </Heading>
@@ -109,7 +109,7 @@ const Home: FunctionComponent = () => {
           </ul>
         </Text>
       </Box>
-      <Box className='box2' ref={box2}>
+      <Box className='box' ref={box2}>
         <Heading level='3' margin={{ bottom: 'medium' }}>
           T-shaped skills
         </Heading>
@@ -123,7 +123,7 @@ const Home: FunctionComponent = () => {
           </ul>
         </Text>
       </Box>
-      <Box className='box3' ref={box3}>
+      <Box className='box' ref={box3}>
         <Heading level='3' margin={{ bottom: 'medium' }}>
           Soft-skills
         </Heading>
