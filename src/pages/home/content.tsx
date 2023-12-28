@@ -26,47 +26,46 @@ const Content = () => {
   )
 
   return (
-    <Box className='container' ref={container}>
+    <Box className='container' ref={container} gap='medium'>
       <Box className='box'>
-        <Heading level='3' margin={{ bottom: 'medium' }}>
+        <Heading level='3' margin={{ bottom: 'small' }}>
           Hard-skills
         </Heading>
-        <Text margin={{ bottom: 'small' }}>
-          I've worked with a lot of technologies on pet-projects and in production
-          <ul>
+        <Text>
+          I've worked with a lot of technologies in production and on pet-projects.
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
             <li>Vanilla JS, TypeScript</li>
-            <li>REST and CRUD APIs, Firebase</li>
-            <li>CSS processors and CSS-in-JS libraries: SASS, PostCSS, Stitches, Styled Components, etc</li>
-            <li>React ecosystem: UI kits and frameworks, SPA and SSR frameworks</li>
-            <li>State management libraries: Effector, RXjs, Redux</li>
+            <li>REST and CRUD APIs, Firebase, Appwrite, MongoDB</li>
+            <li>React ecosystem: Next.js, UI kits, SPA and SSR frameworks</li>
+            <li>CSS processors and CSS-in-JS libraries: SASS, PostCSS, Styled Components.</li>
+            <li>State management libraries: Effector, Redux</li>
+            <li>Testing libraries: Jest, Vitest</li>
           </ul>
         </Text>
       </Box>
       <Box className='box'>
-        <Heading level='3' margin={{ bottom: 'medium' }}>
+        <Heading level='3' margin={{ bottom: 'small' }}>
           T-shaped skills
         </Heading>
-        <Text margin={{ bottom: 'small' }}>
-          I am mainly engaged in development, but I've learnt some similar areas
-          <ul>
-            <li>UI design</li>
-            <li>UX research and analytics</li>
+        <Text>
+          I'm mostly in development, but I've explored a few similar areas.
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
             <li>Design systems and UI kits</li>
+            <li>UX research and analytics</li>
             <li>Product analytics</li>
           </ul>
         </Text>
       </Box>
       <Box className='box'>
-        <Heading level='3' margin={{ bottom: 'medium' }}>
+        <Heading level='3' margin={{ bottom: 'small' }}>
           Soft-skills
         </Heading>
-        <Text margin={{ bottom: 'medium' }}>
-          ALso, over time, I learned how to communicate with people and nuances of teamwork (maybe even better than some
-          technologies)
-          <ul>
-            <li>Solution research and presentation</li>
+        <Text>
+          I have necessary communicative and presentational skills.
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <li>Solution research, argumentation and presentation</li>
+            <li>Experienced interaction with the team</li>
             <li>Management and delegation</li>
-            <li>Communication and conflict resolution</li>
           </ul>
         </Text>
       </Box>
