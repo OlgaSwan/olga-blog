@@ -35,6 +35,8 @@ const Home: FunctionComponent = () => {
   // togda boxes uzhe tochno est')
   // Sorry((
   //Budu zavtra ewe smotret' na eto.. uzhe 7 utra..
+  //all good, you are doing great, take your time
+  //check test page
 
   const box1 = useRef(null)
   const box2 = useRef(null)
