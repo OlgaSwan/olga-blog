@@ -1,4 +1,4 @@
-import { Box, Avatar, Nav } from 'grommet'
+import { Avatar, Box, Nav } from 'grommet'
 import React, { memo } from 'react'
 import { routeMap } from 'src/shared/route-map'
 import { LinkCustom } from 'src/shared/utils/link-custom'
@@ -8,7 +8,6 @@ import { useMenuData } from './menu/menu-data'
 
 const Header = () => {
   const menuData = useMenuData()
-  console.log('header')
 
   return (
     <Box
