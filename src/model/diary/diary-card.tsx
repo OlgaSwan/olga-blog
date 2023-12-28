@@ -1,5 +1,8 @@
 import React, { FunctionComponent, PropsWithChildren, useContext, useRef } from 'react'
 import { createPath, createSearchParams, useNavigate } from 'react-router-dom'
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
+
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, ResponsiveContext, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
@@ -12,8 +15,6 @@ import { SharedBtn } from 'src/model/diary/shared-btn'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
 import { useIsLiked } from 'src/shared/hooks/useIsLiked'
 import { handleMouseMove } from 'src/shared/utils/tilting'
-import { useGSAP } from '@gsap/react'
-import { gsap } from 'gsap'
 
 export interface DiaryCardProps {
   id: string
