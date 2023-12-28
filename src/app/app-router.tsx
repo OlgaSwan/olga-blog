@@ -16,8 +16,10 @@ import { AdminDiaryId } from 'src/pages/admin-diary-id'
 import { AdminTagList } from 'src/pages/admin-tag-list'
 import { ErrorForbidden } from 'src/pages/error-forbidden'
 import { ErrorNotFound } from 'src/pages/error-not-found'
+import Test from 'src/pages/test/page'
 
 const router = createBrowserRouter([
+  { path: '/test', Component: Test }, // temp route for test
   { path: routeMap.home, Component: Home },
   { path: routeMap.aboutMe, Component: AboutMe },
   { path: routeMap.aboutHire, Component: AboutHire },
