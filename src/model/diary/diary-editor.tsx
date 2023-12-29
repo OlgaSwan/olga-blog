@@ -51,7 +51,15 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
         return (
           <TextArea
             placeholder='Paragraph content'
-            {...register(`content.${index}.text` as const, { required: true, minLength: 20 })}
+            {...register(`content.${index}.text` as const, { required: true, minLength: 4 })}
+          />
+        )
+      case 'title':
+        return (
+          <TextArea
+            placeholder='Title'
+            size='large'
+            {...register(`content.${index}.text` as const, { minLength: 2 })}
           />
         )
       case 'image':
@@ -131,6 +139,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
             label='Paragraph'
             onClick={() => {
               append({ kind: 'paragraph', text: '' })
+            }}
+          />
+          <Button
+            icon={<Icons.Add size='16px' />}
+            label='Title'
+            onClick={() => {
+              append({ kind: 'title', text: '' })
             }}
           />
           <Button

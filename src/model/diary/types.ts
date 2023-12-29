@@ -23,6 +23,10 @@ export type Block =
       kind: 'file'
       file?: File
     }
+  | {
+      kind: 'title'
+      text: string
+    }
 
 export interface DiaryExternal extends DiaryInternal {
   id: string
