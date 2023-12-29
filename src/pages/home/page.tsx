@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { Button, Heading, PageHeader, Paragraph } from 'grommet'
+import { Box, Button, Heading, PageHeader, Paragraph } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { LinkCustom } from 'src/shared/utils/link-custom'
@@ -22,16 +22,19 @@ const Home: FunctionComponent = () => {
       <Heading level='1' margin={{ top: 'large', bottom: 'medium' }} data-testid='home-page'>
         Howdy, I'm Olga!
       </Heading>
-      <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
-        And welcome to my Blog
+      <Box direction='row' gap='xsmall'>
+        <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
+          And welcome to my Blog
+        </Paragraph>
         <Icons.Diamond size='medium' color='brand' />
-      </Paragraph>
+      </Box>
       <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
-        I'm a frontend developer from Moscow. I <LinkCustom label='write' href={routeMap.blogHome} color='brand' />{' '}
-        about code, ux/ui and art. <br />
-        Passionate about traditional and digital drawing, gaming and paleontology.
+        I'm a frontend developer who <LinkCustom label='writes' href={routeMap.blogHome} color='brand' /> about code and
+        art. <br />
+        Passionate about coding, particularly in TypeScript and React, development methodologies, various tools and
+        technologies.
       </Paragraph>
-      <PageHeader size='small' title='Latest posts' margin={{ bottom: 'medium', top: 'small' }} />
+      <PageHeader size='small' title='Latest posts' margin={{ bottom: 'medium' }} />
       <DiaryList isSliced={true} />
       <Button
         primary

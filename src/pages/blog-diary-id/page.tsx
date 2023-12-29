@@ -79,6 +79,12 @@ const BlogDiaryId: FunctionComponent = () => {
           switch (block.kind) {
             case 'paragraph':
               return <Text key={index}>{block.text}</Text>
+            case 'title':
+              return (
+                <Heading level='3' key={index}>
+                  {block.text}
+                </Heading>
+              )
             case 'image':
               return <Image key={index} src={block.url} style={{ borderRadius: '12px' }} />
             case 'iframe':
