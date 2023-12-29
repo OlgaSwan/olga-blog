@@ -6,7 +6,10 @@ import * as Icons from 'grommet-icons'
 const addLineNumbers = (str: string) => {
   const lines = str.split('\n')
   const digitCount = lines.length.toString().length
-  return lines.map((line, index) => `${(index + 1).toString().padStart(digitCount, ' ')} | ${line}`)
+  return lines.map((line, index) => ({
+    lineNumber: `${(index + 1).toString().padStart(digitCount, ' ')} | `,
+    code: line,
+  }))
 }
 
 interface CodeBlockProps {
@@ -45,8 +48,9 @@ export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
         />
         <pre>
           {addLineNumbers(code).map((line, index) => (
-            <div key={index} className='non-selectable'>
-              {line}
+            <div key={index}>
+              <span className='non-selectable'>{line.lineNumber}</span>
+              <span>{line.code}</span>
             </div>
           ))}
         </pre>

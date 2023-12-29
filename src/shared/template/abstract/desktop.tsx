@@ -39,7 +39,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
         align='center'
         justify='between'
       >
-        <Text>© Olga Swan, 2023 </Text>
+        <Text size='16px'>© Olga Swan, 2023 </Text>
         <SwanLogo />
         <Box direction='row' gap='medium' justify='center'>
           <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
