@@ -64,19 +64,23 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       </Box>
       <Box
         as='footer'
-        margin={{ top: '60px', bottom: '10px' }}
+        margin={{ top: '60px' }}
         height='xsmall'
         pad='medium'
         direction='row'
         align='center'
         justify='between'
       >
-        <Text>© Olga Swan, 2023</Text>
+        <Text size='16px'>© Olga Swan, 2023</Text>
         <SwanLogo />
         <Box direction='row' gap='small' justify='center'>
-          <LinkCustom target='_blank' href='https://www.instagram.com/olyasswan/' icon={<Icons.Instagram />} />
-          <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github />} />
-          <LinkCustom target='_blank' href='https://www.behance.net/olyasswan' icon={<Icons.Paint />} />
+          <LinkCustom
+            target='_blank'
+            href='https://www.instagram.com/olyasswan/'
+            icon={<Icons.Instagram size='20px' />}
+          />
+          <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github size='20px' />} />
+          <LinkCustom target='_blank' href='https://www.behance.net/olyasswan' icon={<Icons.Paint size='20px' />} />
         </Box>
       </Box>
     </>
