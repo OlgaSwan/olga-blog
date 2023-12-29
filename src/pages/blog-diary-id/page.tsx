@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { createPath, createSearchParams, useNavigate, useParams } from 'react-router-dom'
 import { useStore } from '@nanostores/react'
-import { Box, Button, Heading, Image, Tag, Text } from 'grommet'
+import { Box, Button, Heading, Image, Markdown, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { diaryStore, SharedBtn } from 'src/model/diary'
@@ -93,6 +93,8 @@ const BlogDiaryId: FunctionComponent = () => {
                   {block.text}
                 </Text>
               )
+            case 'markdown':
+              return <Markdown key={index}>{block.text}</Markdown>
             case 'image':
               return <Image key={index} src={block.url} style={{ borderRadius: '12px' }} />
             case 'iframe':

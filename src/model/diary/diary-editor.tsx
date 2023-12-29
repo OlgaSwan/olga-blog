@@ -75,6 +75,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
             {...register(`content.${index}.text` as const, { required: true, minLength: 2 })}
           />
         )
+      case 'markdown':
+        return (
+          <TextArea
+            placeholder='Markdown'
+            {...register(`content.${index}.text` as const, { required: true, minLength: 2 })}
+          />
+        )
       case 'image':
         return <ImageUrlInput control={control} index={index} />
       case 'iframe':
@@ -191,6 +198,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
             label='Title'
             onClick={() => {
               append({ kind: 'title', text: '' })
+            }}
+          />
+          <Button
+            icon={<Icons.Add size='16px' />}
+            label='Markdown'
+            onClick={() => {
+              append({ kind: 'markdown', text: '' })
             }}
           />
           <Button
