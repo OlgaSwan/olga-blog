@@ -38,7 +38,7 @@ export const diaryStore = {
     const data: DiaryInternal = {
       title: faker.company.catchPhrase(),
       content: new Array(random(5, 10)).fill('').map(() => ({
-        kind: 'paragraph',
+        kind: 'markdown',
         text: faker.helpers.multiple(faker.hacker.phrase, { count: random(10, 15, false) }).join(' '),
       })),
       tags: sampleSize(
