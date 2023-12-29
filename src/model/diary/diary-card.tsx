@@ -56,7 +56,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
       </Card>
     )
 
-  const firstParagraph = foundDiary.content.find(block => block.kind === 'paragraph')
+  const firstParagraph = foundDiary.content.find(block => block.kind === 'markdown')
   const date = new Date(foundDiary.timestamp).toLocaleString('en-US', {
     day: 'numeric',
     month: 'short',
@@ -109,7 +109,12 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           onClick={() => navigate(routeMap.blogDiaryId(id))}
         >
           <Text size='medium' weight='normal' margin='none'>
-            {firstParagraph && firstParagraph.kind === 'paragraph' && firstParagraph.text.slice(0, 240).trim() + '...'}
+            {firstParagraph &&
+              firstParagraph.kind === 'markdown' &&
+              firstParagraph.text
+                .replace(/<br\/>/g, '')
+                .slice(0, 240)
+                .trim() + '...'}
           </Text>
         </CardBody>
         <CardFooter pad={{ horizontal: 'small' }} background={{ color: 'light-2' }}>

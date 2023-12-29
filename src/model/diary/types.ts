@@ -7,7 +7,7 @@ export interface DiaryInternal {
 
 export type Block =
   | {
-      kind: 'paragraph'
+      kind: 'title'
       text: string
     }
   | {
@@ -35,10 +35,6 @@ export type Block =
   | {
       kind: 'file'
       file?: File
-    }
-  | {
-      kind: 'title'
-      text: string
     }
 
 export interface DiaryExternal extends DiaryInternal {
