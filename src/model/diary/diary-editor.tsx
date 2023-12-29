@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef } from 'react'
 import { Controller, FieldArrayWithId, useFieldArray, useForm } from 'react-hook-form'
-import { Box, Button, TextArea, TextInput } from 'grommet'
+import { Box, Button, DateInput, Text, TextArea, TextInput } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 import { useStore } from '@nanostores/react'
@@ -21,7 +21,6 @@ interface Props {
 export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false, initialValue, onSubmit }) => {
   const { control, register, handleSubmit } = useForm({
     defaultValues: initialValue,
-    mode: 'onChange',
   })
   const { fields, append, move, remove } = useFieldArray({
     control,
@@ -121,6 +120,24 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
   return (
     <form onSubmit={handleSubmit(async diary => await uploadPhotos(diary))}>
       <Box gap='medium'>
+        <Box>
+          <Text>Publish date</Text>
+          <Controller
+            control={control}
+            name='timestamp'
+            rules={{ required: true }}
+            render={({ field: { onChange, value } }) => (
+              <DateInput
+                format='mm/dd/yyyy'
+                value={new Date(value).toISOString()}
+                onChange={({ value }) => {
+                  if (Array.isArray(value)) return
+                  onChange(new Date(value).getTime())
+                }}
+              />
+            )}
+          />
+        </Box>
         <Box>
           <TextInput
             placeholder='Title'
