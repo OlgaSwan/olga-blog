@@ -142,7 +142,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
           <TextInput
             placeholder='Title'
             disabled={disabled}
-            {...register('title' as const, { required: true, minLength: 4, maxLength: 50 })}
+            {...register('title' as const, { required: true, minLength: 4, maxLength: 70 })}
           />
         </Box>
         <Box gap='medium'>
