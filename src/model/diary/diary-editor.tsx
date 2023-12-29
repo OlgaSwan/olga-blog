@@ -178,7 +178,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
             )
           })}
         </Box>
-        <Box direction='row' align='start' gap='small'>
+        <Box direction='row' align='start' gap='small' wrap>
           <Button
             icon={<Icons.Add size='16px' />}
             label='Paragraph'
