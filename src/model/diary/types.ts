@@ -11,6 +11,11 @@ export type Block =
       text: string
     }
   | {
+      kind: 'title&paragraph'
+      title: string
+      text: string
+    }
+  | {
       kind: 'iframe'
       url: string
     }

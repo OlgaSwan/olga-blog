@@ -79,11 +79,20 @@ const BlogDiaryId: FunctionComponent = () => {
           switch (block.kind) {
             case 'paragraph':
               return <Text key={index}>{block.text}</Text>
+            case 'title&paragraph':
+              return (
+                <Box gap='xsmall'>
+                  <Text size='large' key={index}>
+                    {block.title}
+                  </Text>
+                  <Text key={index}>{block.text}</Text>
+                </Box>
+              )
             case 'title':
               return (
-                <Heading level='3' key={index}>
+                <Text size='xlarge' weight='bold' key={index}>
                   {block.text}
-                </Heading>
+                </Text>
               )
             case 'image':
               return <Image key={index} src={block.url} style={{ borderRadius: '12px' }} />
@@ -94,7 +103,7 @@ const BlogDiaryId: FunctionComponent = () => {
           }
         })}
       </Box>
-      <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ bottom: 'large' }}>
+      <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ top: 'medium', bottom: 'large' }}>
         {foundDiary.tags.map(tag => (
           <Tag
             key={tag}
