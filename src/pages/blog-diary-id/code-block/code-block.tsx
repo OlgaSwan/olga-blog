@@ -32,6 +32,7 @@ export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
           className='btn-copy'
           hoverIndicator
           label='Copy code'
+          plain
           icon={<Icons.Copy size='18px' />}
           onClick={async () => {
             try {
