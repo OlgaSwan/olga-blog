@@ -1,4 +1,15 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, onSnapshot, updateDoc } from 'firebase/firestore'
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  getFirestore,
+  onSnapshot,
+  orderBy,
+  query,
+  updateDoc,
+} from 'firebase/firestore'
 import { atom } from 'nanostores'
 import { faker } from '@faker-js/faker/locale/en'
 import { random, sampleSize } from 'lodash-es'
@@ -10,15 +21,12 @@ import { DiaryExternal, DiaryInternal } from './types'
 
 const firestore = getFirestore(firebaseApp)
 const diaryCollection = collection(firestore, 'diary')
+const orderedDiaryCollection = query(diaryCollection, orderBy('timestamp', 'desc'))
 
 const list = atom<Array<DiaryExternal> | null>(null)
 
-onSnapshot(diaryCollection, snapshot => {
-  list.set(
-    snapshot.docs
-      .map(doc => ({ id: doc.id, ...doc.data() }) as DiaryExternal)
-      .sort((a, b) => b.timestamp - a.timestamp),
-  )
+onSnapshot(orderedDiaryCollection, snapshot => {
+  list.set(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as DiaryExternal))
 })
 
 export const diaryStore = {
