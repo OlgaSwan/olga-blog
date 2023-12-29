@@ -28,7 +28,7 @@ const AdminDiaryNew: FunctionComponent = () => {
             title: '',
             content: [
               {
-                kind: 'paragraph',
+                kind: 'markdown',
                 text: '',
               },
             ],
