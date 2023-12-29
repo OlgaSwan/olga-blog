@@ -31,7 +31,8 @@ export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
         <Button
           className='btn-copy'
           hoverIndicator
-          icon={<Icons.Copy size='20px' />}
+          label='Copy code'
+          icon={<Icons.Copy size='18px' />}
           onClick={async () => {
             try {
               await navigator.clipboard.writeText(code)
