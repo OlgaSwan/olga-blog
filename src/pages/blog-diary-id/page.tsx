@@ -12,6 +12,7 @@ import { Head } from 'src/shared/head-meta/head'
 import { TemplateContent } from 'src/shared/template'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
 import { useIsLiked } from 'src/shared/hooks/useIsLiked'
+import { CodeBlock } from 'src/pages/blog-diary-id/code-block/code-block'
 
 const BlogDiaryId: FunctionComponent = () => {
   const allDiaries = useStore(diaryStore.list)
@@ -81,16 +82,14 @@ const BlogDiaryId: FunctionComponent = () => {
               return <Text key={index}>{block.text}</Text>
             case 'title&paragraph':
               return (
-                <Box gap='xsmall'>
-                  <Text size='large' key={index}>
-                    {block.title}
-                  </Text>
-                  <Text key={index}>{block.text}</Text>
+                <Box key={index} gap='xsmall'>
+                  <Text size='large'>{block.title}</Text>
+                  <Text>{block.text}</Text>
                 </Box>
               )
             case 'title':
               return (
-                <Text size='xlarge' weight='bold' key={index}>
+                <Text key={index} size='xlarge' weight='bold'>
                   {block.text}
                 </Text>
               )
@@ -98,6 +97,8 @@ const BlogDiaryId: FunctionComponent = () => {
               return <Image key={index} src={block.url} style={{ borderRadius: '12px' }} />
             case 'iframe':
               return <iframe key={index} src={block.url} />
+            case 'code':
+              return <CodeBlock key={index} code={block.text} />
             default:
               return null
           }
