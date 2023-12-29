@@ -20,6 +20,10 @@ export type Block =
       url: string
     }
   | {
+      kind: 'code'
+      text: string
+    }
+  | {
       kind: 'image'
       url: string
       file_name?: string

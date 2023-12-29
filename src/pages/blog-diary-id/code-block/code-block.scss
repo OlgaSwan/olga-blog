@@ -1,0 +1,11 @@
+.btn-copy {
+  align-self: end;
+  border-radius: 4px;
+}
+
+.non-selectable {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

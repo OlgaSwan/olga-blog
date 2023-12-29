@@ -73,7 +73,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
           <TextArea
             placeholder='Title'
             size='large'
-            {...register(`content.${index}.text` as const, { minLength: 2 })}
+            {...register(`content.${index}.text` as const, { required: true, minLength: 2 })}
           />
         )
       case 'image':
@@ -82,6 +82,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
         return <TextInput placeholder='IFrame URL' {...register(`content.${index}.url` as const, { required: true })} />
       case 'file':
         return <ImageInput control={control} index={index} />
+      case 'code':
+        return (
+          <TextArea
+            placeholder='Code'
+            {...register(`content.${index}.text` as const, { required: true, minLength: 2 })}
+          />
+        )
       default:
         return null
     }
@@ -188,6 +195,13 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
             label='File'
             onClick={() => {
               append({ kind: 'file' })
+            }}
+          />
+          <Button
+            icon={<Icons.Add size='16px' />}
+            label='Code'
+            onClick={() => {
+              append({ kind: 'code', text: '' })
             }}
           />
         </Box>
