@@ -8,7 +8,7 @@ export const useReadTime = (content: Array<Block> | undefined) => {
   return useMemo(() => {
     if (!content) return 1
     const filteredContent = content.map(e => {
-      if (e.kind === 'paragraph' || e.kind === 'title&paragraph') return e.text
+      if (e.kind === 'paragraph' || e.kind === 'title&paragraph' || e.kind === 'markdown') return e.text
       else return ''
     })
     return Math.ceil(filteredContent.join('').length / averageReadTime)

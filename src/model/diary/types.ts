@@ -16,6 +16,10 @@ export type Block =
       text: string
     }
   | {
+      kind: 'markdown'
+      text: string
+    }
+  | {
       kind: 'iframe'
       url: string
     }
