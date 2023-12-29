@@ -1,7 +1,7 @@
 .btn-copy {
   align-self: end;
-  border: none;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 4px;
   font-size: 12px;
 }
 
