@@ -3,7 +3,11 @@ import './code-block.scss'
 import { Box, Button, Notification } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-const addLineNumbers = (str: string) => str.split('\n').map((line, index) => `${index + 1} | ${line}`)
+const addLineNumbers = (str: string) => {
+  const lines = str.split('\n')
+  const digitCount = lines.length.toString().length
+  return lines.map((line, index) => `${(index + 1).toString().padStart(digitCount, ' ')} | ${line}`)
+}
 
 interface CodeBlockProps {
   code: string
@@ -23,7 +27,7 @@ export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
           onClose={() => setOpen(false)}
         />
       )}
-      <Box margin={{ top: 'small', bottom: 'small' }}>
+      <Box margin={{ bottom: 'small' }}>
         <Button
           className='btn-copy'
           hoverIndicator
