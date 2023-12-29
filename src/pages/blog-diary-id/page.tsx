@@ -78,20 +78,18 @@ const BlogDiaryId: FunctionComponent = () => {
       <Box margin={{ bottom: 'medium' }} gap={'medium'}>
         {foundDiary.content.map((block, index) => {
           switch (block.kind) {
-            case 'paragraph':
-              return <Text key={index}>{block.text}</Text>
-            case 'title&paragraph':
-              return (
-                <Box key={index} gap='xsmall'>
-                  <Text size='large'>{block.title}</Text>
-                  <Text>{block.text}</Text>
-                </Box>
-              )
             case 'title':
               return (
                 <Text key={index} size='xlarge' weight='bold'>
                   {block.text}
                 </Text>
+              )
+            case 'title&paragraph':
+              return (
+                <Box key={index} gap='xsmall'>
+                  <Text size='large'>{block.title}</Text>
+                  <Markdown>{block.text}</Markdown>
+                </Box>
               )
             case 'markdown':
               return <Markdown key={index}>{block.text}</Markdown>

@@ -46,11 +46,12 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
 
   const createBlock = (field: FieldArrayWithId<DiaryInternal, 'content'>, index: number) => {
     switch (field.kind) {
-      case 'paragraph':
+      case 'title':
         return (
           <TextArea
-            placeholder='Paragraph content'
-            {...register(`content.${index}.text` as const, { required: true, minLength: 4 })}
+            placeholder='Title'
+            size='large'
+            {...register(`content.${index}.text` as const, { required: true, minLength: 2 })}
           />
         )
       case 'title&paragraph':
@@ -66,14 +67,6 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
               {...register(`content.${index}.text` as const, { required: true, minLength: 4 })}
             />
           </>
-        )
-      case 'title':
-        return (
-          <TextArea
-            placeholder='Title'
-            size='large'
-            {...register(`content.${index}.text` as const, { required: true, minLength: 2 })}
-          />
         )
       case 'markdown':
         return (
@@ -181,23 +174,16 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
         <Box direction='row' align='start' gap='small' wrap>
           <Button
             icon={<Icons.Add size='16px' />}
-            label='Paragraph'
-            onClick={() => {
-              append({ kind: 'paragraph', text: '' })
-            }}
-          />
-          <Button
-            icon={<Icons.Add size='16px' />}
-            label='T&P'
-            onClick={() => {
-              append({ kind: 'title&paragraph', title: '', text: '' })
-            }}
-          />
-          <Button
-            icon={<Icons.Add size='16px' />}
             label='Title'
             onClick={() => {
               append({ kind: 'title', text: '' })
+            }}
+          />
+          <Button
+            icon={<Icons.Add size='16px' />}
+            label='T&M'
+            onClick={() => {
+              append({ kind: 'title&paragraph', title: '', text: '' })
             }}
           />
           <Button
