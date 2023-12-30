@@ -103,7 +103,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           </Heading>
         </CardHeader>
         <CardBody
-          style={{ paddingTop: 'none', paddingLeft: '24px', paddingBottom: '24px', paddingRight: '24px' }}
+          pad={{ top: 'none', left: 'medium', bottom: 'medium', right: 'medium' }}
           gap='medium'
           focusIndicator={false}
           onClick={() => navigate(routeMap.blogDiaryId(id))}

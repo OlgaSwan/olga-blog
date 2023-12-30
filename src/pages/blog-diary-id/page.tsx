@@ -104,7 +104,7 @@ const BlogDiaryId: FunctionComponent = () => {
           }
         })}
       </Box>
-      <Box direction='row' flex='grow' gap='small' alignSelf='start' margin={{ top: 'medium', bottom: 'large' }}>
+      <Box direction='row' flex='grow' gap='small' alignSelf='start' wrap margin={{ top: 'medium', bottom: 'large' }}>
         {foundDiary.tags.map(tag => (
           <Tag
             key={tag}

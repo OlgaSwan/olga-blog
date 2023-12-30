@@ -1,12 +1,20 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useContext } from 'react'
 import { useStore } from '@nanostores/react'
 
 import { colorScheme } from 'src/shared/template/abstract/color-scheme'
+import { ResponsiveContext } from 'grommet'
 
 export const SwanLogo: FunctionComponent = () => {
+  const screenSize = useContext(ResponsiveContext)
   const colorSchemeValue = useStore(colorScheme.store)
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='48' height='44' viewBox='0 0 48 44' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={screenSize === 'small' ? '30' : '44'}
+      height={screenSize === 'small' ? '30' : '44'}
+      viewBox='0 0 48 44'
+      fill='none'
+    >
       <path
         d='M3.90989 5.53C3.90989 5.53 4.13396 8.86274 1.6304 9.97948C-0.147778 10.7727 -0.0901043 11.53 0.409896 12.03C0.909896 12.53 2.92277 12.608 4.13396 11.8592C5.34515 11.1104 7.32876 8.8398 7.32876 8.8398L5.91801 6.21244L3.90989 5.53Z'
         fill='#FF002E'
