@@ -27,10 +27,14 @@ export const Hire = () => {
           <LinkCustom href='#' onClick={copy} color='text'>{`olgaswan.dev@gmail.com`}</LinkCustom>
         </Paragraph>
         <Paragraph size='large'>
-          <LinkCustom href='https://www.youtube.com/' color='text' target='_blank'>{`Telegram`}</LinkCustom>
+          <LinkCustom href='https://t.me/olgaswandev' color='text' target='_blank'>{`Telegram`}</LinkCustom>
         </Paragraph>
         <Paragraph size='large'>
-          <LinkCustom href='https://www.youtube.com/' color='text' target='_blank'>{`LinkedIn`}</LinkCustom>
+          <LinkCustom
+            href='https://www.linkedin.com/in/olga-lebedeva-66773b2a7/'
+            color='text'
+            target='_blank'
+          >{`LinkedIn`}</LinkCustom>
         </Paragraph>
         <Paragraph size='large'>
           <LinkCustom href='https://www.youtube.com/' color='text' target='_blank'>{`Habr Career`}</LinkCustom>
