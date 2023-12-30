@@ -25,9 +25,9 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
   const foundDiary = allDiaries?.find(p => p.id === id)
   const cardRef = useRef<HTMLDivElement>(null)
   const { contextSafe } = useGSAP({ scope: cardRef })
+  const screenSize = useContext(ResponsiveContext)
 
   const navigate = useNavigate()
-  const screenSize = useContext(ResponsiveContext)
   const readTime = useReadTime(foundDiary?.content)
   const [isLiked, likeToggle] = useIsLiked(id)
 
