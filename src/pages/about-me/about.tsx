@@ -30,7 +30,12 @@ export const About = () => {
   })
 
   return (
-    <Box direction={screenSize === 'small' ? 'column' : 'row'} gap='small' align='center'>
+    <Box
+      direction={screenSize === 'small' ? 'column' : 'row'}
+      gap={screenSize === 'small' ? 'large' : 'small'}
+      flex='grow'
+      align='center'
+    >
       <Box gap='medium' width='large'>
         <Paragraph>{`Beyond the technologies, I'm interested in many aspects of life. Sometimes, when I have free time from reading tech documentation, I spend hours with biographical and World War literature.`}</Paragraph>
         <Paragraph>{`Art holds a special place in my heart, helps expressing my creativity through both traditional and digital drawing. The canvas serves for me as a means of conveying emotions and ideas into visual expressions.`}</Paragraph>

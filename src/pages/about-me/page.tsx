@@ -10,7 +10,6 @@ const AboutMe: FunctionComponent = () => {
   return (
     <TemplateContent>
       <Head title={metadata.aboutMe.title} description={metadata.aboutMe.description} />
-
       <Heading level='2' margin={{ bottom: 'medium' }}>
         About me
       </Heading>
