@@ -10,7 +10,6 @@ export const About = () => {
   const imageRef = useRef<HTMLDivElement>(null)
   const { contextSafe } = useGSAP({ scope: imageRef })
   const screenSize = useContext(ResponsiveContext)
-  console.log(screenSize)
 
   const moveCard = contextSafe((rotateX: number, rotateY: number) => {
     gsap.to(imageRef.current, {
