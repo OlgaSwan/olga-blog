@@ -11,14 +11,12 @@ code {
   border-radius: 3px;
 }
 
-.light {
-  code {
-    background-color: #e3e3e3;
-  }
+.light code {
+  background-color: #e3e3e3;
 }
 
-.dark {
-  code {
-    background-color: #333333;
-  }
+.dark code {
+  background-color: #333333;
 }
+
+/*# sourceMappingURL=global.css.map */
