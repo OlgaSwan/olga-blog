@@ -8,7 +8,7 @@ import { LinkCustom } from '../../utils/link-custom'
 import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
-import avatar from './avatar.jpg'
+import avatar from '../header/avatar.jpg'
 import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
 
 export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (

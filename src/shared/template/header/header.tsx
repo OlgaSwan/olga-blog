@@ -4,13 +4,16 @@ import { routeMap } from 'src/shared/route-map'
 import { LinkCustom } from 'src/shared/utils/link-custom'
 
 import avatar from './avatar.jpg'
-import { useMenuData } from './menu/menu-data'
+import { useMenuData } from '../abstract/menu/menu-data'
+
+import './header.scss'
 
 const Header = () => {
   const menuData = useMenuData()
 
   return (
     <Box
+      className='blur-header'
       as='header'
       height='xsmall'
       pad='medium'
@@ -18,12 +21,6 @@ const Header = () => {
       align='center'
       justify='between'
       background={{ color: 'background', opacity: 'medium' }}
-      style={{
-        position: 'sticky',
-        top: 0,
-        backdropFilter: 'blur(6px)',
-        zIndex: 1,
-      }}
     >
       <Box direction='row' align='center' gap='medium' animation='slideRight'>
         <LinkCustom
