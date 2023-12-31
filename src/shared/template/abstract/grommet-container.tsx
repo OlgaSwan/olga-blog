@@ -5,6 +5,8 @@ import { useStore } from '@nanostores/react'
 import { deepMerge } from 'grommet/utils'
 import { colorScheme } from './color-scheme'
 
+import './global.scss'
+
 const theme = deepMerge(grommet, {
   global: {
     breakpoints: {
@@ -94,16 +96,11 @@ const GrommetContainer: FunctionComponent<PropsWithChildren> = ({ children }) =>
 
   return (
     <Grommet
+      className={`grommet ${colorSchemeValue}`}
       theme={theme}
       full='min'
       options={{
         box: { cssGap: true },
-      }}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-        overflow: 'clip',
       }}
       themeMode={colorSchemeValue}
     >
