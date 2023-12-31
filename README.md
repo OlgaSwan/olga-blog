@@ -3,7 +3,7 @@
 ## 💥 Introduction
 
 Being a frontend developer, I realized the importance of having my own digital footprint.
-So, I decided to create my own website. This site serves a dual purpose - it's a platform where
+So, I decided to create my own [website](http://olgaswan.com/). This site serves a dual purpose - it's a platform where
 I can display my work, and also a space for me to express my thoughts through blog posts.
 
 ## 🚀 Features
