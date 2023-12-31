@@ -6,7 +6,7 @@ import { LinkCustom } from '../../utils/link-custom'
 import { TemplateProps } from './props'
 
 import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
-import Header from './header'
+import Header from '../header/header'
 
 export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => {
   return (
