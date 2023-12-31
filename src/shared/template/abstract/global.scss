@@ -1,0 +1,26 @@
+.grommet {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: clip;
+}
+
+code {
+    padding: 2px;
+    font-size: 105%;
+    border-radius: 3px;
+}
+
+.light {
+    code {
+        background-color:#494949;
+        color: #cfcfcf;
+    }
+}
+
+.dark {
+    code {
+        background-color: #cfcfcf;
+        color: #494949;
+    }
+}
