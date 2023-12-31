@@ -1,0 +1,7 @@
+.blur-header {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

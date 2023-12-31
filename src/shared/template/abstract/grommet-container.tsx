@@ -32,7 +32,7 @@ const theme = deepMerge(grommet, {
       },
     },
     font: {
-      family: 'Satoshi',
+      family: 'Mulish',
     },
     elevation: {
       dark: {
