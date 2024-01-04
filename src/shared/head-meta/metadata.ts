@@ -1,19 +1,19 @@
 export const metadata = {
   home: {
     title: 'Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: 'Explore my tech journey through my blog posts.',
   },
   aboutHire: {
     title: 'Hire Me - Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: `Let's team up for innovative Frontend development.`,
   },
   aboutMe: {
     title: 'About Me - Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: 'A frontend developer striving to build intuitive and user-friendly web applications.',
   },
   blogHome: {
     title: 'Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: 'Explore my tech journey through my blog posts.',
   },
   authLogin: {
     title: 'Login - Olga Swan Blog',
@@ -21,19 +21,19 @@ export const metadata = {
   },
   adminHome: {
     title: 'Admin - Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: 'Explore my tech journey through my blog posts.',
   },
   adminDiaryList: {
     title: 'Admin Diary List - Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: 'Explore my tech journey through my blog posts.',
   },
   adminDiaryId: {
     title: 'Admin Diary - Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: 'Explore my tech journey through my blog posts.',
   },
   adminTagList: {
     title: 'Admin Tag List - Olga Swan Blog',
-    description: 'Follow my IT journey and read articles about my experiences in the tech industry.',
+    description: 'Explore my tech journey through my blog posts.',
   },
   errorForbidden: {
     title: 'Access Forbidden - Olga Swan Blog',
