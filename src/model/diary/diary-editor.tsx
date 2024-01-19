@@ -63,7 +63,7 @@ export const AdminDiaryIdEditor: FunctionComponent<Props> = ({ disabled = false,
               {...register(`content.${index}.title` as const, { minLength: 2 })}
             />
             <TextArea
-              placeholder='Paragraph'
+              placeholder='Markdown'
               {...register(`content.${index}.text` as const, { required: true, minLength: 4 })}
             />
           </>
