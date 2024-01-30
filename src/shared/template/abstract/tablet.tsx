@@ -71,7 +71,7 @@ export const TemplateTablet: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
         align='center'
         justify='between'
       >
-        <Text size='16px'>© Olga Swan, 2023</Text>
+        <Text size='16px'>© Olga Swan, 2024</Text>
         <SwanLogo />
         <Box direction='row' gap='small' justify='center'>
           <LinkCustom
