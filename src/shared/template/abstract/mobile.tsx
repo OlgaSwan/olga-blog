@@ -55,7 +55,7 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
         <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github size='18px' />} />
         <LinkCustom target='_blank' href='https://www.behance.net/olyasswan' icon={<Icons.Paint size='18px' />} />
       </Box>
-      <Text size='14px'>© Olga Swan, 2023</Text>
+      <Text size='14px'>© Olga Swan, 2024</Text>
     </Box>
   </>
 )
