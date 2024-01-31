@@ -6,30 +6,26 @@ import { useGSAP } from '@gsap/react'
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, ResponsiveContext, Tag, Text } from 'grommet'
 import * as Icons from 'grommet-icons'
 
-import { useStore } from '@nanostores/react'
-
-import { diaryStore } from './store'
 import { routeMap } from 'src/shared/route-map'
 
 import { SharedBtn } from 'src/model/diary/shared-btn'
 import { useReadTime } from 'src/shared/hooks/useReadTime'
 import { useIsLiked } from 'src/shared/hooks/useIsLiked'
 import { handleMouseMove } from 'src/shared/utils/tilting'
+import { DiaryExternal } from './types'
 
 export interface DiaryCardProps {
-  id: string
+  diary: DiaryExternal
 }
 
-export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ id }) => {
-  const allDiaries = useStore(diaryStore.list)
-  const foundDiary = allDiaries?.find(p => p.id === id)
+export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = ({ diary }) => {
   const cardRef = useRef<HTMLDivElement>(null)
   const { contextSafe } = useGSAP({ scope: cardRef })
   const screenSize = useContext(ResponsiveContext)
 
   const navigate = useNavigate()
-  const readTime = useReadTime(foundDiary?.content)
-  const [isLiked, likeToggle] = useIsLiked(id)
+  const readTime = useReadTime(diary.content)
+  const [isLiked, likeToggle] = useIsLiked(diary.id)
 
   const moveCard = contextSafe((rotateX: number, rotateY: number) => {
     gsap.to(cardRef.current, {
@@ -49,15 +45,8 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
     })
   })
 
-  if (!foundDiary)
-    return (
-      <Card height='medium' width='large'>
-        <CardBody>Post not found</CardBody>
-      </Card>
-    )
-
-  const firstParagraph = foundDiary.content.find(block => block.kind === 'markdown')
-  const date = new Date(foundDiary.timestamp).toLocaleString('en-US', {
+  const firstParagraph = diary.content.find(block => block.kind === 'markdown')
+  const date = new Date(diary.timestamp).toLocaleString('en-US', {
     day: 'numeric',
     month: 'short',
   })
@@ -74,11 +63,11 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
           direction='column'
           pad={{ top: 'medium', bottom: 'small', left: 'medium', right: 'medium' }}
           focusIndicator={false}
-          onClick={() => navigate(`/blog/diary/${id}`)}
+          onClick={() => navigate(`/blog/diary/${diary.id}`)}
         >
           {screenSize !== 'small' && (
             <Box direction='row' flex='grow' gap='small' alignSelf='end'>
-              {foundDiary.tags.map(tag => (
+              {diary.tags.map(tag => (
                 <Tag
                   key={tag}
                   value={tag}
@@ -99,14 +88,14 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
             </Box>
           )}
           <Heading level='2' alignSelf='start' margin='none'>
-            {foundDiary.title}
+            {diary.title}
           </Heading>
         </CardHeader>
         <CardBody
           pad={{ top: 'none', left: 'medium', bottom: 'medium', right: 'medium' }}
           gap='medium'
           focusIndicator={false}
-          onClick={() => navigate(routeMap.blogDiaryId(id))}
+          onClick={() => navigate(routeMap.blogDiaryId(diary.id))}
         >
           <Text size='medium' weight='normal' margin='none'>
             {firstParagraph &&
@@ -136,7 +125,7 @@ export const DiaryCard: FunctionComponent<PropsWithChildren<DiaryCardProps>> = (
               <Text size='small'>{date}</Text>
             </Box>
           </Box>
-          <SharedBtn diary_id={foundDiary.id} size='20px' />
+          <SharedBtn diary_id={diary.id} size='20px' />
         </CardFooter>
       </Card>
     </div>

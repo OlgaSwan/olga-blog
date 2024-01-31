@@ -41,7 +41,7 @@ export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true, 
         </Box>
       )}
       {allDiariesMemo.map(d => (
-        <DiaryCard key={d.id} id={d.id} />
+        <DiaryCard diary={d} />
       ))}
     </Box>
   )
