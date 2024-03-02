@@ -34,13 +34,17 @@ const Content = () => {
         <Text>
           I've worked with a lot of technologies in production and pet-projects.
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <li>Vanilla JS, TypeScript</li>
-            <li>React ecosystem: Next.js, UI kits, SPA and SSR frameworks</li>
-            <li>CSS processors and CSS-in-JS libraries: SASS, PostCSS, Styled Components</li>
-            <li>REST and CRUD APIs, Firebase, Appwrite, MongoDB</li>
-            <li>State management libraries: Effector, Redux</li>
-            <li>Testing libraries: Jest, Vitest</li>
-            <li>JetBrains AI, ChatGPT</li>
+            <li>Vanilla JS, TypeScript.</li>
+            <li>React ecosystem: Next.js, UI kits, SPA and SSR frameworks.</li>
+            <li>CSS processors and CSS-in-JS libraries: SASS, PostCSS, Styled Components.</li>
+            <li>
+              REST and WebSocket services. Firebase, Appwrite, MongoDB.
+              <br />
+              Swagger for API documentation.
+            </li>
+            <li>State management libraries: Effector, Redux, MobX.</li>
+            <li>Testing libraries: Jest, Vitest.</li>
+            <li>JetBrains AI, ChatGPT.</li>
           </ul>
         </Text>
       </Box>
@@ -51,9 +55,9 @@ const Content = () => {
         <Text>
           I'm mostly in development, but I've explored a few similar areas.
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <li>Design systems and UI kits</li>
-            <li>UX research and analytics</li>
-            <li>Product analytics</li>
+            <li>Design systems and UI kits.</li>
+            <li>UX research and analytics.</li>
+            <li>Product analytics.</li>
           </ul>
         </Text>
       </Box>
@@ -64,9 +68,9 @@ const Content = () => {
         <Text>
           I have necessary communicative and presentational skills.
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <li>Solution research, argumentation and presentation</li>
-            <li>Experienced interaction with the team</li>
-            <li>Management and delegation</li>
+            <li>Solution research, argumentation and presentation.</li>
+            <li>Experienced interaction with the team.</li>
+            <li>Management and delegation.</li>
           </ul>
         </Text>
       </Box>
