@@ -35,6 +35,7 @@ const Content = () => {
           I've worked with a lot of technologies in production and pet-projects.
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
             <li>Vanilla JS, TypeScript.</li>
+            <li>Architecture methodologies: MVC, MVP, MVVM and FSD.</li>
             <li>React ecosystem: Next.js, UI kits, SPA and SSR frameworks.</li>
             <li>CSS processors and CSS-in-JS libraries: SASS, PostCSS, Styled Components.</li>
             <li>
