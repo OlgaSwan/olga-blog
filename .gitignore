@@ -355,6 +355,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-#firebase
-src/shared/firebase-app.ts
