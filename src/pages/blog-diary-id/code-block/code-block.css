@@ -12,4 +12,8 @@
   -ms-user-select: none;
 }
 
+.smol-code {
+  font-size: 10px;
+}
+
 /*# sourceMappingURL=code-block.css.map */

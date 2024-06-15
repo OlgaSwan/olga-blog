@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useContext, useState } from 'react'
 import './code-block.scss'
-import { Box, Button, Notification } from 'grommet'
+import { Box, Button, Notification, ResponsiveContext } from 'grommet'
 import * as Icons from 'grommet-icons'
 
 const addLineNumbers = (str: string) => {
@@ -18,6 +18,7 @@ interface CodeBlockProps {
 
 export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
   const [open, setOpen] = useState(false)
+  const screenSize = useContext(ResponsiveContext)
 
   return (
     <>
@@ -30,13 +31,13 @@ export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
           onClose={() => setOpen(false)}
         />
       )}
-      <Box margin={{ bottom: 'small' }}>
+      <Box width={screenSize === 'small' ? 'medium' : 'large'} margin={{ bottom: 'small' }}>
         <Button
           className='btn-copy'
           hoverIndicator
           label='Copy code'
           plain
-          icon={<Icons.Copy size='18px' />}
+          icon={<Icons.Copy size={screenSize === 'small' ? '14px' : '18px'} />}
           onClick={async () => {
             try {
               await navigator.clipboard.writeText(code)
@@ -48,7 +49,7 @@ export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
         />
         <pre>
           {addLineNumbers(code).map((line, index) => (
-            <div key={index}>
+            <div key={index} className={screenSize === 'small' ? 'smol-code' : ''}>
               <span className='non-selectable'>{line.lineNumber}</span>
               <span>{line.code}</span>
             </div>
