@@ -7,7 +7,7 @@ export const Hire = () => {
   const [open, setOpen] = useState(false)
 
   const copy = async () => {
-    await navigator.clipboard.writeText(`olgaswan.dev@gmail.com`)
+    await navigator.clipboard.writeText(`olgalebedeva.dev@gmail.com`)
     setOpen(true)
   }
 
@@ -24,24 +24,17 @@ export const Hire = () => {
       )}
       <Box gap='small' align='end' flex='grow' justify='center'>
         <Paragraph size='large'>
-          <LinkCustom href='#' onClick={copy} color='text'>{`olgaswan.dev@gmail.com`}</LinkCustom>
+          <LinkCustom href='#' onClick={copy} color='text'>{`olgalebedeva.dev@gmail.com`}</LinkCustom>
         </Paragraph>
         <Paragraph size='large'>
-          <LinkCustom href='https://t.me/olgaswandev' color='text' target='_blank'>{`Telegram`}</LinkCustom>
+          <LinkCustom href='https://t.me/olgalebedevadev' color='text' target='_blank'>{`Telegram`}</LinkCustom>
         </Paragraph>
         <Paragraph size='large'>
           <LinkCustom
-            href='https://www.linkedin.com/in/olga-lebedeva-66773b2a7/'
+            href='https://www.linkedin.com/in/olga-lebedeva-110722386/'
             color='text'
             target='_blank'
           >{`LinkedIn`}</LinkCustom>
-        </Paragraph>
-        <Paragraph size='large'>
-          <LinkCustom
-            href='https://career.habr.com/olgaswandev'
-            color='text'
-            target='_blank'
-          >{`Habr Career`}</LinkCustom>
         </Paragraph>
         <Paragraph size='large'>
           <LinkCustom href='https://github.com/OlgaSwan' color='text' target='_blank'>{`GitHub`}</LinkCustom>
