@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 import { routeMap } from 'src/shared/route-map'
 import { LinkCustom } from 'src/shared/utils/link-custom'
 
-import avatar from './avatar.jpg'
+import avatar from './avatar.jpeg'
 import { useMenuData } from '../abstract/menu/menu-data'
 
 import './header.scss'

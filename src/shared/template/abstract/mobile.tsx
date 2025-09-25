@@ -8,7 +8,7 @@ import { LinkCustom } from '../../utils/link-custom'
 import { MenuComponent } from 'src/shared/template/abstract/menu/menu'
 
 import { TemplateProps } from './props'
-import avatar from '../header/avatar.jpg'
+import avatar from '../header/avatar.jpeg'
 import { SwanLogo } from 'src/shared/template/abstract/swan-logo'
 
 export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, main, sidebarRight }) => (
@@ -49,13 +49,13 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       <Box direction='row' gap='small' justify='center'>
         <LinkCustom
           target='_blank'
-          href='https://www.instagram.com/olyasswan/'
-          icon={<Icons.Instagram size='18px' />}
+          href='https://www.linkedin.com/in/olga-lebedeva-110722386/'
+          icon={<Icons.Linkedin size='18px' />}
         />
         <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github size='18px' />} />
         <LinkCustom target='_blank' href='https://www.behance.net/olyasswan' icon={<Icons.Paint size='18px' />} />
       </Box>
-      <Text size='14px'>© Olga Swan, 2024</Text>
+      <Text size='14px'>© Olga Swan, 2025</Text>
     </Box>
   </>
 )
