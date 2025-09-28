@@ -35,33 +35,26 @@ const Content = () => {
           I've worked with a lot of technologies in production and pet-projects.
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
             <li>Vanilla JS, TypeScript.</li>
-            <li>Architecture methodologies: MVC, MVP, MVVM and FSD.</li>
-            <li>React ecosystem: Next.js, UI kits, SPA and SSR frameworks.</li>
-            <li>CSS processors and CSS-in-JS libraries: SASS, PostCSS, Styled Components.</li>
-            <li>
-              REST and WebSocket services. Firebase, Appwrite, MongoDB.
+            <li>Frameworks and libs: React, Vue, SolidJS.</li>
+            <li>React ecosystem: Next.js, Gatsby, UI kits, SPA and SSR frameworks.</li>
+            <li>State management: Zustand, Redux, MobX, React Signals.
               <br />
-              Swagger for API documentation.
+              TanStack Query, RTK Query.
             </li>
-            <li>State management libraries: Effector, Redux, MobX.</li>
-            <li>Testing libraries: Jest, Vitest.</li>
-            <li>JetBrains AI, ChatGPT.</li>
+            <li>Architecture methodologies: FSD, Micro frontends, Monolithic.</li>
+            <li>Graphics and interactivity: Three.js, PixiJS, D3.js, WebXR, GSAP.</li>
+            <li>CSS processors and CSS-in-JS libraries: SASS, PostCSS, Styled Components.</li>
+            <li>Performance and optimization: Web Vitals, Lighthouse, DevTools Profiler/Performance.</li>
+            <li>Testing: Jest, Vitest, React Testing Library, Playwright.
+              <br />
+              Storybook, Snapshots.
+              </li>
+            <li>PWA: Service and Web workers.</li>
+            <li>Other: JetBrains AI, Docker, GitLab CI/CD, Open API/Swagger.</li>
           </ul>
         </Text>
       </Box>
-      <Box className='box'>
-        <Heading level='3' margin={{ bottom: 'small' }}>
-          T-shaped skills
-        </Heading>
-        <Text>
-          I'm mostly in development, but I've explored a few similar areas.
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <li>Design systems and UI kits.</li>
-            <li>UX research and analytics.</li>
-            <li>Product analytics.</li>
-          </ul>
-        </Text>
-      </Box>
+
       <Box className='box'>
         <Heading level='3' margin={{ bottom: 'small' }}>
           Soft-skills
@@ -69,9 +62,27 @@ const Content = () => {
         <Text>
           I have necessary communicative and presentational skills.
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <li>Solution research, argumentation and presentation.</li>
-            <li>Experienced interaction with the team.</li>
-            <li>Management and delegation.</li>
+            <li>Researching for modern solutions, presentation, ensuring quality through
+              <br />
+              cross-team code reviews.</li>
+            <li>Mentoring junior developers and upskilling team members.</li>
+            <li>Communication, teamwork skills and knowledge sharing.</li>
+          </ul>
+        </Text>
+      </Box>
+
+      <Box className='box'>
+        <Heading level='3' margin={{ bottom: 'small' }}>
+          T-shaped skills
+        </Heading>
+        <Text>
+          I'm mostly in frontend development, but I've explored a few similar areas.
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <li>DevOps/Platform Engineering fundamentals.</li>
+            <li>Backend fundamentals.</li>
+            <li>Design systems and UI kits.</li>
+            <li>UX research and analytics.</li>
+            <li>Product analytics.</li>
           </ul>
         </Text>
       </Box>

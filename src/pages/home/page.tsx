@@ -30,9 +30,9 @@ const Home: FunctionComponent = () => {
       </Box>
       <Paragraph fill size='large' margin={{ bottom: 'medium' }}>
         I'm a frontend developer who <LinkCustom label='writes' href={routeMap.blogHome} color='brand' /> about code and
-        art. <br />
-        Passionate about coding, particularly in TypeScript and React, development methodologies, various tools and
-        technologies.
+        life. <br />
+        Passionate about coding, especially in TypeScript and React. <br /> Interested in learning different development
+        methodologies and tools that can help me create efficient and scalable software.
       </Paragraph>
       <PageHeader size='small' title='Latest posts' margin={{ bottom: 'medium' }} />
       <DiaryList isSliced={true} />
