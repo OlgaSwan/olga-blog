@@ -42,7 +42,7 @@ export const TemplateDesktop: FunctionComponent<TemplateProps> = ({ sidebarLeft,
         <Text size='16px'>© Olga Swan, 2025 </Text>
         <SwanLogo />
         <Box direction='row' gap='medium' justify='center'>
-          <LinkCustom target='_blank' href='https://www.linkedin.com/in/olga-lebedeva-110722386/' icon={<Icons.Linkedin />} />
+          <LinkCustom target='_blank' href='https://www.linkedin.com/in/olga-lebedeva-frontend/' icon={<Icons.Linkedin />} />
           <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github />} />
           <LinkCustom target='_blank' href='https://www.behance.net/olyasswan' icon={<Icons.Paint />} />
         </Box>

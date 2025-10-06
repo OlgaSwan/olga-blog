@@ -49,7 +49,7 @@ export const TemplateMobile: FunctionComponent<TemplateProps> = ({ sidebarLeft, 
       <Box direction='row' gap='small' justify='center'>
         <LinkCustom
           target='_blank'
-          href='https://www.linkedin.com/in/olga-lebedeva-110722386/'
+          href='https://www.linkedin.com/in/olga-lebedeva-frontend/'
           icon={<Icons.Linkedin size='18px' />}
         />
         <LinkCustom target='_blank' href='https://github.com/OlgaSwan' icon={<Icons.Github size='18px' />} />

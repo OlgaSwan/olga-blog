@@ -31,7 +31,7 @@ export const Hire = () => {
         </Paragraph>
         <Paragraph size='large'>
           <LinkCustom
-            href='https://www.linkedin.com/in/olga-lebedeva-110722386/'
+            href='https://www.linkedin.com/in/olga-lebedeva-frontend/'
             color='text'
             target='_blank'
           >{`LinkedIn`}</LinkCustom>
