@@ -13,7 +13,7 @@ export interface DiaryListProps {
 }
 
 export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true, chosenTags = [] }) => {
-  const allDiaries = useStore(isSliced ? diaryStore.listLimited : diaryStore.list)
+  const allDiaries = useStore(diaryStore.list)
 
   let allDiariesMemo = useMemo(() => {
     if (!allDiaries) return []
@@ -24,8 +24,12 @@ export const DiaryList: FunctionComponent<DiaryListProps> = ({ isSliced = true, 
       diariesTransformed = diariesTransformed.filter(diary => diary.tags.some(tag => chosenTags.includes(tag)))
     }
 
+    if (isSliced) {
+      diariesTransformed = diariesTransformed.slice(0, 3)
+    }
+
     return diariesTransformed
-  }, [allDiaries, chosenTags])
+  }, [allDiaries, isSliced, chosenTags])
 
   return (
     <Box gap='medium'>
