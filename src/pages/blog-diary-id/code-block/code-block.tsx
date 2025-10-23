@@ -1,14 +1,16 @@
-import React, { FunctionComponent, useContext, useState } from 'react'
+import React, { FunctionComponent, useContext, useMemo, useState } from 'react'
 import './code-block.scss'
 import { Box, Button, Notification, ResponsiveContext } from 'grommet'
 import * as Icons from 'grommet-icons'
+import { microlight } from 'microlight-string'
 
-const addLineNumbers = (str: string) => {
+const addLineNumbers = (str: string, highlighted: string) => {
   const lines = str.split('\n')
+  const highlightedLines = highlighted.split('\n')
   const digitCount = lines.length.toString().length
   return lines.map((line, index) => ({
     lineNumber: `${(index + 1).toString().padStart(digitCount, ' ')} | `,
-    code: line,
+    code: highlightedLines[index] || line,
   }))
 }
 
@@ -19,6 +21,14 @@ interface CodeBlockProps {
 export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
   const [open, setOpen] = useState(false)
   const screenSize = useContext(ResponsiveContext)
+
+  const highlightedCode = useMemo(() => {
+    return microlight.process(code, '255, 255, 255')
+  }, [code])
+
+  const linesWithNumbers = useMemo(() => {
+    return addLineNumbers(code, highlightedCode)
+  }, [code, highlightedCode])
 
   return (
     <>
@@ -48,10 +58,10 @@ export const CodeBlock: FunctionComponent<CodeBlockProps> = ({ code }) => {
           }}
         />
         <pre>
-          {addLineNumbers(code).map((line, index) => (
+          {linesWithNumbers.map((line, index) => (
             <div key={index} className={screenSize === 'small' ? 'smol-code' : ''}>
               <span className='non-selectable'>{line.lineNumber}</span>
-              <span>{line.code}</span>
+              <code dangerouslySetInnerHTML={{ __html: line.code }} />
             </div>
           ))}
         </pre>

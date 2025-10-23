@@ -35,6 +35,8 @@
     "gsap": "^3.12.4",
     "is-absolute-url": "^4.0.1",
     "lodash-es": "^4.17.21",
+    "microlight": "^0.0.7",
+    "microlight-string": "^1.1.0",
     "modern-css-reset": "^1.4.0",
     "nanostores": "^0.9.3",
     "p-min-delay": "^4.0.2",

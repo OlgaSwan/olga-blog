@@ -12,6 +12,15 @@
   -ms-user-select: none;
 }
 
+.microlight {
+  font-family: monospace;
+  white-space: pre;
+}
+
+code {
+  background-color: transparent !important;
+}
+
 .smol-code {
   font-size: 10px;
 }
