@@ -9,6 +9,7 @@ import {
   orderBy,
   query,
   updateDoc,
+  limit,
 } from 'firebase/firestore'
 import { atom } from 'nanostores'
 import { faker } from '@faker-js/faker/locale/en'
@@ -21,16 +22,24 @@ import { DiaryExternal, DiaryInternal } from './types'
 
 const firestore = getFirestore(firebaseApp)
 const diaryCollection = collection(firestore, 'diary')
+
 const orderedDiaryCollection = query(diaryCollection, orderBy('timestamp', 'desc'))
+const limitedDiaryCollection = query(diaryCollection, orderBy('timestamp', 'desc'), limit(3))
 
 const list = atom<Array<DiaryExternal> | null>(null)
+const listLimited = atom<Array<DiaryExternal> | null>(null)
 
 onSnapshot(orderedDiaryCollection, snapshot => {
   list.set(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as DiaryExternal))
 })
 
+onSnapshot(limitedDiaryCollection, snapshot => {
+  listLimited.set(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as DiaryExternal))
+})
+
 export const diaryStore = {
   list,
+  listLimited,
   add: async (diary: DiaryInternal) => {
     await addDoc(diaryCollection, diary)
   },
